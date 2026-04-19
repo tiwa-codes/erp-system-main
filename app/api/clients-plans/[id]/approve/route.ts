@@ -88,7 +88,7 @@ export async function PATCH(
     const invoiceOrganizationName =
       clientPlan.client_account?.organization?.name ||
       clientPlan.principal_account?.organization?.name ||
-      "Crown Jewel HMO"
+      "Aspirage"
     const invoiceClientName = clientPlan.client_account?.user
       ? `${clientPlan.client_account.user.first_name} ${clientPlan.client_account.user.last_name}`
       : clientPlan.principal_account

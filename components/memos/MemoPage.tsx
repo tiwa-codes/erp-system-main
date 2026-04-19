@@ -47,7 +47,7 @@ interface MemoPageProps {
 
 const ADMIN_ROLES = ['SUPER_ADMIN', 'SUPERADMIN', 'ADMIN']
 const GLOBAL_MEMO_ADMIN_EMAIL = "admin@erp.com"
-const EXECUTIVE_INBOX_FALLBACK_EMAILS = [GLOBAL_MEMO_ADMIN_EMAIL, "aliyu.sumaila@crownjewelhmo.com"]
+const EXECUTIVE_INBOX_FALLBACK_EMAILS = [GLOBAL_MEMO_ADMIN_EMAIL, "aliyu.sumaila@aspirage.com"]
 
 const normalizeRole = (role?: string | null) => (role || "").toUpperCase().replace(/[\s-]+/g, "_")
 

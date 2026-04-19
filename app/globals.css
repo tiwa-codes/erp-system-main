@@ -12,7 +12,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 353 80% 41%;
+    --primary: 197 90% 50%;
     --primary-foreground: 0 0% 100%;
     --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
@@ -24,7 +24,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 0 72% 42%;
+    --ring: 197 90% 50%;
     --radius: 0.5rem;
   }
 
@@ -35,7 +35,7 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 353 80% 41%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -47,7 +47,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 0 72% 42%;
+    --ring: 221 83% 53%;
   }
 }
 
@@ -55,35 +55,32 @@
   * {
     @apply border-border;
   }
-  
+
   html {
     font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-optical-sizing: auto;
   }
-  
-body {
-  @apply bg-background text-foreground text-xs;
-  font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-optical-sizing: auto;
-}
-  
-  /* Mobile optimizations */
+
+  body {
+    @apply bg-background text-foreground text-xs;
+    font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-optical-sizing: auto;
+  }
+
   @media (max-width: 768px) {
     body {
       @apply text-sm;
     }
-    
-    /* Improve touch targets */
+
     button, [role="button"], input[type="button"], input[type="submit"] {
       min-height: 44px;
       min-width: 44px;
     }
-    
-    /* Better spacing for mobile */
+
     .space-y-6 > * + * {
       margin-top: 1rem;
     }
-    
+
     .space-y-4 > * + * {
       margin-top: 0.75rem;
     }
@@ -119,53 +116,141 @@ body {
   animation: spin 1s linear infinite;
 }
 
-/* Make blue preloaders follow the product dark-red accent */
-.animate-spin[class*="border-blue"] {
-  border-color: #be1522 !important;
+/* Custom utility classes */
+.text-balance {
+  text-wrap: balance;
 }
 
-.animate-spin[class*="text-blue"] {
-  color: #be1522 !important;
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break {
+    page-break-after: always;
+  }
 }
 
-/* Underwriting-only primary color override */
-.underwriting-theme {
-  --primary: 353 80% 41%;
-  --primary-foreground: 0 0% 100%;
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
 }
 
-.red-accent-theme {
-  --primary: 353 80% 41%;
-  --primary-foreground: 0 0% 100%;
+/* Custom gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
 }
 
-.red-accent-theme [class*="text-blue-"] {
-  color: #be1522 !important;
+.gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
 }
 
-.red-accent-theme [class*="border-blue-"] {
-  border-color: #fca5a5 !important;
+/* Card hover effects */
+.card-hover {
+  transition: all 0.2s ease-in-out;
 }
 
-.red-accent-theme [class*="bg-blue-50"],
-.red-accent-theme [class*="bg-blue-100"],
-.red-accent-theme [class*="bg-blue-200"] {
-  background-color: #fee2e2 !important;
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.red-accent-theme [class*="bg-blue-600"],
-.red-accent-theme [class*="bg-blue-700"],
-.red-accent-theme [class*="bg-blue-800"] {
-  background-color: #be1522 !important;
-  color: #fff !important;
+/* Status indicators */
+.status-normal {
+  @apply bg-green-100 text-green-800 border-green-200;
+}
+
+.status-warning {
+  @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+}
+
+.status-critical {
+  @apply bg-red-100 text-red-800 border-red-200;
+}
+
+.status-info {
+  @apply bg-blue-100 text-blue-800 border-blue-200;
+}
+
+/* Mobile-specific utilities */
+@media (max-width: 768px) {
+  .mobile-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .mobile-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Custom status text without rectangles */
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-text.active { color: #059669; }
+.status-text.pending { color: #d97706; }
+.status-text.approved { color: #059669; }
+.status-text.rejected { color: #dc2626; }
+.status-text.inactive { color: #6b7280; }
+.status-text.expired { color: #dc2626; }
+.status-text.used { color: #2563eb; }
+.status-text.cancelled { color: #6b7280; }
+
+/* Table styles */
+.table-cell {
+  font-size: 0.75rem;
+}
+
+.table-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Subheading font size standardization */
+.subheading {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--primary));
+}
+
+h3.text-blue-600.font-semibold {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--primary)) !important;
 }
 
 @keyframes badge-glow {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(190, 21, 34, 0.12);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.12);
   }
   50% {
-    box-shadow: 0 0 0 6px rgba(190, 21, 34, 0.08);
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.08);
   }
 }
 
@@ -173,815 +258,23 @@ body {
   animation: badge-glow 1.8s ease-in-out infinite;
 }
 
-button.bg-blue-600 {
-  background-color: #be1522 !important;
-  color: #fff !important;
-}
-
-.underwriting-theme button[class*="bg-blue"] {
-  background-color: #be1522 !important;
-  color: #ffffff !important;
-}
-
-.underwriting-theme button[class*="hover:bg-blue"]:hover {
-  background-color: #9b1219 !important;
-}
-
-.underwriting-theme button[class*="text-blue"] {
-  color: #be1522 !important;
-}
-
-.underwriting-theme button[class*="border-blue"] {
-  border-color: #be1522 !important;
-}
-
-/* Custom utility classes */
-.text-balance {
-  text-wrap: balance;
-}
-
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-
-  .print-break {
-    page-break-after: always;
-  }
-}
-
-/* Focus styles for accessibility */
-.focus-visible:focus {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
-}
-
-/* Custom button hover styles - light hover instead of blue */
-button:hover:not(:disabled) {
-  background-color: rgba(0, 0, 0, 0.05) !important;
-  transition: background-color 0.2s ease;
-}
-
-/* Override specific button variants */
-button.bg-blue-600:hover:not(:disabled) {
-  background-color: #1d4ed8 !important;
-}
-
-button.bg-red-600:hover:not(:disabled) {
-  background-color: #dc2626 !important;
-}
-
-button.bg-green-600:hover:not(:disabled) {
-  background-color: #16a34a !important;
-}
-
-/* Outline button hover */
-button[data-variant="outline"]:hover:not(:disabled) {
-  background-color: rgba(0, 0, 0, 0.05) !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Custom gradient backgrounds */
-.gradient-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-}
-
-.gradient-blue {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-}
-
-/* Card hover effects */
-.card-hover {
-  transition: all 0.2s ease-in-out;
-}
-
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* Status indicators */
-.status-normal {
-  @apply bg-green-100 text-green-800 border-green-200;
-}
-
-.status-warning {
-  @apply bg-yellow-100 text-yellow-800 border-yellow-200;
-}
-
-.status-critical {
-  @apply bg-red-100 text-red-800 border-red-200;
-}
-
-.status-info {
-  @apply bg-blue-100 text-blue-800 border-blue-200;
-}
-
-/* Mobile-specific utilities */
-@media (max-width: 768px) {
-  .mobile-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .mobile-full-width {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-  }
-  
-  .mobile-padding {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .mobile-text-sm {
-    font-size: 0.875rem;
-  }
-  
-  .mobile-hidden {
-    display: none;
-  }
-}
-
-@media (min-width: 769px) {
-  .mobile-only {
-    display: none;
-  }
-}
-
-/* Button hover color fixes - use primary blue instead of green */
-button:hover, .btn:hover, [role="button"]:hover {
-  background-color: hsl(var(--primary)) !important;
-  color: hsl(var(--primary-foreground)) !important;
-}
-
-/* Remove default button hover effects that turn green */
-.bg-green-600:hover {
-  background-color: hsl(var(--primary)) !important;
-}
-
-.bg-green-700:hover {
-  background-color: hsl(var(--primary)) !important;
-}
-
-/* Custom status text without rectangles */
-.status-text {
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: capitalize;
-}
-
-.status-text.active {
-  color: #059669;
-}
-
-.status-text.pending {
-  color: #d97706;
-}
-
-.status-text.approved {
-  color: #059669;
-}
-
-.status-text.rejected {
-  color: #dc2626;
-}
-
-.status-text.inactive {
-  color: #6b7280;
-}
-
-.status-text.expired {
-  color: #dc2626;
-}
-
-.status-text.used {
-  color: #2563eb;
-}
-
-.status-text.cancelled {
-  color: #6b7280;
-}
-
-/* Table font size reduction */
-.table-cell {
-  font-size: 0.75rem;
-}
-
-/* Subheading font size standardization */
-.subheading {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: hsl(var(--primary));
-}
-
-/* Standardize all subheadings */
-h3.text-blue-600.font-semibold {
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  color: hsl(var(--primary)) !important;
-}
-
-/* Table font size reduction */
-.table-cell {
-  font-size: 0.75rem;
-}
-
-/* Reduce table header font size */
-.table-header {
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
 /* Inter Font Classes */
-.inter-thin {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.inter-extralight {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.inter-light {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.inter-regular {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.inter-medium {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.inter-semibold {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.inter-bold {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.inter-extrabold {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.inter-black {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-}
-
-/* Italic variants */
-.inter-thin-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.inter-extralight-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.inter-light-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.inter-regular-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.inter-medium-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.inter-semibold-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.inter-bold-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.inter-extrabold-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.inter-black-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: italic;
-}@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 353 80% 41%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 0 72% 42%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 353 80% 41%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 0 72% 42%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  
-  html {
-    font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-optical-sizing: auto;
-  }
-  
-body {
-  @apply bg-background text-foreground text-xs;
-  font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-optical-sizing: auto;
-}
-  
-  /* Mobile optimizations */
-  @media (max-width: 768px) {
-    body {
-      @apply text-sm;
-    }
-    
-    /* Improve touch targets */
-    button, [role="button"], input[type="button"], input[type="submit"] {
-      min-height: 44px;
-      min-width: 44px;
-    }
-    
-    /* Better spacing for mobile */
-    .space-y-6 > * + * {
-      margin-top: 1rem;
-    }
-    
-    .space-y-4 > * + * {
-      margin-top: 0.75rem;
-    }
-  }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* Loading animations */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-/* Custom utility classes */
-.text-balance {
-  text-wrap: balance;
-}
-
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-
-  .print-break {
-    page-break-after: always;
-  }
-}
-
-/* Focus styles for accessibility */
-.focus-visible:focus {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
-}
-
-/* Custom gradient backgrounds */
-.gradient-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-}
-
-.gradient-blue {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-}
-
-/* Card hover effects */
-.card-hover {
-  transition: all 0.2s ease-in-out;
-}
-
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* Status indicators */
-.status-normal {
-  @apply bg-green-100 text-green-800 border-green-200;
-}
-
-.status-warning {
-  @apply bg-yellow-100 text-yellow-800 border-yellow-200;
-}
-
-.status-critical {
-  @apply bg-red-100 text-red-800 border-red-200;
-}
-
-.status-info {
-  @apply bg-blue-100 text-blue-800 border-blue-200;
-}
-
-/* Mobile-specific utilities */
-@media (max-width: 768px) {
-  .mobile-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .mobile-full-width {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-  }
-  
-  .mobile-padding {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .mobile-text-sm {
-    font-size: 0.875rem;
-  }
-  
-  .mobile-hidden {
-    display: none;
-  }
-}
-
-@media (min-width: 769px) {
-  .mobile-only {
-    display: none;
-  }
-}
-
-/* Button hover color fixes - use primary blue instead of green */
-button:hover, .btn:hover, [role="button"]:hover {
-  background-color: hsl(var(--primary)) !important;
-  color: hsl(var(--primary-foreground)) !important;
-}
-
-/* Remove default button hover effects that turn green */
-.bg-green-600:hover {
-  background-color: hsl(var(--primary)) !important;
-}
-
-.bg-green-700:hover {
-  background-color: hsl(var(--primary)) !important;
-}
-
-/* Custom status text without rectangles */
-.status-text {
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: capitalize;
-}
-
-.status-text.active {
-  color: #059669;
-}
-
-.status-text.pending {
-  color: #d97706;
-}
-
-.status-text.approved {
-  color: #059669;
-}
-
-.status-text.rejected {
-  color: #dc2626;
-}
-
-.status-text.inactive {
-  color: #6b7280;
-}
-
-.status-text.expired {
-  color: #dc2626;
-}
-
-.status-text.used {
-  color: #2563eb;
-}
-
-.status-text.cancelled {
-  color: #6b7280;
-}
-
-/* Table font size reduction */
-.table-cell {
-  font-size: 0.75rem;
-}
-
-/* Subheading font size standardization */
-.subheading {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: hsl(var(--primary));
-}
-
-/* Standardize all subheadings */
-h3.text-blue-600.font-semibold {
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  color: hsl(var(--primary)) !important;
-}
-
-/* Table font size reduction */
-.table-cell {
-  font-size: 0.75rem;
-}
-
-/* Reduce table header font size */
-.table-header {
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-/* Inter Font Classes */
-.inter-thin {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.inter-extralight {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.inter-light {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.inter-regular {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.inter-medium {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.inter-semibold {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.inter-bold {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.inter-extrabold {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.inter-black {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-}
-
-/* Italic variants */
-.inter-thin-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.inter-extralight-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.inter-light-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.inter-regular-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.inter-medium-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.inter-semibold-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.inter-bold-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.inter-extrabold-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.inter-black-italic {
-  font-family: var(--font-inter), "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: italic;
-}
-
-/* Final accent enforcement for dashboard sections requested by product */
-.red-accent-theme [class*="text-blue-"],
-.underwriting-theme [class*="text-blue-"] {
-  color: #be1522 !important;
-}
-
-.red-accent-theme [class*="border-blue-"],
-.underwriting-theme [class*="border-blue-"] {
-  border-color: #fca5a5 !important;
-}
-
-.red-accent-theme [class*="bg-blue-50"],
-.red-accent-theme [class*="bg-blue-100"],
-.red-accent-theme [class*="bg-blue-200"],
-.underwriting-theme [class*="bg-blue-50"],
-.underwriting-theme [class*="bg-blue-100"],
-.underwriting-theme [class*="bg-blue-200"] {
-  background-color: #fee2e2 !important;
-}
-
-.red-accent-theme [class*="bg-blue-300"],
-.red-accent-theme [class*="bg-blue-400"],
-.red-accent-theme [class*="bg-blue-500"],
-.red-accent-theme [class*="bg-blue-600"],
-.red-accent-theme [class*="bg-blue-700"],
-.red-accent-theme [class*="bg-blue-800"],
-.red-accent-theme [class*="bg-blue-900"],
-.underwriting-theme [class*="bg-blue-300"],
-.underwriting-theme [class*="bg-blue-400"],
-.underwriting-theme [class*="bg-blue-500"],
-.underwriting-theme [class*="bg-blue-600"],
-.underwriting-theme [class*="bg-blue-700"],
-.underwriting-theme [class*="bg-blue-800"],
-.underwriting-theme [class*="bg-blue-900"] {
-  background-color: #be1522 !important;
-  color: #fff !important;
-}
-
-.underwriting-theme .animate-spin[class*="border-blue"],
-.red-accent-theme .animate-spin[class*="border-blue"] {
-  border-color: #be1522 !important;
-}
+.inter-thin { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 100; font-style: normal; }
+.inter-extralight { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 200; font-style: normal; }
+.inter-light { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 300; font-style: normal; }
+.inter-regular { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 400; font-style: normal; }
+.inter-medium { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 500; font-style: normal; }
+.inter-semibold { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 600; font-style: normal; }
+.inter-bold { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 700; font-style: normal; }
+.inter-extrabold { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 800; font-style: normal; }
+.inter-black { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 900; font-style: normal; }
+
+.inter-thin-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 100; font-style: italic; }
+.inter-extralight-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 200; font-style: italic; }
+.inter-light-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 300; font-style: italic; }
+.inter-regular-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 400; font-style: italic; }
+.inter-medium-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 500; font-style: italic; }
+.inter-semibold-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 600; font-style: italic; }
+.inter-bold-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 700; font-style: italic; }
+.inter-extrabold-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 800; font-style: italic; }
+.inter-black-italic { font-family: var(--font-inter), "Inter", sans-serif; font-weight: 900; font-style: italic; }

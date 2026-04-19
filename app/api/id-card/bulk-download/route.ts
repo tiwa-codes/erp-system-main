@@ -285,7 +285,7 @@ function generateIDCardHTML(data: any) {
       <div class="id-card">
         <div class="id-card-front">
           <div class="card-header">
-            <div class="logo">Crown Jewel HMO</div>
+            <div class="logo">Aspirage</div>
             <div class="enrollee-type">${isDependent ? 'DEPENDENT' : 'PRINCIPAL'}</div>
           </div>
           
@@ -340,7 +340,7 @@ function generateIDCardHTML(data: any) {
           </div>
           
           <div class="card-footer">
-            <div>Emergency: +234 123 456 7890 | support@crownjewelhmo.com</div>
+            <div>Emergency: +234 123 456 7890 | support@aspirage.com</div>
           </div>
         </div>
       </div>

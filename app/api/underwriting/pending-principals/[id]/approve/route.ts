@@ -90,7 +90,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
         try {
             await notificationService.sendEmail({
                 to: registration.email,
-                subject: "Principal Registration Approved - Welcome to Crown Jewel HMO",
+                subject: "Principal Registration Approved - Welcome to Aspirage",
                 html: `
                     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                         <div style="background-color: #10b981; color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
@@ -156,7 +156,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
                         
                         <div style="background-color: #f3f4f6; padding: 15px; text-align: center; margin-top: 20px; border-radius: 8px;">
                             <p style="color: #6b7280; font-size: 12px; margin: 0;">
-                                This is an automated message from Crown Jewel HMO ERP System.<br>
+                                This is an automated message from Aspirage ERP System.<br>
                                 Please do not reply to this email.
                             </p>
                         </div>

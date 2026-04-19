@@ -82,7 +82,7 @@ export async function POST(
       generatedAt: msa.generated_at || new Date(),
       commenceDate: msa.generated_at || new Date(),
       cjhSignatoryName: session.user.name || "Authorized Signatory",
-      cjhSignatoryTitle: "Legal Department, Crown Jewel HMO",
+      cjhSignatoryTitle: "Legal Department, Aspirage",
     })
 
     const safeName = (msa.provider.facility_name || "provider")
@@ -126,7 +126,7 @@ export async function POST(
         </div>
 
         <p>You may also view/download the document in ERP:</p>
-        <p><a href="${process.env.NEXTAUTH_URL || "https://crownjewelhmo.sbfy360.com"}${documentUrl}" target="_blank" rel="noopener noreferrer">View MSA Document</a></p>
+        <p><a href="${process.env.NEXTAUTH_URL || "https://aspirage.com"}${documentUrl}" target="_blank" rel="noopener noreferrer">View MSA Document</a></p>
         
         <p>If you have any questions about this agreement, please contact our Legal Department.</p>
         

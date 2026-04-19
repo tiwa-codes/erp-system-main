@@ -566,7 +566,7 @@ export default function ApprovalProcessPage() {
                 )}
               </div>
               <h1 className="text-2xl font-black text-gray-900 tracking-tight truncate leading-tight">
-                CrownJewel MD Approval System
+                Aspirage MD Approval System
               </h1>
             </div>
           </div>

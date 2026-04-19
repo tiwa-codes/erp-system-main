@@ -99,7 +99,7 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
       success: true,
       message: sendEmail ? 'Password reset successfully' : 'Temporary password generated successfully',
       tempPassword: newPassword,
-      loginUrl: `${process.env.NEXT_PUBLIC_APP_URL || 'https://crownjewelhmo.sbfy360.com'}/auth/signin`,
+      loginUrl: `${process.env.NEXT_PUBLIC_APP_URL || 'https://aspirage.com'}/auth/signin`,
       user: {
         id: user.id,
         name: `${user.first_name} ${user.last_name}`,

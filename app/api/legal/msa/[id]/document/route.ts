@@ -119,7 +119,7 @@ export async function GET(
         [msa.generated_by?.first_name, msa.generated_by?.last_name]
           .filter(Boolean)
           .join(" ") || "Authorized Signatory",
-      cjhSignatoryTitle: "Crown Jewel HMO",
+      cjhSignatoryTitle: "Aspirage",
     })
 
     const safeName = (msa.provider.facility_name || "provider")

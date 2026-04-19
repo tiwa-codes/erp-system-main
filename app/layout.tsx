@@ -10,7 +10,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Crown Jewel HMO",
+  title: "Aspirage",
   description: "Comprehensive ERP system for healthcare management",
 }
 

@@ -185,7 +185,7 @@ export default function UsersList({
       }
 
       const data = await res.json()
-      const loginUrl = data.loginUrl || (typeof window !== "undefined" ? `${window.location.origin}/auth/signin` : "https://crownjewelhmo.sbfy360.com/auth/signin")
+      const loginUrl = data.loginUrl || (typeof window !== "undefined" ? `${window.location.origin}/auth/signin` : "https://aspirage.com/auth/signin")
       const message = `ERP Login Details\nEmail: ${selectedUser.email}\nTemporary Password: ${data.tempPassword}\nLogin URL: ${loginUrl}`
 
       setGeneratedTempPassword({

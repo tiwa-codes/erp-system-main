@@ -166,7 +166,7 @@ export default function ClaimsPaymentAdviceDetailPage() {
                                         </div>
                                         <div className="h-10 w-[1px] bg-gray-200" />
                                         <h2 className="text-2xl font-black tracking-tighter text-gray-900 leading-none">
-                                            CROWN JEWEL<br />
+                                            ASPIRAGE<br />
                                             <span className="text-emerald-600">HEALTHCARE</span>
                                         </h2>
                                     </div>
@@ -352,7 +352,7 @@ export default function ClaimsPaymentAdviceDetailPage() {
                                         <div className="space-y-1">
                                             <div className="h-12 w-32 border-b border-gray-300 relative">
                                                 <span className="absolute bottom-1 italic text-gray-400 font-bold tracking-tight opacity-50">
-                                                    CrownJewelFin_#02
+                                                    AspirageFin_#02
                                                 </span>
                                             </div>
                                             <p className="text-xs font-black text-gray-900 uppercase">Head of Finance</p>

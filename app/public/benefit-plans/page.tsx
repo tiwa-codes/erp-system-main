@@ -183,8 +183,8 @@ export default function PublicBenefitPlansPage() {
             <div className="bg-white border-b sticky top-0 z-20">
                 <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <img src="/coverconnect.png" alt="Logo" className="h-8 w-auto" />
-                        <span className="font-bold text-gray-900 text-lg">CrownJewelHMO</span>
+                        <img src="/logo.jpg" alt="Logo" className="h-8 w-auto" />
+                        <span className="font-bold text-gray-900 text-lg">Aspirage</span>
                     </div>
                     {customMode && (
                         <Button variant="ghost" onClick={() => setCustomMode(false)}>Exit Custom Mode</Button>

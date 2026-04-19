@@ -137,7 +137,7 @@ export async function POST(
           commenceDate: msa.generated_at || new Date(),
           approvalComment: comments,
           cjhSignatoryName: session.user.name || "Authorized Signatory",
-          cjhSignatoryTitle: "Managing Director, Crown Jewel HMO",
+          cjhSignatoryTitle: "Managing Director, Aspirage",
         })
 
         const safeName = (result.tariffPlan.provider?.facility_name || "provider")
@@ -161,7 +161,7 @@ export async function POST(
           (v, i, arr): v is string => Boolean(v) && arr.indexOf(v) === i
         )
 
-        const appUrl = process.env.NEXTAUTH_URL || "https://crownjewelhmo.sbfy360.com"
+        const appUrl = process.env.NEXTAUTH_URL || "https://aspirage.com"
         const msaSubject = `MSA Approval - ${result.tariffPlan.provider?.facility_name || "Provider"}`
         const msaHtml = `
           <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto;">
@@ -183,7 +183,7 @@ export async function POST(
             }
             <p>You can also access the same document in the ERP system:</p>
             <p><a href="${appUrl}${documentUrl}" target="_blank" rel="noopener noreferrer">View MSA Document</a></p>
-            <p style="color: #6b7280; font-size: 12px;">This is an automated message from Crown Jewel HMO ERP.</p>
+            <p style="color: #6b7280; font-size: 12px;">This is an automated message from Aspirage ERP.</p>
           </div>
         `
 

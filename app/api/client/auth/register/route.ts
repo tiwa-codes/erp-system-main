@@ -198,14 +198,14 @@ export async function POST(request: NextRequest) {
         subject: "Client Account Registration Successful",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #0f172a;">Welcome to Crown Jewel HMO</h2>
+            <h2 style="color: #0f172a;">Welcome to Aspirage</h2>
             <p>Your client account registration was successful.</p>
             <p><strong>Name:</strong> ${fullName}</p>
             <p><strong>Account Type:</strong> ${accountType.replace(/_/g, " ")}</p>
             <p>You can now log in from the client portal to view plans and submit requests.</p>
           </div>
         `,
-        text: `Welcome to Crown Jewel HMO. Your client account registration was successful.`,
+        text: `Welcome to Aspirage. Your client account registration was successful.`,
       })
     } catch (notificationError) {
       console.error("Client account created but welcome email failed:", notificationError)

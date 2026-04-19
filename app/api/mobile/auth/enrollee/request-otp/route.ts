@@ -163,11 +163,11 @@ export async function POST(req: NextRequest) {
       try {
         await notificationService.sendEmail({
           to:      enrolleeEmail,
-          subject: "Your CrownJewel HMO Login Code",
+          subject: "Your Aspirage Login Code",
           skipSuperAdminCopy: true,
           html: `
             <div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto">
-              <h2 style="color:#1a56db">CrownJewel HMO</h2>
+              <h2 style="color:#1a56db">Aspirage</h2>
               <p>Hello <strong>${account.first_name}</strong>,</p>
               <p>Your one-time login code is:</p>
               <div style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#1a56db;

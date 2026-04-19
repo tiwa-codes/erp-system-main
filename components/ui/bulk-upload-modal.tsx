@@ -345,7 +345,7 @@ export function BulkUploadModal({
               <p className="text-amber-600">* Dependent ID and Principal Enrollee ID are required for dependent bulk upload.</p>
             )}
             {module === "underwriting" && submodule === "principals" && (
-              <p className="text-amber-600">* Use Organization Code (e.g., "CC") and Plan Name (e.g., "CROWN JEWEL – PLATINUM")</p>
+              <p className="text-amber-600">* Use Organization Code (e.g., "CC") and Plan Name (e.g., "ASPIRAGE – PLATINUM")</p>
             )}
             {module === "provider" && submodule === "providers" && (
               <p className="text-amber-600">* Facility Name, Email, and Band (A, B, C, or D) are required. Contact is phone number. All other columns are optional.</p>
@@ -590,7 +590,7 @@ function generateSampleData(module: string, acceptedColumns: string[], submodule
         "Gender": "MALE",
         "Address": "123 Main Street, Lagos",
         "Organization Code": "CC",
-        "Plan Name": "CROWN JEWEL – PLATINUM",
+        "Plan Name": "ASPIRAGE – PLATINUM",
         "Period": "July 2025",
         "Utilization": 250000,
         "Account Type": "Individual",
@@ -606,7 +606,7 @@ function generateSampleData(module: string, acceptedColumns: string[], submodule
         "Gender": "FEMALE",
         "Address": "456 Oak Avenue, Abuja",
         "Organization Code": "TS",
-        "Plan Name": "CROWN JEWEL – GOLD",
+        "Plan Name": "ASPIRAGE – GOLD",
         "Period": "August 2025",
         "Utilization": 125000,
         "Account Type": "Individual",

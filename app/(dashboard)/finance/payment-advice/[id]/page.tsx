@@ -159,7 +159,7 @@ export default function PaymentAdviceDetailPage() {
                                 <div className="flex items-center gap-3">
                                     <div className="bg-emerald-600 h-16 w-16 rounded-xl flex items-center justify-center text-white font-black text-2xl rotate-3 shadow-lg">CJH</div>
                                     <div className="h-10 w-[1px] bg-gray-200" />
-                                    <h2 className="text-2xl font-black tracking-tighter text-gray-900 leading-none">CROWN JEWEL<br /><span className="text-emerald-600">HEALTHCARE</span></h2>
+                                    <h2 className="text-2xl font-black tracking-tighter text-gray-900 leading-none">ASPIRAGE<br /><span className="text-emerald-600">HEALTHCARE</span></h2>
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2 py-0.5 rounded inline-block">OFFICIAL PAYMENT ADVICE</p>
@@ -273,7 +273,7 @@ export default function PaymentAdviceDetailPage() {
                                     <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Authorized By</p>
                                     <div className="space-y-1">
                                         <div className="h-12 w-32 border-b border-gray-300 relative">
-                                            <span className="absolute bottom-1 italic text-gray-400 font-bold tracking-tight opacity-50">CrownJewelFin_#02</span>
+                                            <span className="absolute bottom-1 italic text-gray-400 font-bold tracking-tight opacity-50">AspirageFin_#02</span>
                                         </div>
                                         <p className="text-xs font-black text-gray-900 uppercase">Head of Finance</p>
                                     </div>

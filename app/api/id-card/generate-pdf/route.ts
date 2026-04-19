@@ -228,7 +228,7 @@ function generateIDCardHTML(data: any) {
           <div class="red-banner-top"></div>
           
           <div class="logo-section">
-            <div class="logo-crown">Crown Jewel</div>
+            <div class="logo-crown">Aspirage</div>
             <div class="logo-hmo">HMO</div>
             <div class="logo-rc">RC: 2015498</div>
           </div>
@@ -258,7 +258,7 @@ function generateIDCardHTML(data: any) {
           </div>
           
           <div class="logo-section">
-            <div class="logo-crown">Crown Jewel</div>
+            <div class="logo-crown">Aspirage</div>
             <div class="logo-hmo">HMO</div>
             <div class="logo-rc">RC: 2015498</div>
           </div>
@@ -266,10 +266,10 @@ function generateIDCardHTML(data: any) {
           <div class="emergency-instructions">
             <div class="emergency-italic">
               In case of emergency, medical attention can be given at nearest health facility, 
-              and Crown Jewel HMO should be notified within 24 hours on the following number:
+              and Aspirage should be notified within 24 hours on the following number:
             </div>
             <div class="emergency-contact">
-              08142997842, 08140747348, info@crownjewelhmo.com
+              08142997842, 08140747348, info@aspirage.com
             </div>
           </div>
           

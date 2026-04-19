@@ -63,7 +63,7 @@ export default function SignInPage() {
           </CardTitle> */}
           <div className="flex items-center justify-center">
             <Image
-              src="/coverconnect.png"
+              src="/logo.jpg"
               alt="CoverConnect Logo"
               width={150}
               height={30}

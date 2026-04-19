@@ -1523,7 +1523,7 @@ export function Sidebar() {
             <div className="flex h-16 items-center justify-between px-4 bg-white border-b border-gray-200">
               {!isCollapsed && (
                 <div className="flex items-center gap-2">
-                  <img src="/coverconnect.png" alt="CoverConnect Logo" width={50} height={50} />
+                  <img src="/logo.jpg" alt="CoverConnect Logo" width={50} height={50} />
                 </div>
               )}
               {isCollapsed && (
@@ -1569,7 +1569,7 @@ export function Sidebar() {
               {/* Logo */}
               <div className="flex h-16 items-center justify-between px-4 bg-white border-b border-gray-200">
                 <div className="flex items-center gap-2">
-                  <img src="/coverconnect.png" alt="CoverConnect Logo" width={50} height={50} />
+                  <img src="/logo.jpg" alt="CoverConnect Logo" width={50} height={50} />
                 </div>
               </div>
 
@@ -1620,7 +1620,7 @@ export function Sidebar() {
         {!collapsed && (
           <div className="flex items-center gap-2">
             <div className="bg-white rounded-xl p-1 shadow-sm lg:p-0 lg:shadow-none lg:bg-transparent">
-              <img src="/coverconnect.png" alt="CoverConnect Logo" width={44} height={44} className="rounded-lg lg:rounded-none lg:w-[50px] lg:h-[50px]" />
+              <img src="/logo.jpg" alt="CoverConnect Logo" width={44} height={44} className="rounded-lg lg:rounded-none lg:w-[50px] lg:h-[50px]" />
             </div>
             <span className="lg:hidden text-white font-bold text-lg leading-tight ml-2">ERP Portal</span>
           </div>

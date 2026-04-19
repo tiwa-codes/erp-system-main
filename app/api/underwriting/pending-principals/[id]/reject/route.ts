@@ -77,7 +77,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
                         
                         <div style="background-color: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px;">
                             <p style="font-size: 16px;">Dear ${registration.first_name} ${registration.last_name},</p>
-                            <p>Thank you for your interest in enrolling with Crown Jewel HMO. After reviewing your registration, we need you to address the following:</p>
+                            <p>Thank you for your interest in enrolling with Aspirage. After reviewing your registration, we need you to address the following:</p>
                             
                             <div style="background-color: #fee2e2; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ef4444;">
                                 <h3 style="margin-top: 0; color: #991b1b;">Reason for Review:</h3>
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
                         
                         <div style="background-color: #f3f4f6; padding: 15px; text-align: center; margin-top: 20px; border-radius: 8px;">
                             <p style="color: #6b7280; font-size: 12px; margin: 0;">
-                                This is an automated message from Crown Jewel HMO ERP System.<br>
+                                This is an automated message from Aspirage ERP System.<br>
                                 Please do not reply to this email.
                             </p>
                         </div>

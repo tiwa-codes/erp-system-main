@@ -307,7 +307,7 @@ export default function ScheduledAppointmentPage() {
                     <SelectValue placeholder="Select specialization" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Crown Jewel OPD">Crown Jewel OPD</SelectItem>
+                    <SelectItem value="Aspirage OPD">Aspirage OPD</SelectItem>
                     <SelectItem value="Cardiography">Cardiography</SelectItem>
                     <SelectItem value="Dermatology">Dermatology</SelectItem>
                     <SelectItem value="Paediatric">Paediatric</SelectItem>

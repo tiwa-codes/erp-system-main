@@ -174,7 +174,7 @@ export async function GET(req: NextRequest) {
         appt.provider?.facility_name ??
         appt.clinic ??
         appt.specialization ??
-        "Crown Jewel HMO Telemedicine"
+        "Aspirage Telemedicine"
 
       // If filter === "prescriptions", only include if has pharmacy orders
       if (filter === "prescriptions" && appt.pharmacy_orders.length === 0) return null as any

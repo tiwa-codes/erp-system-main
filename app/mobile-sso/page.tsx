@@ -20,7 +20,7 @@ function SsoHandler() {
 export default function MobileSsoPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#BE1522" }}>
-      {/* Crown Jewel Logo / Spinner */}
+      {/* Aspirage Logo / Spinner */}
       <div className="flex flex-col items-center gap-6">
         {/* Animated logo ring */}
         <div className="relative flex items-center justify-center">
@@ -29,13 +29,13 @@ export default function MobileSsoPage() {
             style={{ borderTopColor: "white" }}
           />
           <div className="h-16 w-16 rounded-2xl bg-white flex items-center justify-center shadow-2xl">
-            <img src="/coverconnect.png" alt="Crown Jewel HMO" className="h-12 w-12 rounded-xl object-cover" />
+            <img src="/logo.jpg" alt="Aspirage" className="h-12 w-12 rounded-xl object-cover" />
           </div>
         </div>
 
         {/* Text */}
         <div className="text-center">
-          <h1 className="text-white font-bold text-2xl tracking-tight">Crown Jewel HMO</h1>
+          <h1 className="text-white font-bold text-2xl tracking-tight">Aspirage</h1>
           <p className="text-white/70 text-sm mt-1">Setting up your secure session…</p>
         </div>
 

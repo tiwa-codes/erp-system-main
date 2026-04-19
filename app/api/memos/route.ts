@@ -10,7 +10,7 @@ const ADMIN_ROLES = ['SUPER_ADMIN', 'SUPERADMIN', 'ADMIN']
 const GLOBAL_MEMO_ADMIN_EMAIL = "admin@erp.com"
 const EXECUTIVE_INBOX_FALLBACK_EMAILS = [
     GLOBAL_MEMO_ADMIN_EMAIL,
-    "aliyu.sumaila@crownjewelhmo.com",
+    "aliyu.sumaila@aspirage.com",
 ]
 
 function normalizeRole(role?: string | null) {

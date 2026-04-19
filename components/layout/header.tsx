@@ -63,7 +63,7 @@ export function Header() {
 
         {/* Mobile Title */}
         <div className="lg:hidden flex items-center w-full min-w-0 pr-4">
-          <span className="text-white font-bold text-[17px] truncate">Crown Jewel HMO</span>
+          <span className="text-white font-bold text-[17px] truncate">Aspirage</span>
         </div>
       </div>
 
