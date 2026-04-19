@@ -1,0 +1,66 @@
+[
+  {
+    "Plan Name": "Gold Plan",
+    "Facility Name": "City General Hospital",
+    "Service Name": "FBC",
+    "Facility Price": 3500,
+    "Limit Count": 12,
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Gold Plan",
+    "Facility Name": "City General Hospital",
+    "Service Name": "ECG",
+    "Facility Price": 5000,
+    "Limit Count": 6,
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Facility Name": "City General Hospital",
+    "Service Name": "FBC",
+    "Facility Price": 3500,
+    "Limit Count": 8,
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Facility Name": "City General Hospital",
+    "Service Name": "ECG",
+    "Facility Price": 5000,
+    "Limit Count": 4,
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Gold Plan",
+    "Facility Name": "Metro Medical Center",
+    "Service Name": "Surgery",
+    "Facility Price": 150000,
+    "Limit Count": 2,
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Facility Name": "City General Hospital",
+    "Service Name": "FBC",
+    "Facility Price": 3500,
+    "Limit Count": 24,
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Facility Name": "City General Hospital",
+    "Service Name": "ECG",
+    "Facility Price": 5000,
+    "Limit Count": 12,
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Facility Name": "Metro Medical Center",
+    "Service Name": "Surgery",
+    "Facility Price": 150000,
+    "Limit Count": 4,
+    "Status": "ACTIVE"
+  }
+]

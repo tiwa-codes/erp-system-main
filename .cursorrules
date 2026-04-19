@@ -1,0 +1,809 @@
+# ERP System - Cursor Rules
+
+## Project Overview
+This is a comprehensive ERP (Enterprise Resource Planning) system for VaxTracker built with Next.js 14, TypeScript, Prisma, and PostgreSQL. The system includes modules for HR, Claims, Finance, Provider Management, Underwriting, Call Centre, Reports, and Settings.
+
+## Tech Stack
+- **Frontend**: Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes, Prisma ORM
+- **Database**: PostgreSQL (development mode with `prisma db push`)
+- **Authentication**: NextAuth.js with JWT strategy (30-minute sessions)
+- **UI Components**: Radix UI, shadcn/ui, Lucide Icons
+- **State Management**: TanStack Query (React Query), React Hook Form
+- **Charts**: Recharts
+- **Tables**: TanStack Table
+- **Validation**: Zod
+
+## Project Structure
+```
+erp-app/
+├── app/
+│   ├── (dashboard)/          # Dashboard pages (protected routes)
+│   │   ├── hr/               # HR module pages
+│   │   ├── claims/           # Claims module pages
+│   │   ├── finance/          # Finance module pages
+│   │   ├── provider/         # Provider module pages
+│   │   ├── underwriting/     # Underwriting module pages (includes Plans & Band Labels)
+│   │   ├── call-centre/      # Call Centre module pages
+│   │   ├── reports/          # Reports pages
+│   │   ├── settings/         # Settings pages
+│   │   └── layout.tsx        # Dashboard layout
+│   ├── api/                  # API routes
+│   │   ├── auth/            # Authentication endpoints
+│   │   ├── hr/              # HR API endpoints
+│   │   ├── claims/          # Claims API endpoints
+│   │   ├── finance/         # Finance API endpoints
+│   │   ├── provider/        # Provider API endpoints
+│   │   ├── underwriting/    # Underwriting API endpoints (includes Plans & Band Labels)
+│   │   ├── call-centre/     # Call Centre API endpoints
+│   │   ├── reports/         # Reports API endpoints
+│   │   └── settings/        # Settings API endpoints
+│   ├── auth/                # Authentication pages
+│   └── globals.css          # Global styles
+├── components/
+│   ├── layout/              # Layout components
+│   ├── ui/                  # UI components (shadcn/ui)
+│   ├── forms/               # Form components
+│   └── provider/            # Provider-specific components
+├── lib/
+│   ├── auth.ts              # NextAuth configuration
+│   ├── permissions.ts       # Permission checking utilities
+│   ├── prisma.ts            # Prisma client instance
+│   ├── audit.ts             # Audit logging utilities
+│   ├── utils.ts             # General utilities
+│   └── underwriting/        # Underwriting utilities (coverage, usage)
+├── prisma/
+│   └── schema.prisma        # Database schema
+└── types/                   # TypeScript type definitions
+```
+
+## Critical Rules
+
+### 1. Role Management - ALWAYS Use Relations, Never Enums
+The system uses a **flexible role-based system** with Role model relations, NOT enums.
+
+```typescript
+// ✅ CORRECT - Use role relations
+const user = await prisma.user.findUnique({
+  where: { email },
+  include: { role: true }
+})
+const roleName = user.role?.name
+
+// ❌ WRONG - Don't use enum-based roles
+const roleName = user.role // This is a relation, not enum
+```
+
+**Key Points:**
+- User model has `role_id` field (String, not enum)
+- Always use `include: { role: true }` to fetch role data
+- Use `role_id` for User count queries and permission creation
+- Permission queries must use `role: { name: roleName }` syntax
+- Always find role by name first, then use `roleRecord.id` for operations
+
+### 2. React useEffect Patterns - CRITICAL for Preventing Infinite Loops
+
+**ALWAYS avoid circular dependencies in useEffect:**
+
+```typescript
+// ✅ CORRECT - Memoize derived data and avoid circular dependencies
+const memoizedOrganizations = React.useMemo(() => organizationsData?.organizations || [], [organizationsData])
+const memoizedAllPlans = React.useMemo(() => (plansData?.plans || []).filter((plan: any) => plan.status === "ACTIVE"), [plansData])
+
+// ✅ CORRECT - Don't include state that the effect updates in dependencies
+React.useEffect(() => {
+  if (form.date_of_birth) {
+    const age = calculateAge(form.date_of_birth)
+    if (form.age !== age) {
+      setForm(prev => ({ ...prev, age }))
+    }
+  }
+}, [form.date_of_birth]) // ✅ Only include the trigger, NOT form.age
+
+// ❌ WRONG - This creates infinite loop
+React.useEffect(() => {
+  if (form.date_of_birth) {
+    const age = calculateAge(form.date_of_birth)
+    setForm(prev => ({ ...prev, age }))
+  }
+}, [form.date_of_birth, form.age]) // ❌ form.age is updated by this effect!
+
+// ✅ CORRECT - Memoize arrays/objects from API responses
+const memoizedProviders = React.useMemo(() => providersData?.providers || [], [providersData])
+
+React.useEffect(() => {
+  // Use memoizedProviders here
+}, [memoizedProviders]) // ✅ Stable reference
+```
+
+**Best Practices:**
+- Memoize arrays/objects from API responses using `React.useMemo`
+- Never include state values in dependency arrays if the effect updates those values
+- Use conditional updates: `if (prev.age !== age) { return { ...prev, age } }`
+- For complex derived state, use `useMemo` to prevent unnecessary recalculations
+
+### 3. Database Development Workflow
+- Use `prisma db push` for schema changes (development mode, no migrations)
+- Always run `prisma generate` after schema changes
+- Use `prisma studio` for database inspection
+- Schema changes sync immediately to database
+
+### 4. API Response Format
+All API endpoints must follow consistent response format:
+
+**Success Response:**
+```typescript
+return NextResponse.json({
+  success: true,
+  data: {
+    // Your data here
+    items: [],
+    pagination: {
+      page: 1,
+      limit: 10,
+      total: 100,
+      totalPages: 10
+    }
+  }
+})
+```
+
+**Error Response:**
+```typescript
+return NextResponse.json({
+  success: false,
+  error: "Specific error message",
+  details: "Additional context if needed"
+}, { status: 400 })
+```
+
+### 5. Authentication & Authorization
+- Always validate session in API routes
+- Use `getServerSession(authOptions)` for session validation
+- Check permissions using `checkPermission()` utility
+- Return 401 for unauthorized, 403 for insufficient permissions
+- Log all actions using audit logging
+
+```typescript
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "@/lib/auth"
+import { checkPermission } from "@/lib/permissions"
+
+export async function GET(request: NextRequest) {
+  const session = await getServerSession(authOptions)
+  
+  if (!session?.user) {
+    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 })
+  }
+  
+  if (!checkPermission(session.user.role, 'MODULE_ACTION')) {
+    return NextResponse.json({ success: false, error: "Insufficient permissions" }, { status: 403 })
+  }
+  
+  // Continue with logic
+}
+```
+
+### 6. Database Query Patterns
+
+**Always Include Relations:**
+```typescript
+const data = await prisma.model.findMany({
+  include: {
+    relation1: {
+      include: {
+        nestedRelation: true
+      }
+    },
+    relation2: true
+  }
+})
+```
+
+**Use Transactions for Complex Operations:**
+```typescript
+await prisma.$transaction(async (tx) => {
+  const user = await tx.user.create({ data: userData })
+  await tx.auditLog.create({
+    data: {
+      user_id: user.id,
+      action: 'USER_CREATED',
+      resource: 'user'
+    }
+  })
+})
+```
+
+**Pagination Pattern:**
+```typescript
+const skip = (page - 1) * limit
+const take = limit
+
+const [items, total] = await Promise.all([
+  prisma.model.findMany({
+    skip,
+    take,
+    where: whereClause,
+    orderBy: { created_at: 'desc' }
+  }),
+  prisma.model.count({ where: whereClause })
+])
+
+const totalPages = Math.ceil(total / limit)
+```
+
+### 7. Input Validation
+Always validate inputs using Zod:
+
+```typescript
+import { z } from 'zod'
+
+const schema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  role: z.string().min(1)
+})
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const validatedData = schema.parse(body)
+    // Use validatedData safely
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({
+        success: false,
+        error: "Validation failed",
+        details: error.errors
+      }, { status: 400 })
+    }
+  }
+}
+```
+
+### 8. Frontend Component Patterns
+
+**Data Fetching with TanStack Query:**
+```typescript
+import { useQuery } from '@tanstack/react-query'
+
+const { data, isLoading, error, refetch } = useQuery({
+  queryKey: ['resource', page, limit, search, status],
+  queryFn: async () => {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString(),
+      ...(search && { search }),
+      ...(status !== 'all' && { status })
+    })
+    
+    const res = await fetch(`/api/resource?${params}`)
+    if (!res.ok) throw new Error('Failed to fetch')
+    return res.json()
+  }
+})
+```
+
+**Mutations:**
+```typescript
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+
+const queryClient = useQueryClient()
+
+const mutation = useMutation({
+  mutationFn: async (data) => {
+    const res = await fetch('/api/resource', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    if (!res.ok) throw new Error('Failed to create')
+    return res.json()
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['resource'] })
+    toast.success('Created successfully')
+  }
+})
+```
+
+**Permission-Based UI:**
+```typescript
+import { PermissionGate } from '@/components/ui/permission-gate'
+
+<PermissionGate permission="CLAIMS_CREATE">
+  <Button onClick={handleCreate}>Add New Claim</Button>
+</PermissionGate>
+```
+
+**Forms with React Hook Form + Zod:**
+```typescript
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+const schema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Invalid email')
+})
+
+const form = useForm({
+  resolver: zodResolver(schema),
+  defaultValues: { name: '', email: '' }
+})
+```
+
+### 9. Date Handling - CRITICAL
+
+**ALWAYS use proper date formatting for HTML date inputs:**
+```typescript
+// Helper function to format date for input field
+const formatDateForInput = (date: any): string => {
+  if (!date) return ""
+  // If it's already a string in YYYY-MM-DD format, return it
+  if (typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return date
+  }
+  // If it's a Date object or ISO string, convert it
+  try {
+    const dateObj = date instanceof Date ? date : new Date(date)
+    if (!isNaN(dateObj.getTime())) {
+      return dateObj.toISOString().split('T')[0]
+    }
+  } catch (e) {
+    console.error('Error formatting date:', e)
+  }
+  return ""
+}
+
+// Use in forms:
+form.reset({
+  date_of_birth: formatDateForInput(principal.date_of_birth),
+  start_date: formatDateForInput(principal.start_date),
+  end_date: formatDateForInput(principal.end_date),
+})
+```
+
+**ALWAYS use calculateAge from utils for age calculations:**
+```typescript
+import { calculateAge } from '@/lib/utils'
+
+// ✅ CORRECT - Use utility function
+const age = calculateAge(dateOfBirth)
+
+// ❌ WRONG - Don't use simple year subtraction
+const age = new Date().getFullYear() - new Date(dateOfBirth).getFullYear()
+```
+
+**Display dates consistently:**
+```typescript
+import { formatDate, formatDateTime } from '@/lib/utils'
+
+// For display in UI
+{principal.date_of_birth ? formatDate(principal.date_of_birth) : "N/A"}
+
+// For date inputs, use formatDateForInput helper
+```
+
+### 10. Bulk Upload Patterns
+
+**When implementing bulk uploads, always:**
+- Create user accounts for new entities if needed
+- Send email notifications with login credentials
+- Handle errors gracefully and report failures
+- Use transactions for data integrity
+
+```typescript
+// ✅ CORRECT - Bulk upload with user creation and email notification
+export async function POST(request: NextRequest) {
+  try {
+    const formData = await request.formData()
+    const file = formData.get('file') as File
+    
+    // Parse Excel file
+    const workbook = XLSX.read(await file.arrayBuffer(), { type: 'array' })
+    const sheet = workbook.Sheets[workbook.SheetNames[0]]
+    const rows = XLSX.utils.sheet_to_json(sheet)
+    
+    const results = []
+    
+    for (const row of rows) {
+      try {
+        // Create provider
+        const provider = await prisma.provider.create({
+          data: {
+            name: row.name,
+            email: row.email,
+            // ... other fields
+          }
+        })
+        
+        // Create user account if doesn't exist
+        const existingUser = await prisma.user.findUnique({
+          where: { email: row.email }
+        })
+        
+        if (!existingUser) {
+          const tempPassword = generateRandomPassword()
+          const hashedPassword = await hashPassword(tempPassword)
+          
+          await prisma.user.create({
+            data: {
+              email: row.email,
+              password: hashedPassword,
+              role_id: providerRole.id,
+              provider_id: provider.id
+            }
+          })
+          
+          // Send login credentials via email
+          await notificationService.sendProviderLoginCredentials({
+            email: row.email,
+            password: tempPassword,
+            providerName: provider.name
+          })
+        }
+        
+        results.push({ success: true, provider })
+      } catch (error) {
+        results.push({ success: false, error: error.message, row })
+      }
+    }
+    
+    return NextResponse.json({
+      success: true,
+      data: { results, total: rows.length, successful: results.filter(r => r.success).length }
+    })
+  } catch (error) {
+    return NextResponse.json({
+      success: false,
+      error: "Bulk upload failed",
+      details: error.message
+    }, { status: 500 })
+  }
+}
+```
+
+### 11. Coverage Validation Patterns
+
+**When validating coverage rules:**
+- Treat SON and DAUGHTER as CHILD for age and count limits
+- Use proper relationship type mapping
+- Validate against plan coverage rules
+
+```typescript
+// ✅ CORRECT - Coverage validation
+function getRelationshipTypeForValidation(relationship: string): string {
+  // Map SON and DAUGHTER to CHILD for validation
+  if (relationship === 'SON' || relationship === 'DAUGHTER') {
+    return 'CHILD'
+  }
+  return relationship
+}
+
+// Validate against coverage rules
+const relationshipType = getRelationshipTypeForValidation(dependent.relationship)
+const rule = coverageRules.find(r => r.relationship_type === relationshipType)
+
+if (rule) {
+  // Validate age limits for children
+  if (relationshipType === 'CHILD' && dependent.age) {
+    if (dependent.age < rule.child_age_min || dependent.age > rule.child_age_max) {
+      throw new Error(`Child age must be between ${rule.child_age_min} and ${rule.child_age_max}`)
+    }
+  }
+}
+```
+
+### 12. Utilization and Liability Calculations
+
+**When calculating organization utilization:**
+- Calculate premium paid from FinancialTransaction records
+- Calculate liability as sum of (Plan Premium × Enrollee Count) per plan
+- Calculate balance as Premium Paid - Total Used
+- Handle cases with no principals gracefully
+
+```typescript
+// ✅ CORRECT - Utilization calculation
+async function getOrganizationLiability(organizationId: string) {
+  // Get all principals in organization
+  const principals = await prisma.principalAccount.findMany({
+    where: { organization_id: organizationId, status: 'ACTIVE' },
+    include: { plan: true }
+  })
+  
+  if (principals.length === 0) {
+    return {
+      premiumPaid: 0,
+      totalUsed: 0,
+      balance: 0,
+      liability: 0,
+      claimPremiumRatio: 0
+    }
+  }
+  
+  // Calculate premium paid
+  const premiumPaid = await prisma.financialTransaction.aggregate({
+    where: {
+      reference_type: 'PREMIUM',
+      status: 'PAID',
+      principal_account_id: { in: principals.map(p => p.id) }
+    },
+    _sum: { amount: true }
+  })
+  
+  // Calculate liability: sum of (Plan Premium × Enrollee Count) per plan
+  const planEnrolleeCounts = new Map<string, number>()
+  principals.forEach(principal => {
+    const count = planEnrolleeCounts.get(principal.plan_id) || 0
+    planEnrolleeCounts.set(principal.plan_id, count + 1)
+  })
+  
+  let liability = 0
+  for (const [planId, count] of planEnrolleeCounts) {
+    const plan = await prisma.plan.findUnique({ where: { id: planId } })
+    if (plan && plan.premium) {
+      liability += Number(plan.premium) * count
+    }
+  }
+  
+  // Calculate total used from claims
+  const totalUsed = await calculateTotalUsed(principals.map(p => p.id))
+  
+  const balance = (premiumPaid._sum.amount || 0) - totalUsed
+  const claimPremiumRatio = premiumPaid._sum.amount ? totalUsed / Number(premiumPaid._sum.amount) : 0
+  
+  return {
+    premiumPaid: Number(premiumPaid._sum.amount || 0),
+    totalUsed,
+    balance,
+    liability,
+    claimPremiumRatio
+  }
+}
+```
+
+### 13. Error Handling
+- Always use try-catch blocks for async operations
+- Log errors with appropriate context
+- Provide meaningful error messages to users
+- Handle Prisma errors specifically (P2002 for duplicates, etc.)
+
+```typescript
+try {
+  const result = await prisma.model.create({ data: inputData })
+  return NextResponse.json({ success: true, data: result })
+} catch (error) {
+  console.error('Database error:', error)
+  
+  if (error instanceof Prisma.PrismaClientKnownRequestError) {
+    if (error.code === 'P2002') {
+      return NextResponse.json({
+        success: false,
+        error: "Duplicate entry found"
+      }, { status: 400 })
+    }
+  }
+  
+  return NextResponse.json({
+    success: false,
+    error: "Internal server error"
+  }, { status: 500 })
+}
+```
+
+### 14. Audit Logging
+Always log user actions:
+
+```typescript
+import { logAuditEvent } from "@/lib/audit"
+
+await logAuditEvent({
+  userId: session.user.id,
+  action: 'CREATE_CLAIM',
+  resource: 'Claim',
+  resourceId: result.id,
+  details: {
+    claim_number: result.claim_number,
+    enrollee_id: result.enrollee_id
+  }
+})
+```
+
+### 15. TypeScript Standards
+- Always use proper types, never `any`
+- Use optional chaining for nested properties: `user?.role?.name`
+- Handle null/undefined values properly
+- Use interfaces for data structures
+- Use type guards when necessary
+
+```typescript
+// ✅ CORRECT
+interface UserData {
+  id: string
+  email: string
+  role: string
+  status: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED'
+}
+
+// ❌ WRONG
+const userData: any = { ... }
+```
+
+### 16. Database Schema Conventions
+- Use PascalCase for model names: `User`, `Claim`, `Role`
+- Use snake_case for field names: `first_name`, `created_at`, `role_id`
+- Always include `created_at` and `updated_at` timestamps
+- Use proper indexes for frequently queried fields
+- Use `@unique` for unique constraints
+- Use proper foreign key relationships
+
+### 17. UI/UX Consistency
+- Use shadcn/ui components consistently
+- Use `StatusIndicator` component for status display
+- Implement proper loading states (Skeleton components)
+- Use toast notifications for success/error messages
+- Maintain consistent spacing and typography
+- Use Tailwind CSS utility classes
+
+### 18. Security Best Practices
+- Validate all user inputs
+- Use parameterized queries (Prisma handles this)
+- Implement rate limiting
+- Use HTTPS for all communications
+- Never expose sensitive data in responses
+- Sanitize data before processing
+- Check permissions for all actions
+
+### 19. Performance Optimization
+- Use pagination for large datasets
+- Implement proper indexing in database
+- Use `select` to limit fields when possible
+- Cache expensive operations
+- Minimize API calls
+- Use React Query caching effectively
+- Memoize derived data to prevent unnecessary recalculations
+
+### 20. Common Patterns
+
+**Search Functionality:**
+```typescript
+const searchClause = search ? {
+  OR: [
+    { name: { contains: search, mode: 'insensitive' } },
+    { email: { contains: search, mode: 'insensitive' } }
+  ]
+} : {}
+```
+
+**Status Filtering:**
+```typescript
+const statusClause = status && status !== 'all' ? {
+  status: { in: status.split(',') }
+} : {}
+```
+
+**System Role Protection:**
+```typescript
+if (roleRecord.is_system) {
+  return NextResponse.json({ 
+    error: 'Cannot modify system roles' 
+  }, { status: 400 })
+}
+```
+
+**Module Relocation:**
+When moving features between modules:
+1. Update sidebar navigation (`components/layout/sidebar.tsx`)
+2. Move page files to new location
+3. Move API routes to new location
+4. Update all internal references (imports, links, permissions)
+5. Update permission checks to new module name
+
+## ERP-Specific Roles
+- **SUPER_ADMIN**: Full system access
+- **ADMIN**: Administrative access
+- **HR_MANAGER**: HR module access
+- **CLAIMS_PROCESSOR**: Claims processing
+- **CLAIMS_MANAGER**: Claims management
+- **FINANCE_OFFICER**: Finance operations
+- **PROVIDER_MANAGER**: Provider management
+- **UNDERWRITER**: Underwriting operations (includes Plans & Band Labels)
+- **PROVIDER**: Provider user access (restricted)
+
+## Module-Specific Guidelines
+
+### HR Module
+- Employee management with department linking
+- Attendance tracking with clock in/out
+- Leave management with approval workflow
+- Memo system for internal communications
+- HR rules for claims validation
+
+### Claims Module
+- Claims processing workflow
+- Manual and smart-assisted vetting
+- Audit system with auditor assignment
+- MD approval workflow
+- Fraud detection and investigation
+- HR rules validation
+
+### Finance Module
+- Financial transactions management
+- Claims payout processing
+- Principal account management
+- Transaction types including CLAIM_PAYOUT
+
+### Provider Management
+- Provider registration and onboarding
+- Risk profiling and scoring
+- In-patient admission and discharge
+- Provider-specific claims view
+- Approval code management
+- Bulk upload with automatic user account creation and email notifications
+
+### Underwriting Module
+- Organization management
+- Principal account management
+- Principals and dependents management
+- **Plan creation and management** (moved from Settings)
+- **Band Labels management** (moved from Settings)
+- Coverage validation with relationship type mapping
+- Utilization and liability calculations
+
+### Call Centre Module
+- Provider request handling
+- Coverage checker for enrollees
+- Approval code verification
+- Manual code generation
+
+### Reports Module
+- Dynamic reporting system
+- Multiple report types (Underwriting, Finance, Call Centre, Claims, Provider)
+- Advanced filtering and pagination
+- Export functionality
+
+### Settings Module
+- Package limits with time frame management
+- Provider-plan assignment
+- Covered services management
+- Risk management
+- Service types management
+- Exchange rates management
+
+## Testing Guidelines
+- Write tests for all business logic
+- Test edge cases and error conditions
+- Use descriptive test names
+- Mock external dependencies
+- Test API endpoints
+- Test database operations
+- Clean up test data
+
+## Documentation Standards
+- Document all public APIs
+- Use JSDoc for TypeScript functions
+- Document complex business logic
+- Keep documentation up to date
+- Include request/response examples
+
+## Code Quality Standards
+- Write clean, readable, and maintainable code
+- Follow consistent naming conventions
+- Use meaningful variable and function names
+- Write self-documenting code with clear comments
+- Keep functions small and focused on single responsibility
+- Refactor when necessary
+- Remove unused code
+
+## Important Notes
+- The system is in final implementation phase
+- All major modules are implemented
+- Focus on maintaining consistency and quality
+- Follow existing patterns and conventions
+- When in doubt, check existing similar implementations
+- Always test changes thoroughly
+- Use the existing rule files in `.cursor/rules/` for module-specific details
+- **CRITICAL**: Always be mindful of React useEffect dependency arrays to prevent infinite loops
+- **CRITICAL**: Memoize arrays/objects from API responses before using in useEffect dependencies
+- **CRITICAL**: Plans Management and Band Labels are now in Underwriting module, not Settings

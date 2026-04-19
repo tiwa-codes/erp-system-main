@@ -1,0 +1,52 @@
+[
+  {
+    "Organization Name": "Tech Solutions Ltd",
+    "Organization Initials": "TECH001",
+    "Organization Type": "CORPORATE",
+    "Address": "123 Technology Street, Lagos",
+    "Phone": "+234-801-234-5678",
+    "Email": "info@techsolutions.com",
+    "Contact Person": "John Doe",
+    "Registration Number": "RC123456"
+  },
+  {
+    "Organization Name": "Healthcare Partners Inc",
+    "Organization Initials": "HCP002",
+    "Organization Type": "CORPORATE",
+    "Address": "456 Medical Avenue, Abuja",
+    "Phone": "+234-802-345-6789",
+    "Email": "contact@healthcarepartners.com",
+    "Contact Person": "Dr. Sarah Johnson",
+    "Registration Number": "RC789012"
+  },
+  {
+    "Organization Name": "Government Agency",
+    "Organization Initials": "GOV001",
+    "Organization Type": "GOVERNMENT",
+    "Address": "789 Government Complex, Abuja",
+    "Phone": "+234-803-456-7890",
+    "Email": "info@govagency.gov.ng",
+    "Contact Person": "Mr. Ahmed Musa",
+    "Registration Number": "GOV123456"
+  },
+  {
+    "Organization Name": "NGO Foundation",
+    "Organization Initials": "NGO001",
+    "Organization Type": "NGO",
+    "Address": "321 Charity Road, Port Harcourt",
+    "Phone": "+234-804-567-8901",
+    "Email": "info@ngofoundation.org",
+    "Contact Person": "Ms. Grace Okoro",
+    "Registration Number": "NGO789012"
+  },
+  {
+    "Organization Name": "Individual Client",
+    "Organization Initials": "IND001",
+    "Organization Type": "INDIVIDUAL",
+    "Address": "654 Personal Street, Kano",
+    "Phone": "+234-805-678-9012",
+    "Email": "client@email.com",
+    "Contact Person": "Mr. Ibrahim Hassan",
+    "Registration Number": ""
+  }
+]

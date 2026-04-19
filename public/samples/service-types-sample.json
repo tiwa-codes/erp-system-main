@@ -1,0 +1,52 @@
+[
+  {
+    "Service Name": "FBC",
+    "Service Category": "LAB",
+    "Service Type (Optional)": "1"
+  },
+  {
+    "Service Name": "ECG",
+    "Service Category": "RAD",
+    "Service Type (Optional)": "2"
+  },
+  {
+    "Service Name": "Surgery",
+    "Service Category": "PRC",
+    "Service Type (Optional)": "1"
+  },
+  {
+    "Service Name": "Vitamin C",
+    "Service Category": "DRG",
+    "Service Type (Optional)": "2"
+  },
+  {
+    "Service Name": "RBS",
+    "Service Category": "LAB",
+    "Service Type (Optional)": "1"
+  },
+  {
+    "Service Name": "Eye Treatment",
+    "Service Category": "EYE",
+    "Service Type (Optional)": "1"
+  },
+  {
+    "Service Name": "Dental Treatment",
+    "Service Category": "DEN",
+    "Service Type (Optional)": "1"
+  },
+  {
+    "Service Name": "Physiotherapy Session",
+    "Service Category": "PHY",
+    "Service Type (Optional)": "2"
+  },
+  {
+    "Service Name": "Consultation",
+    "Service Category": "CON",
+    "Service Type (Optional)": "1"
+  },
+  {
+    "Service Name": "Emergency Care",
+    "Service Category": "EMG",
+    "Service Type (Optional)": "1"
+  }
+]

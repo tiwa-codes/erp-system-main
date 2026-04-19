@@ -1,0 +1,1090 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Badge } from "@/components/ui/badge"
+import { StatusIndicator } from "@/components/ui/status-indicator"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useToast } from "@/hooks/use-toast"
+import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
+import { 
+  Plus, 
+  Eye, 
+  Edit, 
+  Trash2, 
+  Search,
+  Shield,
+  Upload,
+  DollarSign,
+  Clock,
+  MoreHorizontal,
+  XCircle
+} from "lucide-react"
+
+interface PackageLimit {
+  id: string
+  plan_id: string
+  plan: {
+    name: string
+  }
+  package_type: string
+  service_type_id?: string | null
+  service_type?: {
+    id: string
+    service_name: string
+    service_category: string
+  } | null
+  amount?: number | null
+  limit_count?: number | null
+  time_frame: string
+  time_frame_unit: string
+  status: "ACTIVE" | "INACTIVE"
+  created_at: string
+  updated_at: string
+}
+
+interface Plan {
+  id: string
+  name: string
+}
+
+interface Category {
+  id: string
+  name: string
+  description: string
+}
+
+export default function PackageLimitsPage() {
+  const { toast } = useToast()
+  const queryClient = useQueryClient()
+  const [searchTerm, setSearchTerm] = useState("")
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("")
+  const [showAddModal, setShowAddModal] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false)
+  const [showBulkUploadModal, setShowBulkUploadModal] = useState(false)
+  const [showViewModal, setShowViewModal] = useState(false)
+  const [selectedLimit, setSelectedLimit] = useState<PackageLimit | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize] = useState(10)
+  const [categories, setCategories] = useState<Category[]>([])
+  const [packageTypes, setPackageTypes] = useState<string[]>([])
+
+  // Form state
+  const [formData, setFormData] = useState({
+    plan_id: "",
+    package_type: "",
+    service_type_id: "",
+    amount: "",
+    limit_count: "",
+    limit_type: "duration", // "duration" or "count"
+    time_frame_value: "",
+    time_frame_unit: "months"
+  })
+
+  // Service type search states
+  const [serviceTypeSearchTerm, setServiceTypeSearchTerm] = useState("")
+  const [debouncedServiceTypeSearch, setDebouncedServiceTypeSearch] = useState("")
+  const [showServiceTypeResults, setShowServiceTypeResults] = useState(false)
+  const [selectedServiceType, setSelectedServiceType] = useState<any>(null)
+
+  // Load categories and generate package types
+  useEffect(() => {
+    fetch('/plan_categories.json')
+      .then(res => res.json())
+      .then(data => {
+        setCategories(data)
+        // Generate package types from categories
+        const types = [
+          "Eye Care",
+          "Dental Package", 
+          "Maternity Package",
+          "Surgery Package",
+          "Emergency Package",
+          "Laboratory Package",
+          "Diagnostic Package",
+          "Specialist Package",
+          "Physiotherapy Package",
+          "ENT Package",
+          "Intensive Care Package",
+          "Cancer Care Package",
+          "Renal Care Package",
+          "Wellness Package",
+          "Mental Care Package",
+          "Ambulance Package",
+          "Drug Delivery Package",
+          "Telemedicine Package"
+        ]
+        setPackageTypes(types)
+      })
+      .catch(err => console.error('Error loading categories:', err))
+  }, [])
+
+  // Debounce search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 500) // 500ms delay
+
+    return () => clearTimeout(timer)
+  }, [searchTerm])
+
+  // Debounce service type search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedServiceTypeSearch(serviceTypeSearchTerm)
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [serviceTypeSearchTerm])
+
+  // Fetch package limits
+  const { data: packageLimitsData, isLoading } = useQuery({
+    queryKey: ["package-limits", currentPage, pageSize, debouncedSearchTerm],
+    queryFn: async () => {
+      const params = new URLSearchParams({
+        page: currentPage.toString(),
+        limit: pageSize.toString(),
+        search: debouncedSearchTerm
+      })
+      const res = await fetch(`/api/settings/package-limits?${params}`)
+      if (!res.ok) throw new Error("Failed to fetch package limits")
+      return res.json()
+    },
+  })
+
+  // Fetch plans
+  const { data: plansData } = useQuery({
+    queryKey: ["plans"],
+    queryFn: async () => {
+      const res = await fetch("/api/settings/plans")
+      if (!res.ok) throw new Error("Failed to fetch plans")
+      return res.json()
+    },
+  })
+
+  // Fetch service types for selected package
+  const { data: packageServicesData, isLoading: isLoadingServices } = useQuery({
+    queryKey: ["package-services", formData.package_type, formData.plan_id, debouncedServiceTypeSearch],
+    queryFn: async () => {
+      const params = new URLSearchParams()
+      if (formData.package_type) params.append("package_type", formData.package_type)
+      if (formData.plan_id) params.append("plan_id", formData.plan_id)
+      if (debouncedServiceTypeSearch) params.append("search", debouncedServiceTypeSearch)
+      
+      console.log('Fetching package services with params:', params.toString())
+      const res = await fetch(`/api/settings/package-services?${params}`)
+      if (!res.ok) throw new Error("Failed to fetch package services")
+      const data = await res.json()
+      console.log('Package services response:', data)
+      return data
+    },
+    enabled: !!formData.package_type,
+  })
+
+  // Create package limit mutation
+  const createMutation = useMutation({
+    mutationFn: async (data: any) => {
+      const res = await fetch('/api/settings/package-limits', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      if (!res.ok) throw new Error('Failed to create package limit')
+      return res.json()
+    },
+    onSuccess: () => {
+      toast({
+        title: "Success",
+        description: "Package limit created successfully",
+      })
+      queryClient.invalidateQueries({ queryKey: ["package-limits"] })
+      setShowAddModal(false)
+      setFormData({
+        plan_id: "",
+        package_type: "",
+        service_type_id: "",
+        amount: "",
+        limit_count: "",
+        limit_type: "duration",
+        time_frame_value: "",
+        time_frame_unit: "months"
+      })
+      setSelectedServiceType(null)
+      setServiceTypeSearchTerm("")
+    },
+    onError: (error: any) => {
+      // Check if it's a duplicate package limit error
+      if (error.message.includes("already exists")) {
+        toast({
+          title: "Package Limit Already Exists",
+          description: "A package limit already exists for this plan, package type, and service type combination. Please choose different values.",
+          variant: "destructive",
+        })
+      } else {
+        toast({
+          title: "Error",
+          description: error.message || "Failed to create package limit",
+          variant: "destructive",
+        })
+      }
+    },
+  })
+
+  // Update package limit mutation
+  const updateMutation = useMutation({
+    mutationFn: async ({ id, data }: { id: string, data: any }) => {
+      const res = await fetch(`/api/settings/package-limits?id=${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      if (!res.ok) throw new Error('Failed to update package limit')
+      return res.json()
+    },
+    onSuccess: () => {
+      toast({
+        title: "Success",
+        description: "Package limit updated successfully",
+      })
+      queryClient.invalidateQueries({ queryKey: ["package-limits"] })
+      setShowEditModal(false)
+      setSelectedLimit(null)
+      setFormData({
+        plan_id: "",
+        package_type: "",
+        service_type_id: "",
+        amount: "",
+        limit_count: "",
+        limit_type: "duration",
+        time_frame_value: "",
+        time_frame_unit: "months"
+      })
+      setSelectedServiceType(null)
+      setServiceTypeSearchTerm("")
+    },
+    onError: (error: any) => {
+      // Check if it's a duplicate package limit error
+      if (error.message.includes("already exists")) {
+        toast({
+          title: "Package Limit Already Exists",
+          description: "A package limit already exists for this plan, package type, and service type combination. Please choose different values.",
+          variant: "destructive",
+        })
+      } else {
+        toast({
+          title: "Error",
+          description: error.message || "Failed to update package limit",
+          variant: "destructive",
+        })
+      }
+    },
+  })
+
+  // Delete package limit mutation
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const res = await fetch(`/api/settings/package-limits/${id}`, {
+        method: 'DELETE',
+      })
+      if (!res.ok) throw new Error('Failed to delete package limit')
+      return res.json()
+    },
+    onSuccess: () => {
+      toast({
+        title: "Success",
+        description: "Package limit deleted successfully",
+      })
+      queryClient.invalidateQueries({ queryKey: ["package-limits"] })
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete package limit",
+        variant: "destructive",
+      })
+    },
+  })
+
+  const packageLimits: PackageLimit[] = packageLimitsData?.packageLimits || []
+  const pagination = packageLimitsData?.pagination || {
+    page: currentPage,
+    limit: pageSize,
+    total: packageLimitsData?.totalCount || 0,
+    pages: Math.ceil((packageLimitsData?.totalCount || 0) / pageSize)
+  }
+  const plans: Plan[] = plansData?.plans || []
+  const serviceTypes = packageServicesData?.serviceTypes || []
+  
+  // Debug logging
+  console.log('Package Services Data:', packageServicesData)
+  console.log('Service Types:', serviceTypes)
+  console.log('Form Data:', formData)
+
+  const handleAddLimit = () => {
+    // Validate required fields
+    if (!formData.plan_id || !formData.package_type || !formData.service_type_id || !formData.time_frame_value || !formData.time_frame_unit) {
+      toast({
+        title: "Validation Error",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    // Validate amount is always required
+    if (!formData.amount) {
+      toast({
+        title: "Validation Error",
+        description: "Please enter an amount.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    const dataToSubmit = {
+      plan_id: formData.plan_id,
+      package_type: formData.package_type,
+      service_type_id: formData.service_type_id,
+      amount: parseFloat(formData.amount) || 0,
+      limit_count: formData.limit_count ? parseInt(formData.limit_count) : null,
+      time_frame: `${formData.time_frame_value} ${formData.time_frame_unit}`,
+      time_frame_unit: formData.time_frame_unit
+    }
+    console.log("Sending package limit data:", dataToSubmit)
+    createMutation.mutate(dataToSubmit)
+  }
+
+  const handleEditLimit = () => {
+    if (selectedLimit) {
+      // Validate required fields
+      if (!formData.plan_id || !formData.package_type || !formData.service_type_id || !formData.time_frame_value || !formData.time_frame_unit) {
+        toast({
+          title: "Validation Error",
+          description: "Please fill in all required fields.",
+          variant: "destructive",
+        })
+        return
+      }
+
+      // Validate amount is always required
+      if (!formData.amount) {
+        toast({
+          title: "Validation Error",
+          description: "Please enter an amount.",
+          variant: "destructive",
+        })
+        return
+      }
+
+      const dataToSubmit = {
+        plan_id: formData.plan_id,
+        package_type: formData.package_type,
+        service_type_id: formData.service_type_id,
+        amount: parseFloat(formData.amount) || 0,
+        limit_count: formData.limit_count ? parseInt(formData.limit_count) : null,
+        time_frame: `${formData.time_frame_value} ${formData.time_frame_unit}`,
+        time_frame_unit: formData.time_frame_unit
+      }
+      console.log("Sending update package limit data:", dataToSubmit)
+      updateMutation.mutate({ id: selectedLimit.id, data: dataToSubmit })
+    }
+  }
+
+  const handleEditClick = (limit: PackageLimit) => {
+    setSelectedLimit(limit)
+    // Parse time_frame to extract value and unit
+    const timeFrameMatch = limit.time_frame.match(/^(\d+)\s*(.+)$/)
+    const timeFrameValue = timeFrameMatch ? timeFrameMatch[1] : ""
+    const timeFrameUnit = timeFrameMatch ? timeFrameMatch[2] : "months"
+    
+    // Set selected service type for search display
+    if (limit.service_type) {
+      setSelectedServiceType(limit.service_type)
+      setServiceTypeSearchTerm(limit.service_type.service_name)
+    } else {
+      setSelectedServiceType(null)
+      setServiceTypeSearchTerm("")
+    }
+    
+    setFormData({
+      plan_id: limit.plan_id,
+      package_type: limit.package_type,
+      service_type_id: limit.service_type_id || "",
+      amount: limit.amount ? limit.amount.toString() : "",
+      limit_count: limit.limit_count ? limit.limit_count.toString() : "",
+      limit_type: "duration",
+      time_frame_value: timeFrameValue,
+      time_frame_unit: timeFrameUnit
+    })
+    setShowEditModal(true)
+  }
+
+  const handleDeleteClick = (id: string) => {
+    if (confirm("Are you sure you want to delete this package limit?")) {
+      deleteMutation.mutate(id)
+    }
+  }
+
+  const handleBulkUploadSuccess = (data: any[]) => {
+    toast({
+      title: "Bulk upload completed",
+      description: `Successfully uploaded ${data.length} package limits`,
+    })
+    queryClient.invalidateQueries({ queryKey: ["package-limits"] })
+  }
+
+  const handleViewClick = (limit: PackageLimit) => {
+    setSelectedLimit(limit)
+    setShowViewModal(true)
+  }
+
+  // Service type search handlers
+  const handleServiceTypeSearch = (value: string) => {
+    setServiceTypeSearchTerm(value)
+    setShowServiceTypeResults(true)
+  }
+
+  const handleSelectServiceType = (serviceType: any) => {
+    setSelectedServiceType(serviceType)
+    setFormData(prev => ({ ...prev, service_type_id: serviceType.id }))
+    setServiceTypeSearchTerm(serviceType.service_name)
+    setShowServiceTypeResults(false)
+  }
+
+  const handleClearServiceType = () => {
+    setSelectedServiceType(null)
+    setFormData(prev => ({ ...prev, service_type_id: "" }))
+    setServiceTypeSearchTerm("")
+    setShowServiceTypeResults(false)
+  }
+
+  // Close search results when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element
+      if (!target.closest('.service-type-search-container')) {
+        setShowServiceTypeResults(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const getStatusBadgeColor = (status: string) => {
+    switch (status) {
+      case "ACTIVE":
+        return "bg-green-100 text-green-800"
+      case "INACTIVE":
+        return "bg-gray-100 text-gray-800"
+      default:
+        return "bg-gray-100 text-gray-800"
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600"></div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6 p-6 bg-gray-50 min-h-screen">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Package Limits</h1>
+          <p className="text-gray-600 mt-1">Set annual price limits for packages</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button 
+            variant="outline" 
+            className="text-blue-600"
+            onClick={() => setShowBulkUploadModal(true)}
+          >
+            <Upload className="h-4 w-4 mr-2" />
+            Bulk Upload
+          </Button>
+          <Button onClick={() => setShowAddModal(true)} className="bg-blue-600 hover:bg-blue-700">
+            <Plus className="h-4 w-4 mr-2" />
+            Add Package Limit
+          </Button>
+        </div>
+      </div>
+
+      {/* Search */}
+      <Card>
+        <CardContent className="p-6">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Input
+              placeholder="Search package limits..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10"
+            />
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Package Limits Table */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Package Limits</CardTitle>
+          <CardDescription className="mt-2">
+            Manage annual price limits for different packages
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-xs font-medium text-gray-600">PLAN NAME</TableHead>
+                  <TableHead className="text-xs font-medium text-gray-600">PACKAGE TYPE</TableHead>
+                  <TableHead className="text-xs font-medium text-gray-600">SERVICE TYPE</TableHead>
+                  <TableHead className="text-xs font-medium text-gray-600">AMOUNT</TableHead>
+                  <TableHead className="text-xs font-medium text-gray-600">TIME FRAME</TableHead>
+                  <TableHead className="text-xs font-medium text-gray-600">STATUS</TableHead>
+                  <TableHead className="text-right text-xs font-medium text-gray-600">ACTIONS</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {packageLimits.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={7} className="text-center text-gray-500 py-8">
+                      No package limits found.
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  packageLimits.map((limit) => (
+                    <TableRow key={limit.id}>
+                      <TableCell>
+                        <div>
+                          <div className="text-sm text-gray-900">{limit.plan.name}</div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="text-sm text-gray-900">{limit.package_type}</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="text-sm text-gray-900">
+                          {limit.service_type ? (
+                            <div>
+                              <div className="font-medium">{limit.service_type.service_name}</div>
+                              <div className="text-xs text-gray-500">{limit.service_type.service_category}</div>
+                            </div>
+                          ) : (
+                            <span className="text-gray-400">No service type</span>
+                          )}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        {limit.amount ? (
+                          <span className="text-sm text-gray-900">₦{limit.amount.toLocaleString()}</span>
+                        ) : (
+                          <span className="text-sm text-gray-900">{limit.limit_count} times</span>
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        <span className="text-sm text-gray-900">{limit.time_frame}</span>
+                      </TableCell>
+                      <TableCell>
+                        <StatusIndicator status={limit.status} />
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="sm">
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem 
+                              onClick={() => handleViewClick(limit)}
+                              className="w-full justify-start text-xs"
+                            >
+                              View
+                            </DropdownMenuItem>
+                            <DropdownMenuItem 
+                              onClick={() => handleEditClick(limit)}
+                              className="w-full justify-start text-xs"
+                            >
+                              Edit
+                            </DropdownMenuItem>
+                            <DropdownMenuItem 
+                              onClick={() => handleDeleteClick(limit.id)}
+                              className="text-red-600 w-full justify-start text-xs"
+                            >
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          </div>
+          
+          {/* Pagination */}
+          {pagination && (
+            <div className="flex items-center justify-between mt-6">
+              <p className="text-sm text-gray-500">
+                Showing {((pagination.page - 1) * pagination.limit) + 1} to {Math.min(pagination.page * pagination.limit, pagination.total)} of {pagination.total} results
+              </p>
+              <div className="flex items-center gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  disabled={pagination.page === 1}
+                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                >
+                  Previous
+                </Button>
+                <Button variant="outline" size="sm" className="bg-blue-600 text-white">
+                  {pagination.page}
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  disabled={pagination.page >= pagination.pages}
+                  onClick={() => setCurrentPage(prev => Math.min(pagination.pages, prev + 1))}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Add Package Limit Modal */}
+      {showAddModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>Add Package Limit</span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowAddModal(false)}
+                >
+                  <XCircle className="h-4 w-4" />
+                </Button>
+              </CardTitle>
+              <CardDescription>
+                Set annual price limits for packages.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="plan_id">Select Plan</Label>
+                <Select 
+                  value={formData.plan_id} 
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, plan_id: value }))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Plan" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {plans.map((plan) => (
+                      <SelectItem key={plan.id} value={plan.id}>
+                        {plan.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="package_type">Select Package</Label>
+                <Select 
+                  value={formData.package_type} 
+                  onValueChange={(value) => setFormData(prev => ({ 
+                    ...prev, 
+                    package_type: value,
+                    service_type_id: "" // Reset service type when package changes
+                  }))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Package" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {packageTypes.map((packageType) => (
+                      <SelectItem key={packageType} value={packageType}>
+                        {packageType}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="service_type_search">Select Service Type</Label>
+                <div className="relative service-type-search-container">
+                  <div className="relative">
+                    <Input
+                      id="service_type_search"
+                      placeholder="Search service types..."
+                      value={serviceTypeSearchTerm}
+                      onChange={(e) => handleServiceTypeSearch(e.target.value)}
+                      onFocus={() => setShowServiceTypeResults(true)}
+                      disabled={!formData.package_type}
+                    />
+                    <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                    {selectedServiceType && (
+                      <button
+                        type="button"
+                        onClick={handleClearServiceType}
+                        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        <XCircle className="h-4 w-4" />
+                      </button>
+                    )}
+                  </div>
+                  
+                  {/* Service Type Search Results Dropdown */}
+                  {showServiceTypeResults && serviceTypes && (
+                    <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
+                      {isLoadingServices ? (
+                        <div className="p-3 text-sm text-gray-500">Loading services...</div>
+                      ) : serviceTypes.length === 0 ? (
+                        <div className="p-3 text-sm text-gray-500">No services found for this package</div>
+                      ) : (
+                        serviceTypes.map((service: any) => (
+                          <div
+                            key={service.id}
+                            onClick={() => handleSelectServiceType(service)}
+                            className="p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                          >
+                            <div className="font-medium text-gray-900">{service.service_name}</div>
+                            <div className="text-sm text-gray-500">{service.service_category}</div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  )}
+                </div>
+                {!formData.package_type && (
+                  <p className="text-xs text-gray-500">Please select a package first</p>
+                )}
+              </div>
+              {/* Amount Field */}
+              <div className="space-y-2">
+                <Label htmlFor="amount">Amount (₦) *</Label>
+                <Input
+                  id="amount"
+                  type="number"
+                  placeholder="Enter amount"
+                  value={formData.amount}
+                  onChange={(e) => setFormData(prev => ({ ...prev, amount: e.target.value }))}
+                  required
+                />
+                <p className="text-xs text-gray-600">Maximum amount the enrollee can use within the time frame</p>
+              </div>
+
+              {/* Time Frame */}
+              <div className="space-y-2">
+                <Label>Time Frame</Label>
+                <div className="flex gap-2">
+                  <Input
+                    id="time_frame_value"
+                    type="number"
+                    placeholder="Enter value"
+                    value={formData.time_frame_value}
+                    onChange={(e) => setFormData(prev => ({ ...prev, time_frame_value: e.target.value }))}
+                    className="flex-1"
+                  />
+                  <Select 
+                    value={formData.time_frame_unit} 
+                    onValueChange={(value) => setFormData(prev => ({ ...prev, time_frame_unit: value }))}
+                  >
+                    <SelectTrigger className="w-32">
+                      <SelectValue placeholder="Metrics" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="hours">Hours</SelectItem>
+                      <SelectItem value="days">Days</SelectItem>
+                      <SelectItem value="weeks">Weeks</SelectItem>
+                      <SelectItem value="months">Months</SelectItem>
+                      <SelectItem value="years">Years</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <p className="text-xs text-gray-600">Duration over which the limit applies (rolling window)</p>
+              </div>
+              <div className="flex justify-end gap-4 pt-4">
+                <Button variant="outline" onClick={() => setShowAddModal(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={handleAddLimit} disabled={createMutation.isPending}>
+                  {createMutation.isPending ? "Creating..." : "Save"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Edit Package Limit Modal */}
+      {showEditModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>Edit Package Limit</span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowEditModal(false)}
+                >
+                  <XCircle className="h-4 w-4" />
+                </Button>
+              </CardTitle>
+              <CardDescription>
+                Update the package limit information.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="edit_plan_id">Select Plan</Label>
+                <Select 
+                  value={formData.plan_id} 
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, plan_id: value }))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Plan" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {plans.map((plan) => (
+                      <SelectItem key={plan.id} value={plan.id}>
+                        {plan.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="edit_package_type">Select Package</Label>
+                <Select 
+                  value={formData.package_type} 
+                  onValueChange={(value) => setFormData(prev => ({ 
+                    ...prev, 
+                    package_type: value,
+                    service_type_id: "" // Reset service type when package changes
+                  }))}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Package" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {packageTypes.map((packageType) => (
+                      <SelectItem key={packageType} value={packageType}>
+                        {packageType}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="edit_service_type_search">Select Service Type</Label>
+                <div className="relative service-type-search-container">
+                  <div className="relative">
+                    <Input
+                      id="edit_service_type_search"
+                      placeholder="Search service types..."
+                      value={serviceTypeSearchTerm}
+                      onChange={(e) => handleServiceTypeSearch(e.target.value)}
+                      onFocus={() => setShowServiceTypeResults(true)}
+                      disabled={!formData.package_type}
+                    />
+                    <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                    {selectedServiceType && (
+                      <button
+                        type="button"
+                        onClick={handleClearServiceType}
+                        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        <XCircle className="h-4 w-4" />
+                      </button>
+                    )}
+                  </div>
+                  
+                  {/* Service Type Search Results Dropdown */}
+                  {showServiceTypeResults && serviceTypes && (
+                    <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
+                      {isLoadingServices ? (
+                        <div className="p-3 text-sm text-gray-500">Loading services...</div>
+                      ) : serviceTypes.length === 0 ? (
+                        <div className="p-3 text-sm text-gray-500">No services found for this package</div>
+                      ) : (
+                        serviceTypes.map((service: any) => (
+                          <div
+                            key={service.id}
+                            onClick={() => handleSelectServiceType(service)}
+                            className="p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                          >
+                            <div className="font-medium text-gray-900">{service.service_name}</div>
+                            <div className="text-sm text-gray-500">{service.service_category}</div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  )}
+                </div>
+                {!formData.package_type && (
+                  <p className="text-xs text-gray-500">Please select a package first</p>
+                )}
+              </div>
+              
+              {/* Amount Field */}
+              <div className="space-y-2">
+                <Label htmlFor="edit_amount">Amount (₦) *</Label>
+                <Input
+                  id="edit_amount"
+                  type="number"
+                  placeholder="Enter amount"
+                  value={formData.amount}
+                  onChange={(e) => setFormData(prev => ({ ...prev, amount: e.target.value }))}
+                  required
+                />
+                <p className="text-xs text-gray-600">Maximum amount the enrollee can use within the time frame</p>
+              </div>
+
+              {/* Time Frame */}
+              <div className="space-y-2">
+                <Label>Time Frame</Label>
+                <div className="flex gap-2">
+                  <Input
+                    id="edit_time_frame_value"
+                    type="number"
+                    placeholder="Enter value"
+                    value={formData.time_frame_value}
+                    onChange={(e) => setFormData(prev => ({ ...prev, time_frame_value: e.target.value }))}
+                    className="flex-1"
+                  />
+                  <Select 
+                    value={formData.time_frame_unit} 
+                    onValueChange={(value) => setFormData(prev => ({ ...prev, time_frame_unit: value }))}
+                  >
+                    <SelectTrigger className="w-32">
+                      <SelectValue placeholder="Metrics" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="hours">Hours</SelectItem>
+                      <SelectItem value="days">Days</SelectItem>
+                      <SelectItem value="weeks">Weeks</SelectItem>
+                      <SelectItem value="months">Months</SelectItem>
+                      <SelectItem value="years">Years</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <p className="text-xs text-gray-600">Duration over which the limit applies (rolling window)</p>
+              </div>
+              <div className="flex justify-end gap-4 pt-4">
+                <Button variant="outline" onClick={() => setShowEditModal(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={handleEditLimit} disabled={updateMutation.isPending}>
+                  {updateMutation.isPending ? "Updating..." : "Update"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* View Package Limit Modal */}
+      {showViewModal && selectedLimit && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>Package Limit Details</span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowViewModal(false)}
+                >
+                  <XCircle className="h-4 w-4" />
+                </Button>
+              </CardTitle>
+              <CardDescription>
+                View details of the selected package limit.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4">
+                <div>
+                  <Label className="text-sm font-medium text-gray-500">Plan</Label>
+                  <p className="text-sm font-medium">{selectedLimit.plan.name}</p>
+                </div>
+                <div>
+                  <Label className="text-sm font-medium text-gray-500">Package Type</Label>
+                  <p className="text-sm text-gray-900">{selectedLimit.package_type}</p>
+                </div>
+                <div>
+                  <Label className="text-sm font-medium text-gray-500">Service Type</Label>
+                  <p className="text-sm text-gray-900">
+                    {selectedLimit.service_type ? (
+                      <div>
+                        <div className="font-medium">{selectedLimit.service_type.service_name}</div>
+                        <div className="text-xs text-gray-500">{selectedLimit.service_type.service_category}</div>
+                      </div>
+                    ) : (
+                      <span className="text-gray-400">No service type</span>
+                    )}
+                  </p>
+                </div>
+                <div>
+                  <Label className="text-sm font-medium text-gray-500">Limit</Label>
+                  <p className="text-sm font-medium">
+                    {selectedLimit.amount ? (
+                      <>₦{selectedLimit.amount!.toLocaleString()}</>
+                    ) : (
+                      <>{selectedLimit.limit_count} times</>
+                    )}
+                  </p>
+                </div>
+                <div>
+                  <Label className="text-sm font-medium text-gray-500">Time Frame</Label>
+                  <p className="text-sm font-medium">{selectedLimit.time_frame}</p>
+                </div>
+                <div>
+                  <Label className="text-sm font-medium text-gray-500">Status</Label>
+                  <StatusIndicator status={selectedLimit.status} />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Bulk Upload Modal */}
+      <BulkUploadModal
+        isOpen={showBulkUploadModal}
+        onClose={() => setShowBulkUploadModal(false)}
+        module="settings"
+        submodule="package-limits"
+        onUploadSuccess={handleBulkUploadSuccess}
+        uploadEndpoint="/api/settings/bulk-upload"
+        sampleFileName="package-limits-sample.xlsx"
+        acceptedColumns={["Plan Name", "Package Type", "Limit Type", "Amount", "Limit Count", "Time Frame Value", "Time Frame Unit"]}
+        maxFileSize={200}
+      />
+    </div>
+  )
+}

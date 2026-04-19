@@ -1,0 +1,11 @@
+Plan Name,Package Type,Limit Type,Amount,Limit Count,Time Frame Value,Time Frame Unit
+Premium Health Plan,Eye Care,duration,20000,,1,months
+Premium Health Plan,Dental Package,count,,3,1,months
+Premium Health Plan,Maternity Package,duration,50000,,12,months
+Premium Health Plan,Surgery Package,count,,2,6,months
+Premium Health Plan,Emergency Package,duration,10000,,1,days
+Standard Health Plan,Eye Care,duration,15000,,1,months
+Standard Health Plan,Dental Package,count,,2,6,months
+Standard Health Package,Maternity Package,duration,40000,,12,months
+Standard Health Plan,Surgery Package,count,,1,12,months
+Standard Health Plan,Emergency Package,duration,8000,,1,days

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "laboratory-packages",
+    "name": "Laboratory Packages",
+    "description": "All diagnostic and laboratory test services"
+  },
+  {
+    "id": "basic-diagnostic-packages",
+    "name": "Basic Diagnostic Packages",
+    "description": "Routine diagnostic screenings and tests"
+  },
+  {
+    "id": "advanced-diagnostic-packages",
+    "name": "Advanced Diagnostic Packages",
+    "description": "Comprehensive and specialized diagnostic procedures"
+  },
+  {
+    "id": "accident-emergency-packages",
+    "name": "Accident and Emergency Packages",
+    "description": "Emergency and trauma medical services"
+  },
+  {
+    "id": "specialist-medical-services",
+    "name": "Specialist Medical Services",
+    "description": "Consultations and care by medical specialists"
+  },
+  {
+    "id": "specialist-consultations-group1-packages",
+    "name": "Specialist Consultations Group 1",
+    "description": "Specialist consultation services - Group 1"
+  },
+  {
+    "id": "specialist-consultations-group2-packages",
+    "name": "Specialist Consultations Group 2",
+    "description": "Specialist consultation services - Group 2"
+  },
+  {
+    "id": "physiotherapy-packages",
+    "name": "Physiotherapy Care",
+    "description": "Physical therapy and rehabilitation services"
+  },
+  {
+    "id": "ent-packages",
+    "name": "ENT (Otolaryngological Services)",
+    "description": "Ear, nose, and throat specialist services"
+  },
+  {
+    "id": "surgery-packages",
+    "name": "Surgeries",
+    "description": "Surgical operations and procedures"
+  },
+  {
+    "id": "intensive-care-packages",
+    "name": "Intensive Care",
+    "description": "Critical care and intensive treatment services"
+  },
+  {
+    "id": "eye-care-packages",
+    "name": "Eye/Optical Care",
+    "description": "Ophthalmology and optical treatment services"
+  },
+  {
+    "id": "dental-care-packages",
+    "name": "Dental Care",
+    "description": "Dental and oral healthcare services"
+  },
+  {
+    "id": "cancer-care-packages",
+    "name": "Cancer Care",
+    "description": "Oncology and cancer treatment services"
+  },
+  {
+    "id": "renal-care-packages",
+    "name": "Renal Care (Dialysis)",
+    "description": "Kidney care and dialysis treatment services"
+  },
+  {
+    "id": "wellness-packages",
+    "name": "Wellness Checks",
+    "description": "Preventive care and wellness screening services"
+  },
+  {
+    "id": "mental-care-packages",
+    "name": "Mental Care",
+    "description": "Mental health and psychiatric care services"
+  },
+  {
+    "id": "ambulance-services-packages",
+    "name": "Ambulance Services",
+    "description": "Emergency and non-emergency ambulance transport"
+  },
+  {
+    "id": "drug-delivery-packages",
+    "name": "Drugs Delivery / Refills",
+    "description": "Medication supply and prescription refills"
+  },
+  {
+    "id": "telemedicine-packages",
+    "name": "Telemedicine",
+    "description": "Remote medical consultations and virtual care"
+  },
+  {
+    "id": "antenatal-postnatal-packages",
+    "name": "Antenatal, Care Delivery and Postnatal",
+    "description": "Maternity care before, during and after childbirth"
+  }
+]

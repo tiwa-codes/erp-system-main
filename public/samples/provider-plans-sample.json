@@ -1,0 +1,50 @@
+[
+  {
+    "Plan Name": "Gold Plan",
+    "Provider Name": "City General Hospital",
+    "Band Type": "A",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Gold Plan",
+    "Provider Name": "Metro Medical Center",
+    "Band Type": "A",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Provider Name": "City General Hospital",
+    "Band Type": "B",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Provider Name": "Community Health Center",
+    "Band Type": "B",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Provider Name": "City General Hospital",
+    "Band Type": "A",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Provider Name": "Metro Medical Center",
+    "Band Type": "A",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Provider Name": "Community Health Center",
+    "Band Type": "B",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Basic Plan",
+    "Provider Name": "Community Health Center",
+    "Band Type": "C",
+    "Status": "ACTIVE"
+  }
+]

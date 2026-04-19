@@ -1,0 +1,42 @@
+[
+  {
+    "Plan Name": "Gold Plan",
+    "Description": "Premium health coverage with comprehensive benefits",
+    "Plan Type": "INDIVIDUAL",
+    "Premium Amount": 50000,
+    "Annual Limit": 2000000,
+    "Assigned Bands": "A, B"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Description": "Standard health coverage for families",
+    "Plan Type": "FAMILY",
+    "Premium Amount": 75000,
+    "Annual Limit": 1500000,
+    "Assigned Bands": "B, C"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Description": "Executive health coverage",
+    "Plan Type": "CORPORATE",
+    "Premium Amount": 100000,
+    "Annual Limit": 4000000,
+    "Assigned Bands": "A, B, C"
+  },
+  {
+    "Plan Name": "Basic Plan",
+    "Description": "Essential health coverage",
+    "Plan Type": "INDIVIDUAL",
+    "Premium Amount": 25000,
+    "Annual Limit": 500000,
+    "Assigned Bands": "C"
+  },
+  {
+    "Plan Name": "Family Plan",
+    "Description": "Comprehensive family health coverage",
+    "Plan Type": "FAMILY",
+    "Premium Amount": 60000,
+    "Annual Limit": 1200000,
+    "Assigned Bands": "B, C"
+  }
+]

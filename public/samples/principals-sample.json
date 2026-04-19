@@ -1,0 +1,72 @@
+[
+  {
+    "Enrollee ID": "",
+    "First Name": "John",
+    "Last Name": "Doe",
+    "Email": "john.doe@email.com",
+    "Phone Number": "+234-801-234-5678",
+    "Date of Birth": "1985-05-15",
+    "Gender": "MALE",
+    "Address": "123 Main Street, Lagos",
+    "Organization Code": "CC",
+    "Plan Name": "CROWN JEWEL – PLATINUM",
+    "Account Type": "Individual",
+    "Status": "ACTIVE"
+  },
+  {
+    "Enrollee ID": "CJH/TS/001",
+    "First Name": "Sarah",
+    "Last Name": "Johnson",
+    "Email": "sarah.johnson@email.com",
+    "Phone Number": "+234-802-345-6789",
+    "Date of Birth": "1990-08-22",
+    "Gender": "FEMALE",
+    "Address": "456 Oak Avenue, Abuja",
+    "Organization Code": "TS",
+    "Plan Name": "CROWN JEWEL – GOLD",
+    "Account Type": "Individual",
+    "Status": "ACTIVE"
+  },
+  {
+    "Enrollee ID": "",
+    "First Name": "Ahmed",
+    "Last Name": "Musa",
+    "Email": "ahmed.musa@email.com",
+    "Phone Number": "+234-803-456-7890",
+    "Date of Birth": "1988-12-10",
+    "Gender": "MALE",
+    "Address": "789 Pine Street, Abuja",
+    "Organization Code": "GA",
+    "Plan Name": "CROWN JEWEL – SILVER",
+    "Account Type": "Family",
+    "Status": "ACTIVE"
+  },
+  {
+    "Enrollee ID": "CJH/NG/002",
+    "First Name": "Grace",
+    "Last Name": "Okoro",
+    "Email": "grace.okoro@email.com",
+    "Phone Number": "+234-804-567-8901",
+    "Date of Birth": "1992-03-18",
+    "Gender": "FEMALE",
+    "Address": "321 Elm Road, Port Harcourt",
+    "Organization Code": "NG",
+    "Plan Name": "CROWN JEWEL – BRONZE",
+    "Account Type": "Individual",
+    "Status": "ACTIVE"
+  },
+  {
+    "Enrollee ID": "",
+    "First Name": "Ibrahim",
+    "Last Name": "Hassan",
+    "Email": "ibrahim.hassan@email.com",
+    "Phone Number": "+234-805-678-9012",
+    "Date of Birth": "1987-07-25",
+    "Gender": "MALE",
+    "Address": "654 Cedar Lane, Kano",
+    "Organization Code": "IC",
+    "Plan Name": "CROWN JEWEL – BASIC",
+    "Account Type": "Individual",
+    "Status": "ACTIVE"
+  }
+]

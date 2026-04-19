@@ -1,0 +1,126 @@
+[
+    {
+        "id": "1",
+        "name": "GENERAL MEDICAL SERVICES"
+    },
+    {
+        "id": "2",
+        "name": "ACCIDENT AND EMERGENCY CARE"
+    },
+    {
+        "id": "3",
+        "name": "RESUSCITATIVE CARE FOR ACCIDENT AND EMERGENCY CASES"
+    },
+    {
+        "id": "4",
+        "name": "HEAMATOLOGY"
+    },
+    {
+        "id": "5",
+        "name": "MICROBIOL/ PARASITOLOGY"
+    },
+    {
+        "id": "6",
+        "name": "CHEMISTRY INVESTIGATIONS"
+    },
+    {
+        "id": "7",
+        "name": "BASIC DIAGNOSTIC IMAGING"
+    },
+    {
+        "id": "8",
+        "name": "HIV CARE/TREATMENT"
+    },
+    {
+        "id": "9",
+        "name": "OBSTETRICS/NEONATAL CARE"
+    },
+    {
+        "id": "10",
+        "name": "IMMUNIZATION"
+    },
+    {
+        "id": "11",
+        "name": "INFERTILITY CARE"
+    },
+    {
+        "id": "12",
+        "name": "SPECIALIST CONSULTATIONS (GROUP 1)"
+    },
+    {
+        "id": "13",
+        "name": "SPECIALIST CONSULTATIONS (GROUP 2)"
+    },
+    {
+        "id": "14",
+        "name": "ADVANCED DIAGNOSTIC IMAGING"
+    },
+    {
+        "id": "15",
+        "name": "ADVANCED LABORATORY INVESTIGATION"
+    },
+    {
+        "id": "16",
+        "name": "PHYSIOTHERAPY CARE"
+    },
+    {
+        "id": "17",
+        "name": "ENT (OTOLARYNGOLOGICAL SERVICES)"
+    },
+    {
+        "id": "18",
+        "name": "SURGERIES"
+    },
+    {
+        "id": "19",
+        "name": "INTENSIVE CARE"
+    },
+    {
+        "id": "20",
+        "name": "EYE/OPTICAL CARE"
+    },
+    {
+        "id": "21",
+        "name": "DENTAL CARE"
+    },
+    {
+        "id": "22",
+        "name": "CANCER CARE"
+    },
+    {
+        "id": "23",
+        "name": "RENAL CARE (DIALYSIS)"
+    },
+    {
+        "id": "24",
+        "name": "WELLNESS CHECKS"
+    },
+    {
+        "id": "25",
+        "name": "MENTAL CARE"
+    },
+    {
+        "id": "26",
+        "name": "AMBULANCE SERVICES"
+    },
+    {
+        "id": "27",
+        "name": "ADDITIONAL BENEFITS"
+    },
+    {
+        "id": "28",
+        "name": "DRUG DELIVERY/ REFILLS"
+    },
+    {
+        "id": "29",
+        "name": "TELEMEDICINE/ TELECONSULTATIONS"
+    },
+    {
+        "id": "30",
+        "name": "HOMECARE SERVICES"
+    },
+    {
+        "id": "31",
+        "name": "ANTENATAL, CARE DELIVERY, AND POSTNATAL CARE"
+    }
+]

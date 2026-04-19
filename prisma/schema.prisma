@@ -1,0 +1,3166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                                String                    @id @default(cuid())
+  email                             String                    @unique
+  password                          String?
+  first_name                        String
+  last_name                         String
+  title                             String?
+  date_of_birth                     DateTime?
+  gender                            String?
+  phone_number                      String?
+  contact_address                   String?
+  role_id                           String?
+  status                            UserStatus                @default(ACTIVE)
+  department_id                     String?
+  last_login_at                     DateTime?
+  email_verified                    DateTime?
+  email_verification_token          String?
+  password_reset_token              String?
+  password_reset_expires            DateTime?
+  created_at                        DateTime                  @default(now())
+  updated_at                        DateTime                  @updatedAt
+  provider_id                       String?
+  first_login                       Boolean                   @default(true)
+  last_login                        DateTime?
+  profile_picture                   String?
+  generated_approval_codes          ApprovalCode[]            @relation("GeneratedApprovalCodes")
+  deleted_approval_codes            ApprovalCode[]            @relation("DeletedApprovalCodes")
+  added_approval_code_services      ApprovalCodeService[]     @relation("AddedApprovalCodeServices")
+  audit_logs                        AuditLog[]
+  claim_audits                      ClaimAudit[]              @relation("ClaimAudits")
+  created_claims                    Claim[]                   @relation("CreatedBy")
+  created_dependents                Dependent[]
+  created_employees                 Employee[]                @relation("CreatedBy")
+  created_financial_transactions    FinancialTransaction[]    @relation("CreatedBy")
+  created_fraud_rules               FraudRule[]               @relation("CreatedFraudRules")
+  created_hr_rules                  HRRule[]                  @relation("CreatedHRRule")
+  approved_leave_requests           LeaveRequest[]            @relation("ApprovedLeaveRequests")
+  created_plans                     Plan[]
+  created_principal_accounts        PrincipalAccount[]        @relation("PrincipalCreatedBy")
+  created_procurement_invoices      ProcurementInvoice[]      @relation("CreatedProcurementInvoices")
+  dept_oversight_procurements       ProcurementInvoice[]      @relation("ProcurementDeptOversightBy")
+  operations_procurements           ProcurementInvoice[]      @relation("ProcurementOperationsBy")
+  executive_procurements            ProcurementInvoice[]      @relation("ProcurementExecutiveBy")
+  generated_reports                 Report[]                  @relation("GeneratedReports")
+  role                              Role?                     @relation(fields: [role_id], references: [id])
+  department                        Department?               @relation(fields: [department_id], references: [id])
+  provider                          Provider?                 @relation(fields: [provider_id], references: [id])
+  vetting_records                   VettingRecord[]           @relation("VettingRecords")
+  vetting_actions                   VettingAction[]           @relation("VettingActions")
+  vetting_drafts                    VettingDraft[]            @relation("VettingDrafts")
+  price_edits                       PriceEdit[]               @relation("PriceEdits")
+  created_telemedicine_appointments TelemedicineAppointment[]
+  created_clinical_encounters       ClinicalEncounter[]
+  created_telemedicine_requests     TelemedicineRequest[]
+  approved_tariff_plans             TariffPlan[]              @relation("ApprovedTariffPlans")
+  generated_msas                    MSA[]                     @relation("GeneratedMSAs")
+  mobile_updates_created            MobileUpdate[]            @relation("MobileUpdatesCreated")
+  special_risk_approved_plans       Plan[]                    @relation("SpecialRiskApprovedPlans")
+  md_approved_plans                 Plan[]                    @relation("MDApprovedPlans")
+  approved_special_providers        SpecialProvider[]         @relation("ApprovedSpecialProviders")
+  created_exchange_rates            ExchangeRate[]            @relation("CreatedExchangeRates")
+  created_legal_documents           LegalDocument[]           @relation("CreatedLegalDocuments")
+  vetted_legal_documents            LegalDocument[]           @relation("VettedLegalDocuments")
+  approved_legal_documents          LegalDocument[]           @relation("ApprovedLegalDocuments")
+  created_meeting_minutes           MeetingMinutes[]          @relation("CreatedMeetingMinutes")
+  vetted_meeting_minutes            MeetingMinutes[]          @relation("VettedMeetingMinutes")
+  approved_meeting_minutes          MeetingMinutes[]          @relation("ApprovedMeetingMinutes")
+  document_signatures               DocumentSignature[]
+  submitted_sales_reports           SalesReport[]             @relation("SubmittedSalesReports")
+  vetted_sales_reports              SalesReport[]             @relation("VettedSalesReports")
+  approved_sales_reports            SalesReport[]             @relation("ApprovedSalesReports")
+  created_chart_of_accounts         ChartOfAccount[]          @relation("CreatedChartOfAccounts")
+  created_general_ledger_entries    GeneralLedger[]           @relation("CreatedGLEntries")
+  created_journal_entries           JournalEntry[]            @relation("CreatedJournalEntries")
+  approved_journal_entries          JournalEntry[]            @relation("ApprovedJournalEntries")
+  created_backups                   DatabaseBackup[]          @relation("CreatedBackups")
+  created_backup_schedules          BackupSchedule[]          @relation("CreatedBackupSchedules")
+  memo_comments                     MemoComment[]             @relation("MemoComments")
+  dept_oversight_approved_memos     Memo[]                    @relation("DeptOversightApprover")
+  executive_approved_memos          Memo[]                    @relation("ExecutiveApprover")
+  sent_memos                        Memo[]                    @relation("MemoSender")
+  received_memos                    MemoRecipient[]           @relation("MemoRecipients")
+  uploaded_tariff_files             ProviderTariffFile[]      @relation("UploadedTariffFiles")
+  reviewed_principal_registrations  PrincipalRegistration[]   @relation("ReviewedPrincipalRegistrations")
+  approved_principal_registrations  PrincipalRegistration[]   @relation("ApprovedPrincipalRegistrations")
+  rejected_principal_registrations  PrincipalRegistration[]   @relation("RejectedPrincipalRegistrations")
+  approved_dependent_registrations  DependentRegistration[]   @relation("ApprovedDependentRegistrations")
+  rejected_dependent_registrations  DependentRegistration[]   @relation("RejectedDependentRegistrations")
+  approval_code_timeline            ApprovalCodeTimeline[]    @relation("ApprovalCodeTimelineUser")
+  principal_account                  PrincipalAccount?         @relation("PrincipalUser")
+  client_account                     ClientAccount?           @relation("ClientUser")
+  push_token                         String?
+  utilization_imports                UtilizationImport[]      @relation("CreatedUtilizationImports")
+  client_plan_reviewed               ClientPlan[]             @relation("ClientPlanReviewedBy")
+  client_plan_approved               ClientPlan[]             @relation("ClientPlanApprovedBy")
+  client_plan_rejected               ClientPlan[]             @relation("ClientPlanRejectedBy")
+
+  @@index([email])
+  @@index([role_id])
+  @@index([department_id])
+  @@index([provider_id])
+  @@map("users")
+}
+
+model Department {
+  id          String     @id @default(cuid())
+  name        String     @unique
+  description String?
+  manager_id  String?
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+  employees   Employee[]
+  users       User[]
+
+  @@map("departments")
+}
+
+model Employee {
+  id                             String             @id @default(cuid())
+  employee_id                    String             @unique
+  first_name                     String
+  last_name                      String
+  email                          String             @unique
+  phone_number                   String?
+  address                        String?
+  title                          String?
+  emergency_contact_name         String?
+  emergency_contact_phone        String?
+  emergency_contact_relationship String?
+  position                       String
+  department_id                  String
+  hire_date                      DateTime
+  salary                         Decimal?
+  gender                         Gender?
+  employment_type                EmploymentType     @default(FULL_TIME)
+  status                         EmployeeStatus     @default(ACTIVE)
+  role                           String?
+  uploadedFileUrls               Json?
+  created_by_id                  String?
+  created_at                     DateTime           @default(now())
+  updated_at                     DateTime           @updatedAt
+  attendance_records             AttendanceRecord[]
+  created_by                     User?              @relation("CreatedBy", fields: [created_by_id], references: [id])
+  department                     Department         @relation(fields: [department_id], references: [id])
+  leave_requests                 LeaveRequest[]
+  memos                          Memo[]
+  payroll_records                Payroll[]
+
+  @@index([employee_id])
+  @@index([department_id])
+  @@index([status])
+  @@map("employees")
+}
+
+model AttendanceRecord {
+  id           String           @id @default(cuid())
+  employee_id  String
+  date         DateTime
+  clock_in     DateTime?
+  clock_out    DateTime?
+  hours_worked Decimal?
+  status       AttendanceStatus @default(PRESENT)
+  notes        String?
+  created_at   DateTime         @default(now())
+  employee     Employee         @relation(fields: [employee_id], references: [id])
+
+  @@index([employee_id])
+  @@index([date])
+  @@map("attendance_records")
+}
+
+model LeaveRequest {
+  id             String      @id @default(cuid())
+  employee_id    String
+  leave_type     LeaveType
+  start_date     DateTime
+  end_date       DateTime
+  days_requested Int
+  reason         String?
+  status         LeaveStatus @default(PENDING)
+  approved_at    DateTime?
+  created_at     DateTime    @default(now())
+  approved_by_id String?
+  approved_by    User?       @relation("ApprovedLeaveRequests", fields: [approved_by_id], references: [id])
+  employee       Employee    @relation(fields: [employee_id], references: [id])
+
+  @@index([employee_id])
+  @@index([status])
+  @@map("leave_requests")
+}
+
+model Memo {
+  id          String       @id @default(cuid())
+  title       String
+  content     String
+  employee_id String?
+  priority    MemoPriority @default(NORMAL)
+  status      MemoStatus   @default(DRAFT)
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @updatedAt
+
+  // Approval workflow fields
+  memo_type        MemoType @default(STANDARD)
+  rejection_reason String?
+
+  // Department Oversight approval
+  dept_oversight_status      ApprovalStatus?
+  dept_oversight_approved_by String?
+  dept_oversight_approved_at DateTime?
+  dept_oversight_comments    String?
+
+  // Executive Desk approval
+  executive_status      ApprovalStatus?
+  executive_approved_by String?
+  executive_approved_at DateTime?
+  executive_comments    String?
+
+  // Sender (system user) and module context
+  sender_user_id String?
+  module         String?
+
+  // Relations
+  employee                Employee?       @relation(fields: [employee_id], references: [id])
+  sender_user             User?           @relation("MemoSender", fields: [sender_user_id], references: [id])
+  dept_oversight_approver User?           @relation("DeptOversightApprover", fields: [dept_oversight_approved_by], references: [id])
+  executive_approver      User?           @relation("ExecutiveApprover", fields: [executive_approved_by], references: [id])
+  comments                MemoComment[]
+  recipients              MemoRecipient[]
+
+  @@index([employee_id])
+  @@index([sender_user_id])
+  @@index([status])
+  @@index([memo_type])
+  @@index([module])
+  @@map("memos")
+}
+
+model MemoComment {
+  id         String   @id @default(cuid())
+  memo_id    String
+  user_id    String
+  comment    String
+  created_at DateTime @default(now())
+
+  memo Memo @relation(fields: [memo_id], references: [id], onDelete: Cascade)
+  user User @relation("MemoComments", fields: [user_id], references: [id])
+
+  @@index([memo_id])
+  @@map("memo_comments")
+}
+
+model MemoRecipient {
+  id         String    @id @default(cuid())
+  memo_id    String
+  user_id    String
+  read_at    DateTime?
+  created_at DateTime  @default(now())
+
+  memo Memo @relation(fields: [memo_id], references: [id], onDelete: Cascade)
+  user User @relation("MemoRecipients", fields: [user_id], references: [id])
+
+  @@unique([memo_id, user_id])
+  @@index([memo_id])
+  @@index([user_id])
+  @@map("memo_recipients")
+}
+
+model HRRule {
+  id            String     @id @default(cuid())
+  name          String
+  description   String?
+  rule_type     HRRuleType
+  conditions    Json
+  actions       Json
+  is_active     Boolean    @default(true)
+  priority      Int        @default(0)
+  created_by_id String?
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+  created_by    User?      @relation("CreatedHRRule", fields: [created_by_id], references: [id])
+
+  @@index([rule_type])
+  @@index([is_active])
+  @@index([priority])
+  @@map("hr_rules")
+}
+
+model Payroll {
+  id               String        @id @default(cuid())
+  employee_id      String
+  pay_period_start DateTime
+  pay_period_end   DateTime
+  basic_salary     Decimal
+  allowances       Decimal?      @default(0)
+  deductions       Decimal?      @default(0)
+  overtime_pay     Decimal?      @default(0)
+  net_salary       Decimal
+  status           PayrollStatus @default(PENDING)
+  payment_date     DateTime?
+  processed_by     String?
+  processed_at     DateTime?
+  created_at       DateTime      @default(now())
+  updated_at       DateTime      @updatedAt
+  employee         Employee      @relation(fields: [employee_id], references: [id])
+
+  @@index([employee_id])
+  @@index([status])
+  @@index([pay_period_start])
+  @@map("payroll")
+}
+
+model Claim {
+  id                      String            @id @default(cuid())
+  claim_number            String            @unique
+  enrollee_id             String
+  principal_id            String?
+  provider_id             String? // Made optional for telemedicine claims
+  claim_type              ClaimType
+  amount                  Decimal // Current amount (can be edited by Auditor/MD)
+  original_amount         Decimal           @default(0) // Original amount from provider
+  approved_amount         Decimal? // Final approved amount (after all edits)
+  original_currency       String?           @default("NGN")
+  original_amount_foreign Decimal? // Original amount in foreign currency
+  exchange_rate_used      Decimal?
+  exchange_rate_date      DateTime?
+  exchange_rate_id        String?
+  exchange_rate           ExchangeRate?     @relation(fields: [exchange_rate_id], references: [id])
+  status                  ClaimStatus       @default(SUBMITTED)
+  current_stage           String? // Current stage: 'vetter1' | 'vetter2' | 'audit' | 'approval'
+  submitted_at            DateTime          @default(now())
+  processed_at            DateTime?
+  approved_at             DateTime?
+  rejected_at             DateTime?
+  rejection_reason        String?
+  created_by_id           String?
+  created_at              DateTime          @default(now())
+  updated_at              DateTime          @updatedAt
+  description             String? // Description of the claim
+  // Telemedicine order links
+  lab_order_id            String? // Link to lab order if from telemedicine
+  radiology_order_id      String? // Link to radiology order if from telemedicine
+  pharmacy_order_id       String? // Link to pharmacy order if from telemedicine
+  audit_records           ClaimAudit[]
+  created_by              User?             @relation("CreatedBy", fields: [created_by_id], references: [id])
+  principal               PrincipalAccount? @relation(fields: [principal_id], references: [id])
+  provider                Provider?         @relation(fields: [provider_id], references: [id]) // Made optional
+  fraud_alerts            FraudAlert[]
+  payouts                 Payout[]
+  vetting_records         VettingRecord[]
+  approval_codes          ApprovalCode[] // Reverse relation to approval codes
+  vetting_actions         VettingAction[] // Track all vetting actions
+  vetting_drafts          VettingDraft[] // Auto-save drafts
+  price_edits             PriceEdit[] // Price edit history
+
+  @@index([claim_number])
+  @@index([enrollee_id])
+  @@index([principal_id])
+  @@index([provider_id])
+  @@index([status])
+  @@index([current_stage])
+  @@map("claims")
+}
+
+model VettingRecord {
+  id              String        @id @default(cuid())
+  claim_id        String
+  vetter_id       String
+  vetting_type    VettingType
+  status          VettingStatus @default(IN_PROGRESS)
+  findings        String?
+  recommendations String?
+  completed_at    DateTime?
+  created_at      DateTime      @default(now())
+  claim           Claim         @relation(fields: [claim_id], references: [id])
+  vetter          User          @relation("VettingRecords", fields: [vetter_id], references: [id])
+
+  @@index([claim_id])
+  @@index([vetter_id])
+  @@map("vetting_records")
+}
+
+model VettingAction {
+  id               String   @id @default(cuid())
+  claim_id         String
+  stage            String // 'vetter1' | 'vetter2' | 'audit' | 'approval'
+  action           String // 'APPROVED' | 'REJECTED' | 'REJECTED_BACK'
+  action_by_id     String
+  comments         String?
+  service_verdicts Json? // Store service-level verdicts
+  attachments      Json? // Array of {name, url, size} uploaded by this stage
+  created_at       DateTime @default(now())
+  claim            Claim    @relation(fields: [claim_id], references: [id])
+  action_by        User     @relation("VettingActions", fields: [action_by_id], references: [id])
+
+  @@index([claim_id])
+  @@index([stage])
+  @@index([action_by_id])
+  @@map("vetting_actions")
+}
+
+model VettingDraft {
+  id          String   @id @default(cuid())
+  claim_id    String
+  stage       String // 'vetter1' | 'vetter2' | 'audit' | 'approval'
+  draft_data  Json // All vetting data (comments, service verdicts, etc.)
+  saved_by_id String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  claim       Claim    @relation(fields: [claim_id], references: [id])
+  saved_by    User     @relation("VettingDrafts", fields: [saved_by_id], references: [id])
+
+  @@unique([claim_id, stage, saved_by_id])
+  @@index([claim_id])
+  @@index([saved_by_id])
+  @@map("vetting_drafts")
+}
+
+model PriceEdit {
+  id           String   @id @default(cuid())
+  claim_id     String
+  old_amount   Decimal
+  new_amount   Decimal
+  edited_by_id String
+  stage        String // Which stage the edit was made
+  reason       String?
+  created_at   DateTime @default(now())
+  claim        Claim    @relation(fields: [claim_id], references: [id])
+  edited_by    User     @relation("PriceEdits", fields: [edited_by_id], references: [id])
+
+  @@index([claim_id])
+  @@index([edited_by_id])
+  @@map("price_edits")
+}
+
+model ClaimAudit {
+  id           String      @id @default(cuid())
+  claim_id     String
+  auditor_id   String
+  audit_type   AuditType
+  findings     String?
+  status       AuditStatus @default(IN_PROGRESS)
+  completed_at DateTime?
+  created_at   DateTime    @default(now())
+  auditor      User        @relation("ClaimAudits", fields: [auditor_id], references: [id])
+  claim        Claim       @relation(fields: [claim_id], references: [id])
+
+  @@index([claim_id])
+  @@index([auditor_id])
+  @@map("claim_audits")
+}
+
+model FraudAlert {
+  id          String         @id @default(cuid())
+  claim_id    String
+  alert_type  FraudAlertType
+  severity    AlertSeverity  @default(MEDIUM)
+  description String
+  status      FraudStatus    @default(OPEN)
+  assigned_to String?
+  resolved_at DateTime?
+  created_at  DateTime       @default(now())
+  is_read     Boolean        @default(false)
+  claim       Claim          @relation(fields: [claim_id], references: [id])
+
+  @@index([claim_id])
+  @@index([status])
+  @@map("fraud_alerts")
+}
+
+model FinancialTransaction {
+  id                      String            @id @default(cuid())
+  transaction_type        TransactionType
+  amount                  Decimal
+  currency                String            @default("NGN")
+  original_currency       String?           @default("NGN")
+  original_amount         Decimal?
+  exchange_rate_used      Decimal?
+  reference_id            String?
+  reference_type          String?
+  description             String?
+  status                  TransactionStatus @default(PENDING)
+  processed_at            DateTime?
+  created_by_id           String?
+  general_ledger_entry_id String?
+  chart_of_account_id     String?
+  created_at              DateTime          @default(now())
+  created_by              User?             @relation("CreatedBy", fields: [created_by_id], references: [id])
+  general_ledger_entry    GeneralLedger?    @relation(fields: [general_ledger_entry_id], references: [id])
+
+  @@index([transaction_type])
+  @@index([status])
+  @@index([general_ledger_entry_id])
+  @@map("financial_transactions")
+}
+
+model PrincipalAccount {
+  id                        String                    @id @default(cuid())
+  enrollee_id               String                    @unique @default("TEMP")
+  first_name                String
+  last_name                 String
+  middle_name               String?
+  gender                    Gender?
+  date_of_birth             DateTime?
+  age                       Int?
+  profile_picture           String?
+  marital_status            MaritalStatus?
+  region                    String?
+  state                     String?
+  lga                       String?
+  phone_number              String?
+  email                     String?
+  residential_address       String?
+  business_type             String?
+  organization_id           String
+  plan_id                   String?
+  account_type              AccountType
+  balance                   Decimal                   @default(0)
+  old_utilization           Decimal                   @default(0)
+  auto_renewal              Boolean                   @default(false)
+  primary_hospital          String?
+  hospital_address          String?
+  start_date                DateTime?
+  end_date                  DateTime?
+  status                    AccountStatus             @default(ACTIVE)
+  created_at                DateTime                  @default(now())
+  updated_at                DateTime                  @updatedAt
+  created_by_id             String
+  user_id                   String?                   @unique
+  approval_codes            ApprovalCode[]
+  claims                    Claim[]
+  dependents                Dependent[]
+  medical_history           MedicalHistory?
+  created_by                User                      @relation("PrincipalCreatedBy", fields: [created_by_id], references: [id])
+  user                      User?                     @relation("PrincipalUser", fields: [user_id], references: [id])
+  organization              Organization              @relation(fields: [organization_id], references: [id])
+  plan                      Plan?                     @relation(fields: [plan_id], references: [id])
+  provider_requests         ProviderRequest[]
+  telemedicine_appointments TelemedicineAppointment[]
+  telemedicine_requests     TelemedicineRequest[]
+  utilization_imports       UtilizationImport[]
+  client_plans              ClientPlan[]
+  dependent_registrations   DependentRegistration[] @relation("PrincipalDependentRegistrations")
+
+  @@index([organization_id])
+  @@index([plan_id])
+  @@index([created_by_id])
+  @@index([enrollee_id])
+  @@index([user_id])
+  @@map("principal_accounts")
+}
+
+model MedicalHistory {
+  id                       String           @id @default(cuid())
+  principal_account_id     String           @unique
+  sickle_cell_disease      Boolean          @default(false)
+  kidney_disease           Boolean          @default(false)
+  epilepsy                 Boolean          @default(false)
+  cancer_prostate_cervical Boolean          @default(false)
+  asthma                   Boolean          @default(false)
+  hiv_aids                 Boolean          @default(false)
+  surgeries                Boolean          @default(false)
+  diabetes_mellitus        Boolean          @default(false)
+  cataract                 Boolean          @default(false)
+  goiter                   Boolean          @default(false)
+  peptic_ulcer             Boolean          @default(false)
+  hypertension             Boolean          @default(false)
+  glaucoma                 Boolean          @default(false)
+  tuberculosis             Boolean          @default(false)
+  haemorrhoids             Boolean          @default(false)
+  hepatitis                Boolean          @default(false)
+  disease_comments         String?
+  created_at               DateTime         @default(now())
+  updated_at               DateTime         @updatedAt
+  principal_account        PrincipalAccount @relation(fields: [principal_account_id], references: [id])
+
+  @@map("medical_history")
+}
+
+model PrincipalRegistration {
+  id                   String                  @id @default(cuid())
+  first_name           String
+  last_name            String
+  middle_name          String?
+  gender               String
+  date_of_birth        DateTime
+  phone_number         String
+  email                String
+  residential_address  String
+  profile_picture      String?
+  organization_name    String
+  organization_code    String?
+  organization_id      String?
+  organization         Organization?           @relation(fields: [organization_id], references: [id])
+  organization_email   String?
+  organization_phone   String?
+  organization_address String?
+  plan_name            String
+  plan_type            String?
+  plan_id              String?
+  plan                 Plan?                   @relation(fields: [plan_id], references: [id])
+  primary_hospital     String?
+  hospital_address     String?
+  remarks              String?
+  source               String? // PUBLIC_LINK or MOBILE_APP
+  status               String                  @default("PENDING") // PENDING, APPROVED, REJECTED
+  submitted_at         DateTime                @default(now())
+  reviewed_at          DateTime?
+  reviewed_by_id       String?
+  reviewed_by          User?                   @relation("ReviewedPrincipalRegistrations", fields: [reviewed_by_id], references: [id])
+  approved_at          DateTime?
+  approved_by_id       String?
+  approved_by          User?                   @relation("ApprovedPrincipalRegistrations", fields: [approved_by_id], references: [id])
+  rejected_at          DateTime?
+  rejected_by_id       String?
+  rejected_by          User?                   @relation("RejectedPrincipalRegistrations", fields: [rejected_by_id], references: [id])
+  rejection_reason     String?
+  created_at           DateTime                @default(now())
+  updated_at           DateTime                @updatedAt
+  dependents           DependentRegistration[]
+
+  @@index([email])
+  @@index([status])
+  @@index([submitted_at])
+  @@index([source])
+  @@index([organization_id])
+  @@index([plan_id])
+  @@map("principal_registrations")
+}
+
+model DependentRegistration {
+  id                        String                @id @default(cuid())
+  principal_registration_id String?
+  principal_registration    PrincipalRegistration? @relation(fields: [principal_registration_id], references: [id], onDelete: Cascade)
+  principal_id              String?
+  principal                 PrincipalAccount?      @relation("PrincipalDependentRegistrations", fields: [principal_id], references: [id], onDelete: SetNull)
+  first_name                String
+  last_name                 String
+  middle_name               String?
+  date_of_birth             DateTime
+  gender                    String?
+  relationship              String
+  profile_picture           String // MANDATORY
+  phone_number              String?
+  email                     String?
+  residential_address       String?
+  status                    String                @default("PENDING") // PENDING, APPROVED, REJECTED
+  submitted_at              DateTime              @default(now())
+  approved_at               DateTime?
+  approved_by_id            String?
+  approved_by               User?                 @relation("ApprovedDependentRegistrations", fields: [approved_by_id], references: [id])
+  rejected_at               DateTime?
+  rejected_by_id            String?
+  rejected_by               User?                 @relation("RejectedDependentRegistrations", fields: [rejected_by_id], references: [id])
+  rejection_reason          String?
+  source                    String?               @default("PUBLIC_LINK") // PUBLIC_LINK or MOBILE_APP
+  created_at                DateTime              @default(now())
+  updated_at                DateTime              @updatedAt
+
+  @@index([principal_registration_id])
+  @@index([principal_id])
+  @@index([status])
+  @@index([submitted_at])
+  @@map("dependent_registrations")
+}
+
+model Payout {
+  id                      String         @id @default(cuid())
+  claim_id                String
+  amount                  Decimal
+  payout_method           PayoutMethod
+  payout_reference        String?
+  status                  PayoutStatus   @default(PENDING)
+  processed_at            DateTime?
+  general_ledger_entry_id String?
+  created_at              DateTime       @default(now())
+  claim                   Claim          @relation(fields: [claim_id], references: [id])
+  general_ledger_entry    GeneralLedger? @relation(fields: [general_ledger_entry_id], references: [id])
+
+  @@index([claim_id])
+  @@index([status])
+  @@index([general_ledger_entry_id])
+  @@map("payouts")
+}
+
+model Invoice {
+  id             String        @id @default(cuid())
+  invoice_number String        @unique
+  enrollee_id    String?
+  enrollee_name  String?
+  plan_id        String?
+  plan_type      String?
+  plan_amount    Decimal
+  status         InvoiceStatus @default(PENDING)
+  due_date       DateTime?
+  paid_at        DateTime?
+  created_at     DateTime      @default(now())
+  updated_at     DateTime      @updatedAt
+  plan           Plan?         @relation(fields: [plan_id], references: [id])
+
+  @@index([enrollee_id])
+  @@index([status])
+  @@index([plan_id])
+  @@map("invoices")
+}
+
+model Report {
+  id              String       @id @default(cuid())
+  report_name     String
+  report_type     String
+  category        String
+  department      String?
+  filters         Json?
+  status          ReportStatus @default(PENDING)
+  file_path       String?
+  file_size       Int?
+  generated_by_id String
+  generated_at    DateTime     @default(now())
+  completed_at    DateTime?
+  error_message   String?
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @updatedAt
+  generated_by    User         @relation("GeneratedReports", fields: [generated_by_id], references: [id])
+
+  @@index([report_type])
+  @@index([category])
+  @@index([status])
+  @@index([generated_by_id])
+  @@map("reports")
+}
+
+model Provider {
+  id                              String                    @id @default(cuid())
+  provider_id                     String                    @unique // Numeric ID field - generated by API
+  partnership_interest            String?
+  facility_name                   String
+  address                         String
+  preferred_dependents            Dependent[]
+  phone_whatsapp                  String
+  email                           String
+  medical_director_name           String
+  hmo_coordinator_name            String
+  hmo_coordinator_phone           String
+  hmo_coordinator_email           String
+  year_of_incorporation           String
+  facility_reg_number             String
+  practice                        String
+  proprietor_partners             String
+  hcp_code                        String?
+  hours_of_operation              String?
+  other_branches                  String?
+  emergency_care_services         Json?
+  facility_type                   Json?
+  personnel_licensed              String?
+  blood_bank_available            String?
+  blood_sourcing_method           String?
+  radiology_lab_services          Json?
+  other_services                  Json?
+  account_name                    String?
+  account_number                  String?
+  designation                     String?
+  date                            DateTime?
+  cac_registration_url            String?
+  nhis_accreditation_url          String?
+  professional_indemnity_url      String?
+  state_facility_registration_url String?
+  selected_bands                  String[] // Array of band labels selected for this provider
+  band                            String?                   @default("A") // Facility band (A, B, C, D) - required for approval
+  status                          ProviderStatus            @default(PENDING_APPROVAL)
+  created_at                      DateTime                  @default(now())
+  updated_at                      DateTime                  @updatedAt
+  claims                          Claim[]
+  covered_services                CoveredService[]
+  in_patients                     InPatient[]
+  plan_bands                      PlanBand[]
+  plan_providers                  PlanProvider[]
+  provider_requests               ProviderRequest[]
+  risk_profiles                   ProviderRiskProfile[]
+  risk_profiles_new               RiskProfile[]             @relation("RiskProfiles")
+  tariff_plan_services            TariffPlanService[]
+  tariff_plans                    TariffPlan[]
+  msas                            MSA[]
+  users                           User[]
+  telemedicine_appointments       TelemedicineAppointment[]
+  updates                         ProviderUpdate[]
+  tariff_file                     ProviderTariffFile?
+  approval_codes                  ApprovalCode[]
+  approval_code_timeline          ApprovalCodeTimeline[]    @relation("ApprovalCodeTimelineProvider")
+
+  @@index([provider_id])
+  @@index([facility_name])
+  @@index([status])
+  @@map("providers")
+}
+
+enum ProviderUpdateStatus {
+  PENDING
+  APPROVED
+}
+
+model ProviderUpdate {
+  id          String               @id @default(cuid())
+  provider_id String
+  payload     Json
+  status      ProviderUpdateStatus @default(PENDING)
+  source      String?
+  created_at  DateTime             @default(now())
+  updated_at  DateTime             @updatedAt
+
+  provider Provider @relation(fields: [provider_id], references: [id], onDelete: Cascade)
+
+  @@index([provider_id])
+  @@map("provider_updates")
+}
+
+enum MobileUpdateTarget {
+  PRINCIPAL
+  DEPENDENT
+  PROVIDER
+}
+
+enum MobileUpdateStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model MobileUpdate {
+  id             String             @id @default(cuid())
+  target         MobileUpdateTarget
+  target_id      String?
+  payload        Json
+  status         MobileUpdateStatus @default(PENDING)
+  source         String?
+  client_version String?
+  created_by_id  String?
+  created_at     DateTime           @default(now())
+  updated_at     DateTime           @updatedAt
+
+  created_by User? @relation("MobileUpdatesCreated", fields: [created_by_id], references: [id])
+
+  @@index([status])
+  @@index([target])
+  @@map("mobile_updates")
+}
+
+// Temporary OTP codes for enrollee mobile login (enrollee_id + email → OTP)
+model MobileOtp {
+  id           String   @id @default(cuid())
+  enrollee_id  String   // PrincipalAccount.enrollee_id
+  email        String
+  otp_hash     String   // bcrypt hash of the 6-digit code
+  expires_at   DateTime
+  used         Boolean  @default(false)
+  created_at   DateTime @default(now())
+
+  @@index([enrollee_id])
+  @@index([email])
+  @@map("mobile_otps")
+}
+
+enum SpecialProviderType {
+  FOREIGN_PROVIDER
+  AMBULANCE_COMPANY
+  LOGISTICS_COMPANY
+}
+
+enum SpecialProviderStatus {
+  DRAFT
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+}
+
+enum ExchangeRateSource {
+  MANUAL
+  AUTOMATIC_API
+  FIXED_CONTRACT
+}
+
+enum RateType {
+  BUYING
+  SELLING
+  MID_MARKET
+}
+
+model SpecialProvider {
+  id                   String              @id @default(cuid())
+  provider_id          String              @unique
+  organization_type    SpecialProviderType
+  company_name         String
+  country              String
+  currency             String // USD, GBP, EUR, etc.
+  exchange_rate_source ExchangeRateSource
+  contact_person_name  String
+  contact_email        String
+  contact_phone        String
+  company_address      String
+  website              String?
+
+  // Compliance & Documents
+  business_registration_number String
+  license_document_url         String?
+  service_agreement_url        String?
+  tax_id_number                String?
+
+  // Bank & Payment
+  bank_name                String
+  bank_country             String
+  account_number           String
+  swift_code               String?
+  preferred_payment_method String
+
+  // Service Details (JSON - varies by type)
+  service_details Json
+
+  // Internal Fields
+  status              SpecialProviderStatus @default(DRAFT)
+  approval_officer_id String?
+  approval_officer    User?                 @relation("ApprovedSpecialProviders", fields: [approval_officer_id], references: [id])
+  date_approved       DateTime?
+  internal_notes      String?
+
+  // Organization Link (optional)
+  organization_id String?
+  organization    Organization? @relation(fields: [organization_id], references: [id])
+
+  // Currency & Exchange Rate
+  default_exchange_rate   Decimal?
+  exchange_rate_locked_at DateTime?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([organization_type])
+  @@index([status])
+  @@index([country])
+  @@index([organization_id])
+  @@map("special_providers")
+}
+
+model ExchangeRate {
+  id             String             @id @default(cuid())
+  from_currency  String // e.g., "USD"
+  to_currency    String // e.g., "NGN"
+  rate           Decimal
+  rate_type      RateType // BUYING, SELLING, MID_MARKET
+  source         ExchangeRateSource
+  effective_date DateTime
+  is_locked      Boolean            @default(false) // Once used, cannot change
+  locked_at      DateTime?
+  created_by_id  String?
+  created_by     User?              @relation("CreatedExchangeRates", fields: [created_by_id], references: [id])
+  created_at     DateTime           @default(now())
+  updated_at     DateTime           @updatedAt
+
+  claims Claim[]
+
+  @@index([from_currency, to_currency])
+  @@index([effective_date])
+  @@index([is_locked])
+  @@map("exchange_rates")
+}
+
+model LegalDocument {
+  id                          String                     @id @default(cuid())
+  document_id                 String                     @unique
+  document_type               LegalDocumentType
+  title                       String
+  description                 String?
+  file_url                    String
+  status                      LegalDocumentStatus        @default(DRAFT)
+  compliance_certificate_type ComplianceCertificateType?
+  expiry_date                 DateTime?
+  created_by_id               String
+  vetted_by_id                String?
+  approved_by_id              String?
+  vetted_at                   DateTime?
+  approved_at                 DateTime?
+  created_at                  DateTime                   @default(now())
+  updated_at                  DateTime                   @updatedAt
+  created_by                  User                       @relation("CreatedLegalDocuments", fields: [created_by_id], references: [id])
+  vetted_by                   User?                      @relation("VettedLegalDocuments", fields: [vetted_by_id], references: [id])
+  approved_by                 User?                      @relation("ApprovedLegalDocuments", fields: [approved_by_id], references: [id])
+  signatures                  DocumentSignature[]        @relation("LegalDocumentSignatures")
+
+  @@index([document_type])
+  @@index([status])
+  @@index([created_by_id])
+  @@index([document_id])
+  @@map("legal_documents")
+}
+
+model MeetingMinutes {
+  id             String              @id @default(cuid())
+  meeting_id     String              @unique
+  meeting_type   MeetingType
+  meeting_date   DateTime
+  title          String
+  attendees      Json // Array of {name, email}
+  meeting_notes  String              @db.Text
+  attachments    Json? // Array of file URLs
+  status         LegalDocumentStatus @default(DRAFT)
+  created_by_id  String
+  vetted_by_id   String?
+  approved_by_id String?
+  vetted_at      DateTime?
+  approved_at    DateTime?
+  created_at     DateTime            @default(now())
+  updated_at     DateTime            @updatedAt
+  created_by     User                @relation("CreatedMeetingMinutes", fields: [created_by_id], references: [id])
+  vetted_by      User?               @relation("VettedMeetingMinutes", fields: [vetted_by_id], references: [id])
+  approved_by    User?               @relation("ApprovedMeetingMinutes", fields: [approved_by_id], references: [id])
+  signatures     DocumentSignature[] @relation("MeetingMinutesSignatures")
+
+  @@index([meeting_type])
+  @@index([status])
+  @@index([meeting_date])
+  @@index([created_by_id])
+  @@index([meeting_id])
+  @@map("meeting_minutes")
+}
+
+model DocumentSignature {
+  id                  String          @id @default(cuid())
+  legal_document_id   String?
+  meeting_minutes_id  String?
+  signature_type      SignatureType
+  signer_id           String
+  signature_data      Json? // Canvas signature data
+  signature_image_url String
+  signed_at           DateTime        @default(now())
+  ip_address          String?
+  user_agent          String?
+  signer              User            @relation(fields: [signer_id], references: [id])
+  legal_document      LegalDocument?  @relation("LegalDocumentSignatures", fields: [legal_document_id], references: [id])
+  meeting_minutes     MeetingMinutes? @relation("MeetingMinutesSignatures", fields: [meeting_minutes_id], references: [id])
+
+  @@index([legal_document_id])
+  @@index([meeting_minutes_id])
+  @@index([signer_id])
+  @@index([signature_type])
+  @@map("document_signatures")
+}
+
+model ProviderRiskProfile {
+  id              String    @id @default(cuid())
+  provider_id     String
+  risk_score      Decimal
+  risk_level      RiskLevel
+  assessment_date DateTime
+  factors         Json?
+  recommendations String?
+  created_at      DateTime  @default(now())
+  provider        Provider  @relation(fields: [provider_id], references: [id])
+
+  @@index([provider_id])
+  @@index([risk_level])
+  @@map("provider_risk_profiles")
+}
+
+model InPatient {
+  id             String          @id @default(cuid())
+  patient_id     String
+  provider_id    String
+  admission_date DateTime
+  discharge_date DateTime?
+  diagnosis      String?
+  treatment      String?
+  status         InPatientStatus @default(ADMITTED)
+  created_at     DateTime        @default(now())
+  provider       Provider        @relation(fields: [provider_id], references: [id])
+
+  @@index([patient_id])
+  @@index([provider_id])
+  @@index([status])
+  @@map("in_patients")
+}
+
+model Organization {
+  id                      String                  @id @default(cuid())
+  organization_id         String                  @unique // Numeric ID field - generated by API
+  name                    String                  @unique
+  code                    String                  @unique
+  type                    OrganizationType
+  contact_info            Json?
+  status                  OrganizationStatus      @default(ACTIVE)
+  premium_paid            Decimal?
+  state                   String?
+  lga                     String?
+  region                  String?
+  business_type           String?
+  created_at              DateTime                @default(now())
+  updated_at              DateTime                @updatedAt
+  principal_accounts      PrincipalAccount[]
+  organization_plans      OrganizationPlan[]
+  plans                   Plan[]
+  special_providers       SpecialProvider[]
+  principal_registrations PrincipalRegistration[]
+  client_plans            ClientPlan[]
+  client_accounts         ClientAccount[]
+
+  @@index([organization_id])
+  @@index([name])
+  @@index([status])
+  @@map("organizations")
+}
+
+model ClientAccount {
+  id              String      @id @default(cuid())
+  user_id         String      @unique
+  organization_id String
+  account_type    String?
+  status          AccountStatus @default(ACTIVE)
+  created_at      DateTime    @default(now())
+  updated_at      DateTime    @updatedAt
+
+  user            User        @relation("ClientUser", fields: [user_id], references: [id])
+  organization    Organization @relation(fields: [organization_id], references: [id])
+  client_plans    ClientPlan[]
+
+  @@index([organization_id])
+  @@map("client_accounts")
+}
+
+model Dependent {
+  id                    String           @id @default(cuid())
+  dependent_id          String           @unique
+  first_name            String
+  last_name             String
+  middle_name           String?
+  date_of_birth         DateTime
+  relationship          RelationshipType
+  gender                Gender?
+  phone_number          String?
+  email                 String?
+  residential_address   String?
+  state                 String?
+  lga                   String?
+  region                String?
+  profile_picture       String?
+  old_utilization       Decimal          @default(0)
+  preferred_provider_id String?
+  principal_id          String
+  status                DependentStatus  @default(ACTIVE)
+  created_at            DateTime         @default(now())
+  updated_at            DateTime         @updatedAt
+  created_by_id         String
+  created_by            User             @relation(fields: [created_by_id], references: [id])
+  principal             PrincipalAccount @relation(fields: [principal_id], references: [id])
+  preferred_provider    Provider?        @relation(fields: [preferred_provider_id], references: [id])
+  utilization_imports   UtilizationImport[]
+  telemedicine_appointments TelemedicineAppointment[]
+
+  @@index([dependent_id])
+  @@index([principal_id])
+  @@index([preferred_provider_id])
+  @@map("dependents")
+}
+
+model UtilizationImport {
+  id                   String           @id @default(cuid())
+  principal_account_id String?
+  dependent_id         String?
+  period_label         String
+  period_key           String
+  amount               Decimal          @default(0)
+  created_by_id        String?
+  created_at           DateTime         @default(now())
+  updated_at           DateTime         @updatedAt
+  created_by           User?            @relation("CreatedUtilizationImports", fields: [created_by_id], references: [id])
+  principal_account    PrincipalAccount? @relation(fields: [principal_account_id], references: [id])
+  dependent            Dependent?       @relation(fields: [dependent_id], references: [id])
+
+  @@unique([principal_account_id, period_key])
+  @@unique([dependent_id, period_key])
+  @@index([principal_account_id])
+  @@index([dependent_id])
+  @@map("utilization_imports")
+}
+
+model Plan {
+  id                          String                  @id @default(cuid())
+  plan_id                     String                  @unique // Numeric ID field - generated by API
+  name                        String
+  description                 String?
+  plan_type                   PlanType
+  classification              PlanClassification      @default(GENERAL)
+  premium_amount              Decimal
+  annual_limit                Decimal
+  coverage_details            Json?
+  status                      PlanStatus              @default(DRAFT)
+  approval_stage              ApprovalStage?          @default(UNDERWRITING)
+  special_risk_approved_at    DateTime?
+  special_risk_approved_by_id String?
+  special_risk_approved_by    User?                   @relation("SpecialRiskApprovedPlans", fields: [special_risk_approved_by_id], references: [id])
+  md_approved_at              DateTime?
+  md_approved_by_id           String?
+  md_approved_by              User?                   @relation("MDApprovedPlans", fields: [md_approved_by_id], references: [id])
+  created_at                  DateTime                @default(now())
+  updated_at                  DateTime                @updatedAt
+  created_by_id               String
+  band_type                   String? // Legacy field - use assigned_bands instead
+  assigned_bands              String[] // Array of band labels assigned to this plan
+  covered_services            CoveredService[]
+  invoices                    Invoice[]
+  plan_bands                  PlanBand[]
+  plan_coverages              PlanCoverage[]
+  plan_providers              PlanProvider[]
+  created_by                  User                    @relation(fields: [created_by_id], references: [id])
+  principal_accounts          PrincipalAccount[]
+  organization_plans          OrganizationPlan[]
+  organization                Organization?           @relation(fields: [organization_id], references: [id])
+  organization_id             String?
+  plan_limits                 PlanLimit[]
+  package_limits              PackageLimit[]
+  coverage_rules              CoverageRule[]
+  metadata                    Json?
+  principal_registrations     PrincipalRegistration[]
+  proposed_organization_name  String? // For custom public submissions
+
+  @@index([plan_id])
+  @@index([created_by_id])
+  @@index([organization_id])
+  @@index([classification])
+  @@index([assigned_bands])
+  @@index([approval_stage])
+  @@map("plans")
+}
+
+model OrganizationPlan {
+  id              String   @id @default(cuid())
+  organization_id String
+  plan_id         String
+  is_default      Boolean  @default(false)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  plan         Plan         @relation(fields: [plan_id], references: [id], onDelete: Cascade)
+
+  @@unique([organization_id, plan_id])
+  @@index([organization_id])
+  @@index([plan_id])
+  @@map("organization_plans")
+}
+
+model PlanCoverage {
+  id                  String   @id @default(cuid())
+  plan_id             String
+  service_type        String
+  coverage_percentage Decimal
+  max_amount          Decimal?
+  created_at          DateTime @default(now())
+  plan                Plan     @relation(fields: [plan_id], references: [id])
+
+  @@index([plan_id])
+  @@map("plan_coverages")
+}
+
+model PlanLimit {
+  id              String    @id @default(cuid())
+  plan_id         String
+  limit_type      LimitType
+  category_id     String?
+  service_id      String?
+  price_limit     Decimal?
+  frequency_limit Int?
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
+  plan            Plan      @relation(fields: [plan_id], references: [id])
+
+  @@unique([plan_id, limit_type, category_id, service_id])
+  @@index([plan_id])
+  @@map("plan_limits")
+}
+
+model CoverageRule {
+  id                String     @id @default(cuid())
+  plan_id           String? // Made optional - rules are based on AGE and MARITAL status only
+  family_type       FamilyType
+  principal_age_min Int?
+  principal_age_max Int?
+  spouse_age_min    Int?
+  spouse_age_max    Int?
+  spouse_count      Int?
+  children_age_max  Int?
+  children_count    Int?
+  parent_age_min    Int?
+  parent_age_max    Int?
+  parent_count      Int?
+  siblings_age_max  Int?
+  siblings_count    Int?
+  created_at        DateTime   @default(now())
+  updated_at        DateTime   @updatedAt
+  plan              Plan?      @relation(fields: [plan_id], references: [id])
+
+  @@index([plan_id])
+  @@map("coverage_rules")
+}
+
+model PlanProvider {
+  id          String             @id @default(cuid())
+  plan_id     String
+  provider_id String
+  status      PlanProviderStatus @default(ACTIVE)
+  created_at  DateTime           @default(now())
+  plan        Plan               @relation(fields: [plan_id], references: [id])
+  provider    Provider           @relation(fields: [provider_id], references: [id])
+
+  @@index([plan_id])
+  @@index([provider_id])
+  @@map("plan_providers")
+}
+
+model Permission {
+  id         String   @id @default(cuid())
+  role_id    String
+  role       Role     @relation(fields: [role_id], references: [id])
+  module     String
+  action     String
+  allowed    Boolean  @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  submodule  String?
+
+  @@unique([role_id, module, submodule, action])
+  @@index([role_id])
+  @@map("permissions")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  user_id     String
+  action      String
+  resource    String
+  resource_id String?
+  old_values  Json?
+  new_values  Json?
+  ip_address  String?
+  user_agent  String?
+  created_at  DateTime @default(now())
+  user        User     @relation(fields: [user_id], references: [id])
+
+  @@index([user_id])
+  @@index([action])
+  @@index([resource])
+  @@index([created_at])
+  @@map("audit_logs")
+}
+
+model SystemConfig {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String
+  description String?
+  is_active   Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@index([key])
+  @@map("system_config")
+}
+
+enum ServiceCategory {
+  PRIMARY_SERVICE
+  SECONDARY_SERVICE
+}
+
+model ServiceType {
+  id               String           @id @default(cuid())
+  service_id       String           @unique // Numeric ID field - generated by API
+  service_name     String
+  service_category String
+  service_type     ServiceCategory? // New field for additional categorization
+
+  // NHIA Tariff fields
+  nhia_price      Decimal? @default(0) @db.Decimal(10, 2) // NHIA tariff price
+  is_nhia_service Boolean  @default(false) // Flag for NHIA services
+
+  created_at           DateTime             @default(now())
+  updated_at           DateTime             @updatedAt
+  covered_services     CoveredService[]
+  tariffs              FacilityTariff[]
+  client_plan_services ClientPlanService[]
+
+  @@index([service_id])
+  @@index([service_name])
+  @@index([service_category])
+  @@index([service_type])
+  @@map("service_types")
+}
+
+model CoveredService {
+  id              String               @id @default(cuid())
+  plan_id         String
+  facility_id     String
+  service_type_id String
+  facility_price  Decimal
+  limit_count     Int?
+  status          CoveredServiceStatus @default(ACTIVE)
+  created_at      DateTime             @default(now())
+  updated_at      DateTime             @updatedAt
+  facility        Provider             @relation(fields: [facility_id], references: [id])
+  plan            Plan                 @relation(fields: [plan_id], references: [id])
+  service_type    ServiceType          @relation(fields: [service_type_id], references: [id])
+
+  @@index([plan_id])
+  @@index([facility_id])
+  @@index([service_type_id])
+  @@map("covered_services")
+}
+
+model BandLabel {
+  id          String   @id @default(cuid())
+  label       String   @unique
+  description String?
+  status      String   @default("ACTIVE")
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("band_labels")
+}
+
+model TariffPlan {
+  id               String           @id @default(cuid())
+  provider_id      String
+  status           TariffPlanStatus @default(DRAFT)
+  version          Int              @default(1)
+  submitted_at     DateTime?
+  approved_at      DateTime?
+  approved_by_id   String?
+  rejection_reason String?
+  created_at       DateTime         @default(now())
+  updated_at       DateTime         @updatedAt
+  approval_stage   ApprovalStage    @default(UNDERWRITING)
+  is_customized    Boolean          @default(true)
+
+  provider                  Provider                @relation(fields: [provider_id], references: [id])
+  approved_by               User?                   @relation("ApprovedTariffPlans", fields: [approved_by_id], references: [id])
+  tariff_plan_services      TariffPlanService[]
+  tariff_plan_service_links TariffPlanServiceLink[]
+  msas                      MSA[]
+
+  @@index([provider_id])
+  @@index([status])
+  @@index([submitted_at])
+  @@map("tariff_plans")
+}
+
+model TariffPlanService {
+  id                 String    @id @default(cuid())
+  service_id         String
+  service_name       String
+  category_id        String
+  category_name      String
+  price              Float
+  original_currency  String?   @default("NGN")
+  original_price     Decimal?
+  exchange_rate_used Decimal?
+  exchange_rate_date DateTime?
+  is_primary         Boolean   @default(false)
+  is_secondary       Boolean   @default(false)
+  provider_id        String
+  tariff_plan_id     String?
+  is_draft           Boolean   @default(false)
+  status             String    @default("ACTIVE")
+  service_type       Int? // 1 = Primary (no approval code), NULL = Secondary (requires approval code)
+  created_at         DateTime  @default(now())
+  updated_at         DateTime  @updatedAt
+
+  provider                  Provider                @relation(fields: [provider_id], references: [id])
+  tariff_plan               TariffPlan?             @relation(fields: [tariff_plan_id], references: [id])
+  tariff_plan_service_links TariffPlanServiceLink[]
+
+  @@index([category_id])
+  @@index([service_id])
+  @@index([provider_id])
+  @@index([tariff_plan_id])
+  @@index([status])
+  @@index([is_draft])
+  @@index([service_type])
+  @@map("tariff_plan_services")
+}
+
+model TariffPlanServiceLink {
+  id             String   @id @default(cuid())
+  tariff_plan_id String
+  service_id     String
+  created_at     DateTime @default(now())
+
+  tariff_plan TariffPlan        @relation(fields: [tariff_plan_id], references: [id], onDelete: Cascade)
+  service     TariffPlanService @relation(fields: [service_id], references: [id], onDelete: Cascade)
+
+  @@unique([tariff_plan_id, service_id])
+  @@index([tariff_plan_id])
+  @@index([service_id])
+  @@map("tariff_plan_service_links")
+}
+
+model MSA {
+  id              String    @id @default(cuid())
+  provider_id     String
+  tariff_plan_id  String
+  document_url    String?
+  status          MSAStatus @default(DRAFT)
+  generated_at    DateTime?
+  generated_by_id String?
+  signed_at       DateTime?
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
+
+  provider     Provider   @relation(fields: [provider_id], references: [id])
+  tariff_plan  TariffPlan @relation(fields: [tariff_plan_id], references: [id])
+  generated_by User?      @relation("GeneratedMSAs", fields: [generated_by_id], references: [id])
+
+  @@index([provider_id])
+  @@index([tariff_plan_id])
+  @@index([status])
+  @@index([generated_at])
+  @@map("msas")
+}
+
+model PlanBand {
+  id          String         @id @default(cuid())
+  plan_id     String
+  provider_id String
+  band_type   String
+  status      PlanBandStatus @default(ACTIVE)
+  created_at  DateTime       @default(now())
+  updated_at  DateTime       @updatedAt
+  plan        Plan           @relation(fields: [plan_id], references: [id])
+  provider    Provider       @relation(fields: [provider_id], references: [id])
+
+  @@index([plan_id])
+  @@index([provider_id])
+  @@map("plan_bands")
+}
+
+// --- Benefit Package Hierarchy ---
+// New hierarchical structure for benefit packages: Package -> Category -> Service
+
+model BenefitPackage {
+  id             String              @id @default(cuid())
+  name           String
+  classification BenefitClassification @default(SME)
+  description    String?
+  price          Decimal?            // Plan price (optional for now)
+  is_active      Boolean             @default(true)
+  created_at     DateTime            @default(now())
+  updated_at     DateTime            @updatedAt
+  
+  categories BenefitCategory[]
+  
+  @@unique([name, classification])
+  @@index([classification])
+  @@map("benefit_packages")
+}
+
+model BenefitCategory {
+  id            String   @id @default(cuid())
+  package_id    String
+  name          String
+  description   String?
+  price_limit   Decimal? // Optional category-level amount cap
+  display_order Int      @default(0)
+  is_active     Boolean  @default(true)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  
+  package  BenefitPackage   @relation(fields: [package_id], references: [id], onDelete: Cascade)
+  services BenefitService[]
+  
+  @@unique([package_id, name])
+  @@index([package_id])
+  @@map("benefit_categories")
+}
+
+model BenefitService {
+  id               String                @id @default(cuid())
+  category_id      String
+  name             String
+  description      String?
+  limit_type       BenefitLimitType?    @default(PRICE)  // Optional when NOT_COVERED
+  limit_value      Decimal?              // Amount if PRICE, or null if FREQUENCY
+  limit_frequency  String?               // e.g., "1 Session/Year" if FREQUENCY
+  coverage_status  BenefitCoverageStatus @default(COVERED)
+  is_customizable  Boolean               @default(true)
+  display_order    Int                   @default(0)
+  is_active        Boolean               @default(true)
+  created_at       DateTime              @default(now())
+  updated_at       DateTime              @updatedAt
+  
+  category BenefitCategory @relation(fields: [category_id], references: [id], onDelete: Cascade)
+  
+  @@unique([category_id, name])
+  @@index([category_id])
+  @@map("benefit_services")
+}
+
+enum BenefitClassification {
+  SME
+  RETAIL
+  CORPORATE
+}
+
+model PackageLimit {
+  id            String           @id @default(cuid())
+  plan_id       String?          // Optional - Benefit Packages now works independently from Plans Management
+  category      String // Category name (e.g., "Laboratory Services", "Drugs / Pharmaceuticals")
+  service_name  String? // Optional specific service name within category
+  amount        Decimal // Maximum amount allowed (Limit)
+  default_price Decimal? // Default price for the service (if applicable)
+  input_type    BenefitInputType @default(NUMBER) // Type of input for customization
+
+  // New Fields for Redesign
+  limit_type      BenefitLimitType      @default(PRICE)
+  limit_frequency String? // e.g. "1 Session", "Annually"
+  coverage_status BenefitCoverageStatus @default(COVERED)
+
+  is_customizable Boolean            @default(true) // Whether this field can be customized
+  status          PackageLimitStatus @default(ACTIVE)
+  created_at      DateTime           @default(now())
+  updated_at      DateTime           @updatedAt
+  plan            Plan?              @relation(fields: [plan_id], references: [id])
+
+  // @@unique([plan_id, category]) // Removed unique constraint to allow multiple entries per category (services)
+  @@index([plan_id])
+  @@index([category])
+  @@map("package_limits")
+}
+
+enum BenefitInputType {
+  NUMBER
+  DROPDOWN
+  ALPHANUMERIC
+}
+
+enum BenefitLimitType {
+  PRICE
+  FREQUENCY
+}
+
+enum BenefitCoverageStatus {
+  COVERED
+  NOT_COVERED
+}
+
+model RiskProfile {
+  id              String            @id @default(cuid())
+  provider_id     String
+  risk_score      Int
+  risk_level      RiskLevel
+  assessment_date DateTime
+  last_reviewed   DateTime
+  status          RiskProfileStatus @default(ACTIVE)
+  notes           String?
+  created_at      DateTime          @default(now())
+  updated_at      DateTime          @updatedAt
+  provider        Provider          @relation("RiskProfiles", fields: [provider_id], references: [id])
+
+  @@index([provider_id])
+  @@index([risk_level])
+  @@index([status])
+  @@map("risk_profiles")
+}
+
+model Role {
+  id                 String       @id @default(cuid())
+  name               String       @unique
+  description        String?
+  permissions        Json?        @default("[]")
+  is_system          Boolean      @default(false)
+  is_active          Boolean      @default(true)
+  created_at         DateTime     @default(now())
+  updated_at         DateTime     @updatedAt
+  users              User[]
+  permission_records Permission[]
+
+  @@map("roles")
+}
+
+model FraudRule {
+  id                String            @id @default(cuid())
+  name              String
+  description       String?
+  category          String
+  severity          FraudRuleSeverity @default(MEDIUM)
+  conditions        String[]
+  auto_action       String?
+  triggered_count   Int               @default(0)
+  is_active         Boolean           @default(true)
+  risk_score_weight Int               @default(50)
+  created_at        DateTime          @default(now())
+  updated_at        DateTime          @updatedAt
+  created_by_id     String
+  created_by        User              @relation("CreatedFraudRules", fields: [created_by_id], references: [id])
+
+  @@map("fraud_rules")
+}
+
+model ApprovalCode {
+  id                 String                 @id @default(cuid())
+  approval_code      String                 @unique
+  enrollee_id        String
+  enrollee_name      String
+  hospital           String
+  services           String
+  amount             Decimal
+  diagnosis          String?
+  clinical_encounter String?                // Clinical findings / notes recorded at code generation
+  status             ApprovalCodeStatus     @default(PENDING)
+  claim_id           String? // Link to claim when created
+  generated_by_id    String
+  created_at         DateTime               @default(now())
+  updated_at         DateTime               @updatedAt
+  admission_required Boolean                @default(false)
+  is_manual          Boolean                @default(false)
+  beneficiary_id     String? // Actual beneficiary ID string (e.g. CJH/001/D01) for display
+  provider_id        String? // Optional link to Provider (for manual codes)
+  is_deleted         Boolean                @default(false)
+  deleted_at         DateTime?
+  deleted_by_id      String?
+  deletion_reason    String?
+  enrollee           PrincipalAccount       @relation(fields: [enrollee_id], references: [id])
+  generated_by       User                   @relation("GeneratedApprovalCodes", fields: [generated_by_id], references: [id])
+  deleted_by         User?                  @relation("DeletedApprovalCodes", fields: [deleted_by_id], references: [id])
+  provider           Provider?              @relation(fields: [provider_id], references: [id])
+  claim              Claim?                 @relation(fields: [claim_id], references: [id])
+  service_items      ApprovalCodeService[] // Individual service tracking
+  timeline           ApprovalCodeTimeline[] // Timeline tracking for audit trail
+
+  @@index([enrollee_id])
+  @@index([status])
+  @@index([approval_code])
+  @@index([claim_id])
+  @@map("approval_codes")
+}
+
+model ApprovalCodeService {
+  id               String       @id @default(cuid())
+  approval_code_id String
+  service_name     String
+  service_amount   Decimal
+  added_at         DateTime     @default(now())
+  is_initial       Boolean      @default(true) // true for original services, false for later additions
+  quantity         Int          @default(1)
+  is_ad_hoc        Boolean      @default(false) // true if service was manually added (not from tariff)
+  is_added_after_approval Boolean @default(false) // true if service was added after approval code was already approved
+  tariff_price     Decimal? // Original tariff price for comparison
+  service_id       String? // Optional ID of the original service (ServiceType or TariffPlanService)
+  added_by_id      String? // User who added this service (null for initial services)
+  
+  // Vetting Fields
+  vetted_amount    Decimal?
+  is_vetted_approved Boolean @default(true)
+  rejection_reason String?
+  category         String?  // DRG for Drugs, SER for Services, etc.
+  is_deleted       Boolean @default(false) // For vetting stage "deletion"
+
+  approval_code    ApprovalCode @relation(fields: [approval_code_id], references: [id], onDelete: Cascade)
+  added_by         User?        @relation("AddedApprovalCodeServices", fields: [added_by_id], references: [id])
+
+  @@index([approval_code_id])
+  @@index([is_initial])
+  @@map("approval_code_services")
+}
+
+model ApprovalCodeTimeline {
+  id               String   @id @default(cuid())
+  approval_code_id String
+  stage            String
+  timestamp        DateTime @default(now())
+  user_id          String?
+  provider_id      String?
+  delay_minutes    Int?
+  created_at       DateTime @default(now())
+
+  approval_code ApprovalCode @relation(fields: [approval_code_id], references: [id], onDelete: Cascade)
+  user          User?        @relation("ApprovalCodeTimelineUser", fields: [user_id], references: [id])
+  provider      Provider?    @relation("ApprovalCodeTimelineProvider", fields: [provider_id], references: [id])
+
+  @@index([approval_code_id])
+  @@index([stage])
+  @@index([timestamp])
+  @@index([user_id])
+  @@index([provider_id])
+  @@map("approval_code_timeline")
+}
+
+model ProviderRequestItem {
+  id                  String  @id @default(cuid())
+  provider_request_id String
+  service_name        String
+  service_amount      Decimal
+  quantity            Int     @default(1)
+
+  is_ad_hoc    Boolean  @default(false)
+  is_added_after_approval Boolean @default(false) // true if service was added to existing approval code
+  tariff_price Decimal?
+  category     String?  // Track category at request level too
+
+  created_at DateTime @default(now())
+
+  provider_request ProviderRequest @relation(fields: [provider_request_id], references: [id], onDelete: Cascade)
+
+  @@index([provider_request_id])
+  @@map("provider_request_items")
+}
+
+model ProcurementInvoice {
+  id                     String            @id @default(cuid())
+  invoice_number         String            @unique
+  service_type           String
+  department             String
+  amount                 Decimal
+  description            String?
+  attachment_url         String? // Cloudinary URL of supporting document
+  attachment_name        String? // Original filename
+  generated_by           String
+  status                 ProcurementStatus @default(PENDING)
+  rejection_reason       String?
+  dept_oversight_comment String?
+  dept_oversight_by_id   String?
+  dept_oversight_at      DateTime?
+  operations_comment     String?
+  operations_by_id       String?
+  operations_at          DateTime?
+  executive_comment      String?
+  executive_by_id        String?
+  executive_at           DateTime?
+  paid_at                DateTime?
+  created_by_id          String
+  created_at             DateTime          @default(now())
+  updated_at             DateTime          @updatedAt
+  created_by             User              @relation("CreatedProcurementInvoices", fields: [created_by_id], references: [id])
+  dept_oversight_by      User?             @relation("ProcurementDeptOversightBy", fields: [dept_oversight_by_id], references: [id])
+  operations_by          User?             @relation("ProcurementOperationsBy", fields: [operations_by_id], references: [id])
+  executive_by           User?             @relation("ProcurementExecutiveBy", fields: [executive_by_id], references: [id])
+
+  @@index([invoice_number])
+  @@index([status])
+  @@index([department])
+  @@map("procurement_invoices")
+}
+
+model ProviderRequest {
+  id               String                @id @default(cuid())
+  claim_id         String?
+  enrollee_id      String
+  provider_id      String
+  hospital         String
+  services         String // Legacy / Summary
+  amount           Decimal
+  status           ProviderRequestStatus @default(PENDING)
+  rejection_reason String?
+
+  beneficiary_id   String?
+  beneficiary_name String?
+
+  // Tariff type field - PRIVATE or NHIA
+  tariff_type String? @default("PRIVATE") // 'PRIVATE' or 'NHIA'
+
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @updatedAt
+  admission_required Boolean          @default(false)
+  diagnosis          String?
+  request_id         String?
+  enrollee           PrincipalAccount @relation(fields: [enrollee_id], references: [id])
+  provider           Provider         @relation(fields: [provider_id], references: [id])
+
+  request_items ProviderRequestItem[]
+
+  @@index([enrollee_id])
+  @@index([provider_id])
+  @@index([status])
+  @@map("provider_requests")
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_VERIFICATION
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+  TERMINATED
+  ON_LEAVE
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum MaritalStatus {
+  SINGLE
+  MARRIED
+  DIVORCED
+  WIDOWED
+  SEPARATED
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+  HALF_DAY
+}
+
+enum LeaveType {
+  SICK_LEAVE
+  VACATION
+  PERSONAL_LEAVE
+  MATERNITY_LEAVE
+  PATERNITY_LEAVE
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+enum MemoPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum MemoStatus {
+  DRAFT
+  PENDING_DEPT_OVERSIGHT
+  PENDING_EXECUTIVE
+  APPROVED
+  REJECTED
+  READ
+  UNREAD
+  ARCHIVED
+}
+
+enum MemoType {
+  STANDARD
+  REQUEST
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum HRRuleType {
+  ATTENDANCE
+  LEAVE_APPROVAL
+  PAYROLL
+  CLAIMS_VALIDATION
+  EMPLOYEE_ONBOARDING
+  PERFORMANCE
+  COMPLIANCE
+}
+
+enum ClaimType {
+  MEDICAL
+  DENTAL
+  VISION
+  PHARMACY
+  TELEMEDICINE_LAB
+  TELEMEDICINE_RADIOLOGY
+  TELEMEDICINE_PHARMACY
+}
+
+enum ClaimStatus {
+  NEW
+  PENDING
+  SUBMITTED
+  UNDER_REVIEW
+  VETTING
+  VETTER1_COMPLETED
+  VETTER2_COMPLETED
+  AUDIT_COMPLETED
+  APPROVED
+  REJECTED
+  PAID
+}
+
+enum VettingType {
+  MANUAL
+  AUTOMATED
+  SMART_ASSISTED
+}
+
+enum VettingStatus {
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+}
+
+enum AuditType {
+  COMPLIANCE
+  FINANCIAL
+  OPERATIONAL
+}
+
+enum AuditStatus {
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+}
+
+enum FraudAlertType {
+  DUPLICATE_CLAIM
+  SUSPICIOUS_AMOUNT
+  PROVIDER_FRAUD
+  PATTERN_ANOMALY
+}
+
+enum AlertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum FraudStatus {
+  OPEN
+  INVESTIGATING
+  RESOLVED
+  FALSE_POSITIVE
+}
+
+enum TransactionType {
+  CLAIM_PAYOUT
+  REFUND
+  ADJUSTMENT
+  TRANSFER
+  PROCUREMENT_PAYOUT
+}
+
+enum TransactionStatus {
+  PENDING
+  PROCESSED
+  PAID
+  FAILED
+  CANCELLED
+}
+
+enum AccountType {
+  PRINCIPAL
+  DEPENDENT
+  PROVIDER
+}
+
+enum AccountStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum PayoutMethod {
+  BANK_TRANSFER
+  CHECK
+  CASH
+  DIGITAL_WALLET
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSED
+  PAID
+  FAILED
+}
+
+enum InvoiceStatus {
+  PENDING
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum ProviderType {
+  HOSPITAL
+  CLINIC
+  PHARMACY
+  LABORATORY
+  SPECIALIST
+}
+
+enum ProviderStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_APPROVAL
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum InPatientStatus {
+  ADMITTED
+  DISCHARGED
+  TRANSFERRED
+}
+
+enum OrganizationType {
+  CORPORATE
+  GOVERNMENT
+  NGO
+  INDIVIDUAL
+}
+
+enum OrganizationStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum PrincipalStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum RelationshipType {
+  SPOUSE
+  SON
+  DAUGHTER
+  PARENT
+  SIBLING
+  OTHER
+  EXTRA_DEPENDENT
+}
+
+enum DependentStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum ProcurementStatus {
+  PENDING
+  PENDING_OPERATIONS
+  PENDING_MD
+  PENDING_FINANCE
+  APPROVED
+  REJECTED
+  PAID
+}
+
+enum ProviderRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  PARTIAL
+  DELETED
+}
+
+enum ApprovalCodeStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  PARTIAL
+}
+
+enum FraudRuleSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum PlanType {
+  INDIVIDUAL
+  FAMILY
+  CORPORATE
+}
+
+enum PlanClassification {
+  GENERAL
+  CUSTOM
+  SME
+  RETAIL
+  CORPORATE
+}
+
+enum PlanStatus {
+  DRAFT
+  IN_PROGRESS
+  PENDING_APPROVAL
+  COMPLETE
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum CoveredServiceStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum PlanBandStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum TariffPlanStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  REJECTED
+  COMPLETE
+}
+
+enum ApprovalStage {
+  UNDERWRITING
+  SPECIAL_RISK
+  MD
+  COMPLETE
+}
+
+enum LimitType {
+  CATEGORY_PRICE
+  CATEGORY_FREQUENCY
+  SERVICE_PRICE
+  SERVICE_FREQUENCY
+}
+
+enum FamilyType {
+  INDIVIDUAL
+  FAMILY
+}
+
+enum MSAStatus {
+  DRAFT
+  GENERATED
+  SENT
+  SIGNED
+  EXPIRED
+}
+
+enum PackageLimitStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum RiskProfileStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum PlanProviderStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum PayrollStatus {
+  PENDING
+  PROCESSED
+  PAID
+  CANCELLED
+}
+
+enum ReportStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+model TelemedicineAppointment {
+  id               String            @id @default(cuid())
+  enrollee_id      String
+  dependent_id     String?           // If null, appointment is for principal; if set, appointment is for this dependent
+  provider_id      String?
+  appointment_type AppointmentType   @default(WALK_IN)
+  reason           String?
+  scheduled_date   DateTime
+  status           AppointmentStatus @default(SCHEDULED)
+  clinic           String?
+  specialization   String? // Specialization selected during booking
+  state            String? // State selected during booking
+  lga              String? // Local Government Area (optional)
+  notes            String?
+  created_by_id    String?
+  created_at       DateTime          @default(now())
+  updated_at       DateTime          @updatedAt
+
+  // Relations
+  enrollee              PrincipalAccount      @relation(fields: [enrollee_id], references: [id])
+  dependent             Dependent?            @relation(fields: [dependent_id], references: [id])
+  provider              Provider?             @relation(fields: [provider_id], references: [id])
+  created_by            User?                 @relation(fields: [created_by_id], references: [id])
+  clinical_encounters   ClinicalEncounter[]
+  lab_orders            LabOrder[]
+  radiology_orders      RadiologyOrder[]
+  pharmacy_orders       PharmacyOrder[]
+  referrals             Referral[]
+  telemedicine_requests TelemedicineRequest[]
+
+  @@index([enrollee_id])
+  @@index([dependent_id])
+  @@index([provider_id])
+  @@index([scheduled_date])
+  @@index([status])
+  @@map("telemedicine_appointments")
+}
+
+model ClinicalEncounter {
+  id                    String          @id @default(cuid())
+  appointment_id        String
+  presenting_complaints String?
+  clinical_notes        String?
+  assessment            String?
+  diagnosis             String?
+  plan_notes            String?
+  status                EncounterStatus @default(IN_PROGRESS)
+  created_by_id         String
+  created_at            DateTime        @default(now())
+  updated_at            DateTime        @updatedAt
+
+  // Relations
+  appointment TelemedicineAppointment @relation(fields: [appointment_id], references: [id])
+  created_by  User                    @relation(fields: [created_by_id], references: [id])
+
+  @@index([appointment_id])
+  @@index([status])
+  @@map("clinical_encounters")
+}
+
+model TelemedicineFacility {
+  id             String         @id @default(cuid())
+  facility_name  String
+  phone_number   String
+  email          String
+  facility_type  FacilityType
+  selected_bands String[] // Array of band labels for this facility
+  status         FacilityStatus @default(ACTIVE)
+  created_at     DateTime       @default(now())
+  updated_at     DateTime       @updatedAt
+
+  // Relations
+  lab_orders            LabOrder[]
+  radiology_orders      RadiologyOrder[]
+  pharmacy_orders       PharmacyOrder[]
+  telemedicine_requests TelemedicineRequest[]
+  tariffs               FacilityTariff[]
+
+  @@index([facility_type])
+  @@index([status])
+  @@map("telemedicine_facilities")
+}
+
+model FacilityTariff {
+  id          String   @id @default(cuid())
+  facility_id String
+  service_id  String
+  price       Float
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  // Relations
+  facility TelemedicineFacility @relation(fields: [facility_id], references: [id], onDelete: Cascade)
+  service  ServiceType          @relation(fields: [service_id], references: [id], onDelete: Cascade)
+
+  @@unique([facility_id, service_id])
+  @@index([facility_id])
+  @@index([service_id])
+  @@map("facility_tariffs")
+}
+
+model LabOrder {
+  id              String      @id @default(cuid())
+  appointment_id  String
+  facility_id     String
+  test_name       String
+  status          OrderStatus @default(PENDING)
+  requested_by    String
+  amount          Float?
+  results         String?
+  findings        String?
+  recommendations String?
+  notes           String?
+  pdf_report      String?
+  submitted_at    DateTime?
+  completed_at    DateTime?
+  created_at      DateTime    @default(now())
+  updated_at      DateTime    @updatedAt
+
+  // Relations
+  appointment TelemedicineAppointment @relation(fields: [appointment_id], references: [id])
+  facility    TelemedicineFacility    @relation(fields: [facility_id], references: [id])
+
+  @@index([appointment_id])
+  @@index([facility_id])
+  @@index([status])
+  @@map("lab_orders")
+}
+
+model RadiologyOrder {
+  id              String      @id @default(cuid())
+  appointment_id  String
+  facility_id     String
+  test_name       String
+  status          OrderStatus @default(PENDING)
+  requested_by    String
+  amount          Float?
+  results         String?
+  findings        String?
+  recommendations String?
+  notes           String?
+  pdf_report      String?
+  submitted_at    DateTime?
+  completed_at    DateTime?
+  created_at      DateTime    @default(now())
+  updated_at      DateTime    @updatedAt
+
+  // Relations
+  appointment TelemedicineAppointment @relation(fields: [appointment_id], references: [id])
+  facility    TelemedicineFacility    @relation(fields: [facility_id], references: [id])
+
+  @@index([appointment_id])
+  @@index([facility_id])
+  @@index([status])
+  @@map("radiology_orders")
+}
+
+model PharmacyOrder {
+  id               String      @id @default(cuid())
+  appointment_id   String
+  facility_id      String
+  medication       String
+  dose             String?
+  quantity         Int?
+  duration         String? // e.g., "7 days", "2 weeks", "1 month"
+  frequency        String? // e.g., "Once daily", "Twice daily", "Three times daily"
+  status           OrderStatus @default(PENDING)
+  requested_by     String
+  amount           Float? // Price from facility tariff plan
+  delivery_address String? // Delivery address (optional, defaults to patient's residential address)
+  notes            String? // Added notes field
+  results          String? // Added results field for storing completion data
+  completed_at     DateTime? // Added completed_at field
+  created_at       DateTime    @default(now())
+  updated_at       DateTime    @updatedAt
+
+  // Relations
+  appointment TelemedicineAppointment @relation(fields: [appointment_id], references: [id])
+  facility    TelemedicineFacility    @relation(fields: [facility_id], references: [id])
+
+  @@index([appointment_id])
+  @@index([facility_id])
+  @@index([status])
+  @@map("pharmacy_orders")
+}
+
+model Referral {
+  id             String      @id @default(cuid())
+  appointment_id String
+  referral_type  String
+  reason         String?
+  status         OrderStatus @default(PENDING)
+  requested_by   String
+  created_at     DateTime    @default(now())
+  updated_at     DateTime    @updatedAt
+
+  // Relations
+  appointment TelemedicineAppointment @relation(fields: [appointment_id], references: [id])
+
+  @@index([appointment_id])
+  @@index([status])
+  @@map("referrals")
+}
+
+enum SalesSubmodule {
+  CORPORATE_SALES
+  AGENCY_SALES
+  SPECIAL_RISKS_SALES
+  SALES_OPERATIONS
+}
+
+enum ReportType {
+  DAILY
+  WEEKLY
+  MONTHLY
+  QUARTERLY
+  HALF_YEARLY
+  YEARLY
+}
+
+enum SalesReportStatus {
+  DRAFT
+  SUBMITTED
+  VETTED
+  APPROVED
+  FINAL_COPY_UPLOADED
+}
+
+model SalesReport {
+  id                   String            @id @default(cuid())
+  report_id            String            @unique
+  submodule            SalesSubmodule
+  region_id            String?
+  branch_id            String?
+  report_type          ReportType
+  report_period        DateTime
+  report_period_end    DateTime?
+  title                String
+  sales_amount         Decimal
+  target_amount        Decimal
+  state                String?
+  achievement          Decimal // Calculated percentage
+  notes                String?           @db.Text
+  status               SalesReportStatus @default(DRAFT)
+  submitted_by_id      String?
+  vetted_by_id         String?
+  approved_by_id       String?
+  submitted_at         DateTime?
+  vetted_at            DateTime?
+  approved_at          DateTime?
+  final_copy_url       String?
+  supporting_documents Json? // Array of file URLs
+  created_at           DateTime          @default(now())
+  updated_at           DateTime          @updatedAt
+  region               SalesRegion?      @relation(fields: [region_id], references: [id])
+  branch               SalesBranch?      @relation(fields: [branch_id], references: [id])
+  submitted_by         User?             @relation("SubmittedSalesReports", fields: [submitted_by_id], references: [id])
+  vetted_by            User?             @relation("VettedSalesReports", fields: [vetted_by_id], references: [id])
+  approved_by          User?             @relation("ApprovedSalesReports", fields: [approved_by_id], references: [id])
+
+  @@index([submodule])
+  @@index([region_id])
+  @@index([branch_id])
+  @@index([report_type])
+  @@index([status])
+  @@index([report_period])
+  @@index([submitted_by_id])
+  @@index([report_id])
+  @@map("sales_reports")
+}
+
+model SalesRegion {
+  id         String              @id @default(cuid())
+  name       String              @unique
+  is_active  Boolean             @default(true)
+  created_at DateTime            @default(now())
+  updated_at DateTime            @updatedAt
+  branches   SalesBranch[]
+  targets    SalesBranchTarget[]
+  reports    SalesReport[]
+
+  @@index([is_active])
+  @@map("sales_regions")
+}
+
+model SalesBranch {
+  id         String              @id @default(cuid())
+  region_id  String
+  name       String
+  state      String
+  is_active  Boolean             @default(true)
+  created_at DateTime            @default(now())
+  updated_at DateTime            @updatedAt
+  region     SalesRegion         @relation(fields: [region_id], references: [id])
+  targets    SalesBranchTarget[]
+  reports    SalesReport[]
+
+  @@unique([region_id, name])
+  @@index([region_id])
+  @@index([state])
+  @@index([is_active])
+  @@map("sales_branches")
+}
+
+model SalesBranchTarget {
+  id            String        @id @default(cuid())
+  region_id     String
+  branch_id     String
+  submodule     SalesSubmodule
+  annual_target Decimal       @default(0)
+  created_at    DateTime      @default(now())
+  updated_at    DateTime      @updatedAt
+  region        SalesRegion   @relation(fields: [region_id], references: [id])
+  branch        SalesBranch   @relation(fields: [branch_id], references: [id])
+
+  @@unique([region_id, branch_id, submodule])
+  @@index([region_id])
+  @@index([branch_id])
+  @@index([submodule])
+  @@map("sales_branch_targets")
+}
+
+model TelemedicineRequest {
+  id             String                @id @default(cuid())
+  appointment_id String
+  enrollee_id    String
+  request_type   String // "LAB", "RADIOLOGY", "PHARMACY", "REFERRAL"
+  facility_id    String?
+  test_name      String?
+  description    String?
+  status         ProviderRequestStatus @default(PENDING)
+  created_by_id  String
+  created_at     DateTime              @default(now())
+  updated_at     DateTime              @updatedAt
+
+  // Relations
+  appointment TelemedicineAppointment @relation(fields: [appointment_id], references: [id])
+  enrollee    PrincipalAccount        @relation(fields: [enrollee_id], references: [id])
+  facility    TelemedicineFacility?   @relation(fields: [facility_id], references: [id])
+  created_by  User                    @relation(fields: [created_by_id], references: [id])
+
+  @@index([appointment_id])
+  @@index([enrollee_id])
+  @@index([facility_id])
+  @@index([status])
+  @@map("telemedicine_requests")
+}
+
+// Enums for Telemedicine
+enum AppointmentType {
+  WALK_IN
+  TELE_CONSULTATION
+}
+
+enum AppointmentStatus {
+  PENDING
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum FacilityType {
+  LAB
+  RADIOLOGY
+  PHARMACY
+}
+
+enum FacilityStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum OrderStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum EncounterStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum LegalDocumentType {
+  CAC_DOCUMENT
+  COMPLIANCE_CERTIFICATE
+  LICENSE
+  MEETING_MINUTES
+}
+
+enum LegalDocumentStatus {
+  DRAFT
+  VETTED
+  APPROVED
+}
+
+enum MeetingType {
+  BOARD_MEETING
+  MANAGEMENT_MEETING
+  COMMITTEE_MEETING
+}
+
+enum ComplianceCertificateType {
+  TAX_CLEARANCE
+  PENCOM
+  NSITF
+  ITF
+  BPP
+  OTHER
+}
+
+enum SignatureType {
+  LEGAL_DOCUMENT
+  MEETING_MINUTES
+}
+
+enum AccountCategory {
+  ASSET
+  LIABILITY
+  EQUITY
+  INCOME
+  EXPENSE
+}
+
+enum AccountSubCategory {
+  // Assets - Cash & Cash Equivalents (1000)
+  CASH_AT_HAND
+  CASH_AT_BANK
+  PETTY_CASH
+  // Assets - Receivables (1100)
+  ACCOUNTS_RECEIVABLE
+  PREMIUM_RECEIVABLE
+  PROVIDER_RECEIVABLE
+  STAFF_DEBTORS
+  // Assets - Investments (1200)
+  SHORT_TERM_INVESTMENTS
+  LONG_TERM_INVESTMENTS
+  // Assets - Prepayments (1300)
+  PREPAID_INSURANCE
+  PREPAID_RENT
+  // Assets - Inventory & Supplies (1400)
+  OFFICE_SUPPLIES
+  MEDICAL_CONSUMABLES
+  // Assets - Fixed Assets (1500)
+  MOTOR_VEHICLES
+  OFFICE_EQUIPMENT
+  FURNITURE_FITTINGS
+  COMPUTER_EQUIPMENT
+  ACCUMULATED_DEPRECIATION
+
+  // Liabilities - Payables (2000)
+  ACCOUNTS_PAYABLE
+  PROVIDER_PAYABLE
+  STAFF_PAYABLE
+  // Liabilities - Accrued Expenses (2100)
+  ACCRUED_SALARIES
+  ACCRUED_CLAIMS
+  ACCRUED_TAXES
+  // Liabilities - Taxes & Statutory (2200)
+  PAYE_PAYABLE
+  PENSION_PAYABLE
+  VAT_PAYABLE
+  WITHHOLDING_TAX_PAYABLE
+  // Liabilities - Unearned Premium / Deferred Income (2300)
+  UNEARNED_PREMIUM
+  DEFERRED_REVENUE
+  // Liabilities - Loans & Borrowings (2900)
+  SHORT_TERM_LOAN
+  LONG_TERM_LOAN
+
+  // Equity / Capital (3000-3999)
+  SHARE_CAPITAL
+  RETAINED_EARNINGS
+  RESERVES
+  OWNERS_DRAWINGS
+
+  // Income - Premium Income (4100)
+  HMO_PREMIUM_INCOME
+  CORPORATE_PLAN_INCOME
+  RETAIL_INDIVIDUAL_PLAN_INCOME
+  // Income - Service Revenue (4200)
+  ENROLLEE_REGISTRATION_FEES
+  CLAIMS_PROCESSING_FEES
+  // Income - Investment Income (4300)
+  INTEREST_INCOME
+  DIVIDEND_INCOME
+  // Income - Other Income (4400)
+  PENALTIES_CHARGES
+  MISCELLANEOUS_INCOME
+
+  // Expenses - Administrative Expenses (5000)
+  SALARIES_WAGES
+  STAFF_BENEFITS
+  RENT_LEASE
+  OFFICE_SUPPLIES_EXPENSE
+  INTERNET_COMMUNICATION
+  UTILITIES
+  // Expenses - Medical & Provider Expenses (5200)
+  CLAIMS_EXPENSE
+  CAPITATION_EXPENSE
+  PROVIDER_RETAINERS
+  // Expenses - Marketing & Sales Expenses (5300)
+  PROMOTIONS
+  SALES_COMMISSION
+  ADVERTISING
+  // Expenses - Travel & Logistics (5500)
+  TRANSPORT
+  FUEL_VEHICLE_MAINTENANCE
+  // Expenses - Depreciation & Amortization (5900)
+  DEPRECIATION_MOTOR_VEHICLES
+  DEPRECIATION_OFFICE_EQUIPMENT
+}
+
+enum JournalEntryType {
+  MANUAL
+  SYSTEM_GENERATED
+}
+
+enum JournalEntryStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  POSTED
+  REJECTED
+}
+
+enum PostingType {
+  DEBIT
+  CREDIT
+}
+
+model ChartOfAccount {
+  id                String          @id @default(cuid())
+  account_code      Int             @unique
+  account_name      String
+  account_category  AccountCategory
+  sub_category      String?
+  parent_account_id String?
+  is_active         Boolean         @default(true)
+  description       String?
+  opening_balance   Decimal         @default(0) @db.Decimal(15, 2)
+  balance_type      PostingType?
+  created_by_id     String?
+  created_at        DateTime        @default(now())
+  updated_at        DateTime        @updatedAt
+
+  parent_account         ChartOfAccount?    @relation("ChartOfAccountHierarchy", fields: [parent_account_id], references: [id])
+  child_accounts         ChartOfAccount[]   @relation("ChartOfAccountHierarchy")
+  created_by             User?              @relation("CreatedChartOfAccounts", fields: [created_by_id], references: [id])
+  general_ledger_entries GeneralLedger[]
+  journal_entry_lines    JournalEntryLine[]
+
+  @@index([account_code])
+  @@index([account_category])
+  @@index([is_active])
+  @@index([parent_account_id])
+  @@map("chart_of_accounts")
+}
+
+model GeneralLedger {
+  id               String      @id @default(cuid())
+  entry_number     String      @unique
+  transaction_date DateTime
+  reference_number String?
+  reference_type   String? // CLAIM, PREMIUM, PROCUREMENT, PAYROLL, JOURNAL_ENTRY, etc.
+  reference_id     String?
+  account_id       String
+  posting_type     PostingType
+  amount           Decimal     @db.Decimal(15, 2)
+  description      String?
+  module           String? // claims, underwriting, procurement, hr, etc.
+  journal_entry_id String?
+  created_by_id    String?
+  created_at       DateTime    @default(now())
+
+  account                ChartOfAccount         @relation(fields: [account_id], references: [id])
+  journal_entry          JournalEntry?          @relation(fields: [journal_entry_id], references: [id])
+  created_by             User?                  @relation("CreatedGLEntries", fields: [created_by_id], references: [id])
+  financial_transactions FinancialTransaction[]
+  payouts                Payout[]
+
+  @@index([account_id])
+  @@index([transaction_date])
+  @@index([reference_type])
+  @@index([reference_id])
+  @@index([journal_entry_id])
+  @@index([module])
+  @@map("general_ledger")
+}
+
+model JournalEntry {
+  id                      String             @id @default(cuid())
+  entry_number            String             @unique
+  entry_date              DateTime
+  entry_type              JournalEntryType
+  status                  JournalEntryStatus @default(DRAFT)
+  description             String?
+  total_debit             Decimal            @db.Decimal(15, 2)
+  total_credit            Decimal            @db.Decimal(15, 2)
+  supporting_document_url String?
+  created_by_id           String?
+  approved_by_id          String?
+  approved_at             DateTime?
+  rejection_reason        String?
+  posted_at               DateTime?
+  created_at              DateTime           @default(now())
+  updated_at              DateTime           @updatedAt
+
+  created_by             User?              @relation("CreatedJournalEntries", fields: [created_by_id], references: [id])
+  approved_by            User?              @relation("ApprovedJournalEntries", fields: [approved_by_id], references: [id])
+  journal_entry_lines    JournalEntryLine[]
+  general_ledger_entries GeneralLedger[]
+
+  @@index([entry_number])
+  @@index([entry_date])
+  @@index([entry_type])
+  @@index([status])
+  @@index([created_by_id])
+  @@map("journal_entries")
+}
+
+model JournalEntryLine {
+  id               String      @id @default(cuid())
+  journal_entry_id String
+  account_id       String
+  posting_type     PostingType
+  amount           Decimal     @db.Decimal(15, 2)
+  description      String?
+  created_at       DateTime    @default(now())
+
+  journal_entry JournalEntry   @relation(fields: [journal_entry_id], references: [id], onDelete: Cascade)
+  account       ChartOfAccount @relation(fields: [account_id], references: [id])
+
+  @@index([journal_entry_id])
+  @@index([account_id])
+  @@map("journal_entry_lines")
+}
+
+model DatabaseBackup {
+  id            String       @id @default(cuid())
+  backup_name   String // User-friendly name
+  backup_type   BackupType   @default(FULL)
+  file_path     String // Local file path
+  cloud_url     String? // Cloudinary URL (if uploaded)
+  file_size     Int? // Size in bytes (optional until backup completes)
+  status        BackupStatus @default(IN_PROGRESS)
+  error_message String?
+  created_by_id String
+  created_by    User         @relation("CreatedBackups", fields: [created_by_id], references: [id])
+  created_at    DateTime     @default(now())
+  completed_at  DateTime?
+  expires_at    DateTime? // Auto-delete after this date
+  metadata      Json? // Additional metadata (tables count, etc.)
+
+  @@index([created_by_id])
+  @@index([status])
+  @@index([created_at])
+  @@map("database_backups")
+}
+
+model BackupSchedule {
+  id             String            @id @default(cuid())
+  frequency      ScheduleFrequency
+  time           String // Time in HH:MM format
+  backup_type    BackupType        @default(FULL)
+  retention_days Int               @default(30)
+  is_active      Boolean           @default(true)
+  last_run_at    DateTime?
+  next_run_at    DateTime?
+  created_by_id  String
+  created_by     User              @relation("CreatedBackupSchedules", fields: [created_by_id], references: [id])
+  created_at     DateTime          @default(now())
+  updated_at     DateTime          @updatedAt
+
+  @@index([is_active])
+  @@index([next_run_at])
+  @@map("backup_schedules")
+}
+
+enum BackupType {
+  FULL // Complete database backup
+  SCHEMA_ONLY // Schema only (no data)
+  DATA_ONLY // Data only (no schema)
+}
+
+enum BackupStatus {
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+  DELETED
+}
+
+enum ScheduleFrequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+}
+
+// Global service pool for Plan Management Customize
+// Services from all providers sync here to avoid duplicates
+model GlobalService {
+  id            String   @id @default(cuid())
+  service_name  String
+  category_id   String
+  category_name String
+  is_active     Boolean  @default(true)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  @@unique([service_name, category_id])
+  @@index([category_id])
+  @@index([is_active])
+  @@map("global_services")
+}
+
+// Global drug list for approval code requests
+// Drugs sync here when added in approval requests
+model GlobalDrug {
+  id         String   @id @default(cuid())
+  drug_name  String   @unique
+  is_active  Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([is_active])
+  @@map("global_drugs")
+}
+
+// Provider tariff file storage
+// Stores original Excel files uploaded by providers
+model ProviderTariffFile {
+  id          String   @id @default(cuid())
+  provider_id String   @unique
+  file_name   String
+  file_path   String
+  file_size   Int
+  mime_type   String   @default("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+  uploaded_at DateTime @default(now())
+  uploaded_by String
+
+  provider Provider @relation(fields: [provider_id], references: [id])
+  uploader User     @relation("UploadedTariffFiles", fields: [uploaded_by], references: [id])
+
+  @@index([provider_id])
+  @@map("provider_tariff_files")
+}
+
+// Stores ICD-10 diagnosis codes for encounter code requests
+model Diagnosis {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  description String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@index([code])
+  @@index([description])
+  @@map("diagnoses")
+}
+
+// Clients Plans Module
+// Stores custom plan submissions from clients via mobile app
+model ClientPlan {
+  id                    String                 @id @default(cuid())
+  client_plan_id        String                 @unique @default(uuid()) // Unique reference ID
+  organization_id       String
+  principal_account_id  String?
+  client_account_id     String?
+  plan_name             String
+  plan_description      String?
+  requested_premium     Decimal?               // Client-preferred premium amount
+  requested_annual_limit Decimal?              // Client-preferred annual limit
+  status                ClientPlanStatus       @default(DRAFT)
+  total_price           Decimal?               // Admin-set total price for the custom plan
+  invoice_id            String?                // Reference to generated invoice
+  notification_read     Boolean                @default(false)
+  submitted_at          DateTime?              // When client submitted the draft
+  reviewed_at           DateTime?              // When admin reviewed it
+  reviewed_by_id        String?                // Admin who reviewed
+  approved_at           DateTime?              // When approved
+  approved_by_id        String?                // Admin who approved
+  rejected_at           DateTime?              // When rejected
+  rejected_by_id        String?                // Admin who rejected
+  rejection_reason      String?                // Why it was rejected
+  invoice_sent_at       DateTime?              // When invoice was sent
+  created_at            DateTime               @default(now())
+  updated_at            DateTime               @updatedAt
+  
+  organization          Organization           @relation(fields: [organization_id], references: [id])
+  principal_account     PrincipalAccount?      @relation(fields: [principal_account_id], references: [id])
+  client_account        ClientAccount?         @relation(fields: [client_account_id], references: [id])
+  reviewed_by           User?                  @relation("ClientPlanReviewedBy", fields: [reviewed_by_id], references: [id])
+  approved_by           User?                  @relation("ClientPlanApprovedBy", fields: [approved_by_id], references: [id])
+  rejected_by           User?                  @relation("ClientPlanRejectedBy", fields: [rejected_by_id], references: [id])
+  services              ClientPlanService[]
+  invoice               ClientPlanInvoice?
+
+  @@index([organization_id])
+  @@index([principal_account_id])
+  @@index([client_account_id])
+  @@index([status])
+  @@index([submitted_at])
+  @@index([created_at])
+  @@map("client_plans")
+}
+
+// Individual services selected by client for their custom plan
+model ClientPlanService {
+  id                    String                 @id @default(cuid())
+  client_plan_id        String
+  service_type_id       String
+  category              String                 // e.g., "General Consultation", "Lab"
+  service_name          String
+  quantity              Int                    @default(1)
+  unit_price            Decimal
+  total_amount          Decimal                // quantity * unit_price
+  frequency_limit       Int?                   // How many times per year/period
+  price_limit           Decimal?               // Maximum amount covered
+  category_price_limit  Decimal?               // Category-level amount cap from package customization
+  created_at            DateTime               @default(now())
+  updated_at            DateTime               @updatedAt
+  
+  client_plan           ClientPlan             @relation(fields: [client_plan_id], references: [id], onDelete: Cascade)
+  service_type          ServiceType            @relation(fields: [service_type_id], references: [id])
+
+  @@index([client_plan_id])
+  @@index([service_type_id])
+  @@map("client_plan_services")
+}
+
+// Generated invoice for approved client plans
+model ClientPlanInvoice {
+  id                    String                 @id @default(cuid())
+  invoice_number        String                 @unique
+  client_plan_id        String                 @unique
+  organization_name     String
+  client_name           String
+  client_email          String
+  total_amount          Decimal
+  currency              String                 @default("NGN")
+  invoice_date          DateTime               @default(now())
+  due_date              DateTime?
+  paid_at               DateTime?
+  invoice_data          Json?                  // Stores detailed invoice JSON (services breakdown, etc.)
+  pdf_path              String?                // Path to generated PDF
+  status                InvoiceStatus          @default(PENDING)
+  created_at            DateTime               @default(now())
+  updated_at            DateTime               @updatedAt
+  
+  client_plan           ClientPlan             @relation(fields: [client_plan_id], references: [id], onDelete: Cascade)
+
+  @@index([client_plan_id])
+  @@index([invoice_number])
+  @@index([status])
+  @@map("client_plan_invoices")
+}
+
+// Enum for client plan status
+enum ClientPlanStatus {
+  DRAFT      // Client is still building the plan on mobile
+  PENDING    // Client submitted, awaiting admin review
+  REVIEW     // Admin is reviewing the plan
+  APPROVED   // Plan approved, invoice generated
+  REJECTED   // Plan rejected by admin
+  INVOICED   // Invoice has been sent to client
+  PAID       // Client has paid
+}

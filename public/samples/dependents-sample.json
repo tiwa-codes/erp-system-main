@@ -1,0 +1,62 @@
+[
+  {
+    "Dependent ID": "",
+    "First Name": "Jane",
+    "Last Name": "Doe",
+    "Date of Birth": "2010-03-15",
+    "Gender": "FEMALE",
+    "Relationship": "CHILD",
+    "Principal Enrollee ID": "CJH/CC/001",
+    "Status": "ACTIVE"
+  },
+  {
+    "Dependent ID": "CJH/TS/001/001",
+    "First Name": "Mary",
+    "Last Name": "Johnson",
+    "Date of Birth": "1985-11-20",
+    "Gender": "FEMALE",
+    "Relationship": "SPOUSE",
+    "Principal Enrollee ID": "CJH/TS/001",
+    "Status": "ACTIVE"
+  },
+  {
+    "Dependent ID": "",
+    "First Name": "Fatima",
+    "Last Name": "Musa",
+    "Date of Birth": "2015-06-08",
+    "Gender": "FEMALE",
+    "Relationship": "CHILD",
+    "Principal Enrollee ID": "CJH/GA/001",
+    "Status": "ACTIVE"
+  },
+  {
+    "Dependent ID": "CJH/NG/002/001",
+    "First Name": "David",
+    "Last Name": "Okoro",
+    "Date of Birth": "2012-09-12",
+    "Gender": "MALE",
+    "Relationship": "CHILD",
+    "Principal Enrollee ID": "CJH/NG/002",
+    "Status": "ACTIVE"
+  },
+  {
+    "Dependent ID": "",
+    "First Name": "Aisha",
+    "Last Name": "Hassan",
+    "Date of Birth": "1980-04-30",
+    "Gender": "FEMALE",
+    "Relationship": "SPOUSE",
+    "Principal Enrollee ID": "CJH/IC/001",
+    "Status": "ACTIVE"
+  },
+  {
+    "Dependent ID": "CJH/IC/003/002",
+    "First Name": "Mohammed",
+    "Last Name": "Hassan",
+    "Date of Birth": "2018-01-25",
+    "Gender": "MALE",
+    "Relationship": "CHILD",
+    "Principal Enrollee ID": "CJH/IC/001",
+    "Status": "ACTIVE"
+  }
+]

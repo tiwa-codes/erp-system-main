@@ -1,0 +1,74 @@
+[
+  {
+    "Plan Name": "Gold Plan",
+    "Package Type": "Eye Care",
+    "Amount": 100000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Gold Plan",
+    "Package Type": "Dental Package",
+    "Amount": 100000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Gold Plan",
+    "Package Type": "Surgeries",
+    "Amount": 250000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Package Type": "Eye Care",
+    "Amount": 75000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Package Type": "Dental Package",
+    "Amount": 75000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Silver Plan",
+    "Package Type": "Surgeries",
+    "Amount": 200000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Package Type": "Eye Care",
+    "Amount": 150000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Package Type": "Dental Package",
+    "Amount": 150000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  },
+  {
+    "Plan Name": "Diamond Plan",
+    "Package Type": "Surgeries",
+    "Amount": 400000,
+    "Time Frame": "12",
+    "Time Frame Unit": "months",
+    "Status": "ACTIVE"
+  }
+]

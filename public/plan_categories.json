@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "name": "Admission"
+  },
+  {
+    "id": "2",
+    "name": "Caesarian section / Normal Delivery"
+  },
+  {
+    "id": "3",
+    "name": "Fertility"
+  },
+  {
+    "id": "4",
+    "name": "Advanced Diagnostic Imaging"
+  },
+  {
+    "id": "5",
+    "name": "Physiotherapy"
+  },
+  {
+    "id": "6",
+    "name": "Surgery"
+  },
+  {
+    "id": "7",
+    "name": "Cancer Care"
+  },
+  {
+    "id": "8",
+    "name": "Dialysis"
+  },
+  {
+    "id": "9",
+    "name": "Specialist Consultation"
+  },
+  {
+    "id": "10",
+    "name": "Others"
+  },
+  {
+    "id": "11",
+    "name": "Optical Care"
+  },
+  {
+    "id": "12",
+    "name": "Dental Care"
+  },
+  {
+    "id": "15",
+    "name": "Advanced Lab"
+  },
+  {
+    "id": "17",
+    "name": "ICU"
+  },
+  {
+    "id": "18",
+    "name": "Neonate Care"
+  },
+  {
+    "id": "19",
+    "name": "Mental Care"
+  },
+  {
+    "id": "21",
+    "name": "MRI"
+  },
+  {
+    "id": "22",
+    "name": "CT-SCAN"
+  },
+  {
+    "id": "23",
+    "name": "Accommodation for In-Patient Care"
+  },
+  {
+    "id": "24",
+    "name": "Drugs"
+  }
+]
