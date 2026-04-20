@@ -1,6 +1,6 @@
-export const dynamic = 'force-dynamic'
+"use client"
 
-﻿"use client"
+export const dynamic = 'force-dynamic'
 
 import { useState, useEffect, useMemo } from "react"
 import { useQuery, useMutation } from "@tanstack/react-query"

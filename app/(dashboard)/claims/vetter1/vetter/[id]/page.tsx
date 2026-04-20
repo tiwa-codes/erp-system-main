@@ -2,7 +2,6 @@
 
 export const dynamic = 'force-dynamic'
 
-
 import { useState, useEffect } from "react"
 import { useRouter, useParams, useSearchParams } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"

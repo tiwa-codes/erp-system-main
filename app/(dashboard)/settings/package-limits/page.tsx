@@ -1,6 +1,6 @@
-export const dynamic = 'force-dynamic'
+"use client"
 
-﻿"use client"
+export const dynamic = 'force-dynamic'
 
 import { useRef, useState, useEffect, useMemo } from "react"
 import { QRCodeCanvas } from "qrcode.react"
