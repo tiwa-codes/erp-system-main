@@ -4,12 +4,18 @@ import bcrypt from 'bcryptjs'
 const prisma = new PrismaClient()
 
 async function main() {
+  // Rename old 'Super Admin' role if it exists
+  await prisma.role.updateMany({
+    where: { name: 'Super Admin' },
+    data: { name: 'SUPER_ADMIN' },
+  })
+
   // Create super admin role
   const role = await prisma.role.upsert({
-    where: { name: 'Super Admin' },
+    where: { name: 'SUPER_ADMIN' },
     update: {},
     create: {
-      name: 'Super Admin',
+      name: 'SUPER_ADMIN',
       description: 'Full system access',
       is_system: true,
       is_active: true,
