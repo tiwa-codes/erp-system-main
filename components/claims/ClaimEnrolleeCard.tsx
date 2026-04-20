@@ -1,3 +1,4 @@
+'use client'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { User, Building, Calendar, CreditCard, Shield, Clock, ClipboardList, AlertTriangle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -232,4 +233,3 @@ export function ClaimEnrolleeCard({
         </Card>
     )
 }
-
