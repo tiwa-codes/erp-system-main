@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from "react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -21,7 +23,7 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useToast } from "@/hooks/use-toast"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Appointment {
   id: string

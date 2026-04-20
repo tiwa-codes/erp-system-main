@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Button } from "@/components/ui/button"
@@ -16,7 +18,7 @@ import {
 import { ChevronRight, Search, Download } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export const dynamic = 'force-dynamic'
+
 
 function formatCurrency(amount: number) {
   return `₦${Math.abs(amount).toLocaleString("en-NG", {

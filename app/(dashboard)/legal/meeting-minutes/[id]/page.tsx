@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
@@ -13,7 +15,7 @@ import { SignatureCapture } from "@/components/ui/signature-capture"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Dialog,
   DialogContent,
   DialogDescription,

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
@@ -15,7 +17,7 @@ import { useToast } from "@/hooks/use-toast"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { 
 
-export const dynamic = 'force-dynamic'
+
   ArrowLeft, 
   CheckCircle2, 
   XCircle, 

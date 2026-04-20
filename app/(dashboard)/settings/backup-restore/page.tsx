@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -22,7 +24,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { BackupProgressTracker, RestoreProgressTracker } from "@/components/ui/progress-bar"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Database,
   Download,
   Trash2,

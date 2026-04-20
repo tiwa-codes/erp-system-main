@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { FormEvent, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -18,7 +20,7 @@ import {
 import { Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
-export const dynamic = 'force-dynamic'
+
 
 const ACCOUNT_TYPES = [
   "Individual or Family",

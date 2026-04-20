@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
@@ -16,7 +18,7 @@ import {
 } from "lucide-react"
 import {
 
-export const dynamic = 'force-dynamic'
+
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

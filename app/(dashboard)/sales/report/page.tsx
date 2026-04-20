@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useMemo, useState } from "react"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { useSession } from "next-auth/react"
@@ -13,7 +15,7 @@ import { useToast } from "@/hooks/use-toast"
 import { ReportType, SalesSubmodule } from "@prisma/client"
 import { SALES_CHANNEL_OPTIONS } from "@/lib/sales"
 
-export const dynamic = 'force-dynamic'
+
 
 type ChannelOption = {
   id: string

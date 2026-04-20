@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
@@ -54,7 +56,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import {
 
-export const dynamic = 'force-dynamic'
+
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,

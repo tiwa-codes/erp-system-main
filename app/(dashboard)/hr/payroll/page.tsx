@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import {
@@ -57,7 +59,7 @@ import { PermissionButton } from "@/components/ui/permission-button"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { StatusText } from "@/components/ui/status-text"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function PayrollManagementPage() {
   const { toast } = useToast()

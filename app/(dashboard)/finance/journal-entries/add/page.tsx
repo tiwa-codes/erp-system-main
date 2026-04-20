@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
 import { Button } from "@/components/ui/button"
@@ -7,7 +9,7 @@ import { JournalEntryForm } from "@/components/finance/journal-entry-form"
 import { useToast } from "@/hooks/use-toast"
 import { ArrowLeft } from "lucide-react"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function AddJournalEntryPage() {
   const router = useRouter()

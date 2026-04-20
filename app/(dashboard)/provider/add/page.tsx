@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -29,7 +31,7 @@ import { FileUpload } from "@/components/ui/file-upload"
 import { StateLGASelect, useStateLGASelection } from "@/components/ui/state-lga-select"
 import { BandSelector } from "@/components/ui/band-selector"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function AddProviderPage() {
   const router = useRouter()

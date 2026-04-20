@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
@@ -38,7 +40,7 @@ import {
 } from "@/components/ui/dialog"
 import { AuditTrailView } from "@/components/claims/AuditTrailView"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Claim {
   id: string

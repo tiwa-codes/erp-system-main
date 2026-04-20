@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -13,7 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowLeft, Shield, Loader2 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
-export const dynamic = 'force-dynamic'
+
 
 const AVAILABLE_ROLES = [
   'SUPER_ADMIN',

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery, useMutation } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -21,7 +23,7 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { ApprovalCodeTimeline } from "@/components/approval-code-timeline"
 
-export const dynamic = 'force-dynamic'
+
 
 interface ApprovalCodeDetails {
     approval_code: string

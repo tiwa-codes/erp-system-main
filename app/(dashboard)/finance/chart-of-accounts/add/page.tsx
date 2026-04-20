@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation, useQuery } from "@tanstack/react-query"
@@ -26,7 +28,7 @@ import { useToast } from "@/hooks/use-toast"
 import { ArrowLeft } from "lucide-react"
 import { formatAccountCode } from "@/lib/finance/account-code"
 
-export const dynamic = 'force-dynamic'
+
 
 const ACCOUNT_CODE_RANGES: Record<AccountCategory, { min: number; max: number }> = {
   ASSET: { min: 100000, max: 199999 },

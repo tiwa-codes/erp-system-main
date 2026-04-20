@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -30,7 +32,7 @@ import { useToast } from "@/hooks/use-toast"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { exportToExcel, exportToPDF, exportToCSV, getReportDataStructure } from "@/lib/export-utils"
 
-export const dynamic = 'force-dynamic'
+
 
 interface UtilizationMetrics {
   total_claims_vetted: number

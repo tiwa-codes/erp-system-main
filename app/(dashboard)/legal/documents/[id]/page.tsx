@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
@@ -16,7 +18,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { LegalDocumentStatus } from "@prisma/client"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Dialog,
   DialogContent,
   DialogDescription,

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -15,7 +17,7 @@ import { StatusIndicator } from "@/components/ui/status-indicator"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import {
 
-export const dynamic = 'force-dynamic'
+
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

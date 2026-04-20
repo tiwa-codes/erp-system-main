@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -16,7 +18,7 @@ import Link from "next/link"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useFileUpload } from "@/hooks/use-file-upload"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function EditSpecialProviderPage({
   params,

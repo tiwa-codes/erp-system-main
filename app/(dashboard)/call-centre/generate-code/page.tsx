@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -37,7 +39,7 @@ import { useRouter } from "next/navigation"
 import { PreviousEncounterModal } from "@/components/call-centre/PreviousEncounterModal"
 import { formatCountdown } from "@/lib/add-service-window"
 
-export const dynamic = 'force-dynamic'
+
 
 interface ServiceRequest {
   id: string

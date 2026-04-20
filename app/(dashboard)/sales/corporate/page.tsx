@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useQuery } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -7,7 +9,7 @@ import { FileText, TrendingUp, CheckCircle, Clock } from "lucide-react"
 import Link from "next/link"
 import { SalesSubmodule, SalesReportStatus } from "@prisma/client"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function CorporateSalesDashboard() {
   const { data: stats, isLoading } = useQuery({

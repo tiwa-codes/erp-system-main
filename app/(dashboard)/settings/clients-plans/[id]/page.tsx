@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import React, { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -13,7 +15,7 @@ import { useToast } from "@/hooks/use-toast"
 import { useEffect } from "react"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Table,
   TableBody,
   TableCell,

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect, useMemo } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -21,7 +23,7 @@ import { useToast } from "@/hooks/use-toast"
 import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Plus,
   Eye,
   Edit,

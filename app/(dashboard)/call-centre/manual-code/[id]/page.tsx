@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -16,7 +18,7 @@ import { Plus, Trash2, Search, CheckCircle, AlertCircle, Copy, ArrowLeft, XCircl
 import Link from "next/link"
 import { PreviousEncounterModal } from "@/components/call-centre/PreviousEncounterModal"
 
-export const dynamic = 'force-dynamic'
+
 
 // Helper to classify a service as drug/pharmaceutical based on its category or name
 const isDrug = (service: any): boolean => {

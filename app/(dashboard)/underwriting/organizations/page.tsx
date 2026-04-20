@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect, useMemo } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
@@ -63,7 +65,7 @@ import { PermissionButton } from "@/components/ui/permission-button"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function OrganizationsPage() {
   const router = useRouter()

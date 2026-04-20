@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation } from "@tanstack/react-query"
 import {
@@ -52,7 +54,7 @@ import {
 import { useToast } from "@/hooks/use-toast"
 import { AddLeaveForm } from "@/components/forms/add-leave-form"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function FinanceLeavePage() {
   const { toast } = useToast()

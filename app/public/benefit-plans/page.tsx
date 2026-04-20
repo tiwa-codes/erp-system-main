@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 ﻿"use client"
 
 import { useState, useEffect, useMemo } from "react"
@@ -13,7 +15,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "sonner"
 import {
 
-export const dynamic = 'force-dynamic'
+
     Loader2,
     CheckCircle,
     Edit3,

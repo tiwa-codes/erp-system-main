@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 ﻿"use client"
 
 import { useRef, useState, useEffect, useMemo } from "react"
@@ -35,7 +37,7 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export const dynamic = 'force-dynamic'
+
 
 // --- Interfaces ---
 

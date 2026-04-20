@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery } from "@tanstack/react-query"
 import {
@@ -36,7 +38,7 @@ import {
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function DailyAttendancePage() {
   const { toast } = useToast()

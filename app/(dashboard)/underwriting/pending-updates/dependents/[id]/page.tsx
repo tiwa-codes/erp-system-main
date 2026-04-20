@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -24,7 +26,7 @@ import { ArrowLeft, CheckCircle, XCircle, Loader2, User, Users, AlertCircle } fr
 import { toast } from "sonner"
 import Image from "next/image"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function DependentDetailPage() {
     const params = useParams()

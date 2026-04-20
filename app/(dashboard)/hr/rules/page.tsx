@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -62,7 +64,7 @@ import { AddHRRuleForm } from "@/components/forms/add-hr-rule-form"
 import { EditHRRuleForm } from "@/components/forms/edit-hr-rule-form"
 import { ViewHRRule } from "@/components/forms/view-hr-rule"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function HRRulesManagementPage() {
   const { toast } = useToast()

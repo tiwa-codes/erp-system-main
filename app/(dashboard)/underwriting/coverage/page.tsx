@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -13,7 +15,7 @@ import { Badge } from "@/components/ui/badge"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { Loader2, Trash2 } from "lucide-react"
 
-export const dynamic = 'force-dynamic'
+
 
 const initialForm = {
   family_type: "FAMILY",

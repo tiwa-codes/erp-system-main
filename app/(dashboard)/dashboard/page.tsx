@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useSession } from "next-auth/react"
@@ -29,7 +31,7 @@ import {
 } from "recharts"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
-export const dynamic = 'force-dynamic'
+
 
 // Real data is now fetched from API endpoints
 

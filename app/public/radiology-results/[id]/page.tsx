@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -20,7 +22,7 @@ import {
 } from "lucide-react"
 import { toast } from "sonner"
 
-export const dynamic = 'force-dynamic'
+
 
 interface RadiologyOrder {
   id: string

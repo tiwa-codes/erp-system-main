@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useMemo } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,7 +15,7 @@ import { useToast } from "@/hooks/use-toast"
 import { Search, Plus, Trash2, ChevronRight, Briefcase, Store, Users, Edit, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export const dynamic = 'force-dynamic'
+
 
 interface BenefitService {
   id: string

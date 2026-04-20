@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -8,7 +10,7 @@ import { ClientPlansDataTable } from "@/components/clients-plans/data-table"
 import { columns } from "@/components/clients-plans/columns"
 import { headers } from "next/headers"
 
-export const dynamic = 'force-dynamic'
+
 
 interface ClientPlan {
   id: string

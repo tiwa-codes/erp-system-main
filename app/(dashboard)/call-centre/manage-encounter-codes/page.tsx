@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -24,7 +26,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { useRouter } from "next/navigation"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function ManageEncounterCodesPage() {
   const { toast } = useToast()

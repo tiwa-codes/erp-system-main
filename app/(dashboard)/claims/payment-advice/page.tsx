@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -21,7 +23,7 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useRouter } from "next/navigation"
 
-export const dynamic = 'force-dynamic'
+
 
 interface ProviderPayment {
     provider_id: string

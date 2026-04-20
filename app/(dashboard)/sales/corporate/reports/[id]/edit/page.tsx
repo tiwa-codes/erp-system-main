@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -10,7 +12,7 @@ import Link from "next/link"
 import { ReportForm } from "@/components/sales/report-form"
 import { SalesSubmodule, ReportType } from "@prisma/client"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function EditCorporateSalesReportPage({ params }: { params: { id: string } }) {
   const router = useRouter()

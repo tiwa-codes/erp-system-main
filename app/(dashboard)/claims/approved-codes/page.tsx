@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useMemo, useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,7 +15,7 @@ import { Badge } from "@/components/ui/badge"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { Eye } from "lucide-react"
 
-export const dynamic = 'force-dynamic'
+
 
 type SummaryRow = {
   vetter_id: string

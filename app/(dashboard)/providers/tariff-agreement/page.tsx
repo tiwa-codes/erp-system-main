@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
@@ -9,7 +11,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { Card, CardContent } from "@/components/ui/card"
 import { Combobox } from "@/components/ui/combobox"
 
-export const dynamic = 'force-dynamic'
+
 
 interface ProviderOption {
   id: string

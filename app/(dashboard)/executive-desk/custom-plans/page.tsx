@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -13,7 +15,7 @@ import { StatusIndicator } from "@/components/ui/status-indicator"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useRouter } from "next/navigation"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function ExecutiveDeskCustomPlansPage() {
   const router = useRouter()

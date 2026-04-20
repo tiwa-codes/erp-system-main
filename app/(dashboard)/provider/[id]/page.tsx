@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { Component, ReactNode, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -35,7 +37,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BandSelector } from "@/components/ui/band-selector"
 import { TariffPlanTabV2 as TariffPlanTab } from "@/components/provider/tariff-plan-tab-v2"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Provider {
   id: string

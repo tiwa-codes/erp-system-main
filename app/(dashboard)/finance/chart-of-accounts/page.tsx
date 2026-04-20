@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
@@ -41,7 +43,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { exportToExcel, exportToPDF } from "@/lib/export-utils"
 import { formatAccountCode } from "@/lib/finance/account-code"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function ChartOfAccountsPage() {
   const router = useRouter()

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
@@ -14,7 +16,7 @@ import Link from "next/link"
 import { StatusIndicator } from "@/components/ui/status-indicator"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function SpecialProviderDetailPage({
   params,

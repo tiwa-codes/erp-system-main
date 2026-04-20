@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -22,7 +24,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { EditDependentForm } from "@/components/forms/edit-dependent-form"
 import {
 
-export const dynamic = 'force-dynamic'
+
   ArrowLeft,
   Edit,
   Trash2,

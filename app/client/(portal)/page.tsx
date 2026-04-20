@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useMemo, useState } from "react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
@@ -35,7 +37,7 @@ import {
 import { useToast } from "@/hooks/use-toast"
 import { Loader2, CheckCircle2, Clock3, XCircle } from "lucide-react"
 
-export const dynamic = 'force-dynamic'
+
 
 type PlanService = {
   id: string

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 ﻿"use client"
 
 import { useMemo, useState, useEffect } from "react"
@@ -37,7 +39,7 @@ import {
 import { Loader2 } from "lucide-react"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Dialog,
   DialogContent,
   DialogDescription,

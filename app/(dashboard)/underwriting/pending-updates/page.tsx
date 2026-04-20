@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -20,7 +22,7 @@ import { Search, Filter, Eye, CheckCircle, XCircle, Clock } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { StatusText } from "@/components/ui/status-text"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function PendingUpdatesPage() {
     const router = useRouter()

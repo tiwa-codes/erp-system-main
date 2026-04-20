@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { Button } from "@/components/ui/button"
@@ -17,7 +19,7 @@ import { PermissionButton } from "@/components/ui/permission-button"
 import { useToast } from "@/hooks/use-toast"
 import { Plus, Search, Edit, Trash2, Eye, Save, X } from "lucide-react"
 
-export const dynamic = 'force-dynamic'
+
 
 interface BandLabel {
   id: string

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
@@ -25,7 +27,7 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import {
 
-export const dynamic = 'force-dynamic'
+
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

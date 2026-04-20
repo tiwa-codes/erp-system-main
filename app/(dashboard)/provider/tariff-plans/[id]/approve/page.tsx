@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter, useParams, useSearchParams } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
@@ -15,7 +17,7 @@ import { ArrowLeft, CheckCircle, XCircle } from "lucide-react"
 import { format } from "date-fns"
 import { useSession } from "next-auth/react"
 
-export const dynamic = 'force-dynamic'
+
 
 type TariffPlanServiceRow = {
   id: string

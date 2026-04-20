@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -16,7 +18,7 @@ import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { useFileUpload } from "@/hooks/use-file-upload"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function CorporateSalesReportDetailPage({ params }: { params: { id: string } }) {
   const router = useRouter()

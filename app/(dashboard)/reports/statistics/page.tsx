@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,7 +14,7 @@ import { format } from "date-fns"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { Badge } from "@/components/ui/badge"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function StatisticsPage() {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined)

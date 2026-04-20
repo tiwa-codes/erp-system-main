@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
@@ -16,7 +18,7 @@ import Link from "next/link"
 import { useFileUpload } from "@/hooks/use-file-upload"
 import { MeetingType } from "@prisma/client"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Attendee {
   name: string

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
@@ -42,7 +44,7 @@ import {
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 
-export const dynamic = 'force-dynamic'
+
 
 const SELECTABLE_PLAN_STATUSES = new Set(["ACTIVE", "COMPLETE"])
 

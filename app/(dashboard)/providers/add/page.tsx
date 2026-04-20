@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
@@ -14,7 +16,7 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Building2, User, Loader2 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function ProviderPage() {
   const router = useRouter()

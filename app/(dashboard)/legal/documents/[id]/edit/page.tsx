@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation } from "@tanstack/react-query"
@@ -16,7 +18,7 @@ import Link from "next/link"
 import { useFileUpload } from "@/hooks/use-file-upload"
 import { ComplianceCertificateType } from "@prisma/client"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function EditLegalDocumentPage({
   params,

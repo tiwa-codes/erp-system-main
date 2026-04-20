@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -16,7 +18,7 @@ import { useRouter } from "next/navigation"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useSession } from "next-auth/react"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function RequestApprovalCodePage() {
   const router = useRouter()

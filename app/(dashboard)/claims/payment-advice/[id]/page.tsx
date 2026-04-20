@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useRef } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
@@ -28,7 +30,7 @@ import html2canvas from "html2canvas"
 import { numberToWords } from "@/lib/utils/number-to-words"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
-export const dynamic = 'force-dynamic'
+
 
 interface PaidClaim {
     id: string

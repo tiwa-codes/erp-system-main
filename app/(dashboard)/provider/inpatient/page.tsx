@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -39,7 +41,7 @@ import { AddInPatientForm } from "@/components/forms/add-inpatient-form"
 import { ViewInPatientModal } from "@/components/forms/view-inpatient-form"
 import { EditInPatientModal } from "@/components/forms/edit-inpatient-form"
 
-export const dynamic = 'force-dynamic'
+
 
 interface InPatient {
   id: string

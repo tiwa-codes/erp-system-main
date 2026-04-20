@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -31,7 +33,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
 import {
 
-export const dynamic = 'force-dynamic'
+
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

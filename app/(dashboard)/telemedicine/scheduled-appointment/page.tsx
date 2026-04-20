@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
@@ -13,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Calendar, Clock, Search, X, Loader2 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Enrollee {
   id: string

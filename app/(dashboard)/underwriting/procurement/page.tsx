@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { useToast } from "@/hooks/use-toast"
@@ -35,7 +37,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { FONT_CLASSES } from "@/lib/font-utils"
 import { FileViewerModal } from "@/components/ui/file-viewer-modal"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Invoice {
   id: string

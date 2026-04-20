@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useMemo, useState } from "react"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,7 +14,7 @@ import { useToast } from "@/hooks/use-toast"
 import { DEFAULT_SALES_TARGETS, SALES_SUBMODULE_LABELS, type SalesSubmoduleKey } from "@/lib/sales"
 import { getStateNames } from "@/lib/states"
 
-export const dynamic = 'force-dynamic'
+
 
 type SalesBranch = {
   id: string

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
@@ -43,7 +45,7 @@ import {
 import { ChevronsUpDown, Search as SearchIcon, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Dependent {
   first_name: string

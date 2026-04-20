@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import React, { useMemo, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
@@ -38,7 +40,7 @@ import { ArrowLeft, Save, User, Building2, Calendar, Phone, Mail, MapPin, Hospit
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { CompactFileUpload } from "@/components/ui/compact-file-upload"
 
-export const dynamic = 'force-dynamic'
+
 
 const principalSchema = z.object({
   enrollee_id: z.string().min(1, "Enrollee ID is required"),

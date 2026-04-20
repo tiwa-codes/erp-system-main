@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -20,7 +22,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { AuditTrailView } from "@/components/claims/AuditTrailView"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function ProviderAuditPage() {
   const router = useRouter()

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -28,7 +30,7 @@ import {
 } from "lucide-react"
 import { toast } from "sonner"
 
-export const dynamic = 'force-dynamic'
+
 
 interface ProviderFormData {
   // Section 1: Basic Information

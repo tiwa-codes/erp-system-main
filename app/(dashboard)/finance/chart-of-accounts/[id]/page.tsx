@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useQuery } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -10,7 +12,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { formatAccountCode } from "@/lib/finance/account-code"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Table,
   TableBody,
   TableCell,

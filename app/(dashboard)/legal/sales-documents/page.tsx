@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,7 +15,7 @@ import { DocumentViewer } from "@/components/legal/document-viewer"
 import { LegalDocumentType } from "@prisma/client"
 import {
 
-export const dynamic = 'force-dynamic'
+
   Dialog,
   DialogContent,
   DialogDescription,

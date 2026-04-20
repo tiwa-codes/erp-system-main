@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
@@ -13,7 +15,7 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { StatusIndicator } from "@/components/ui/status-indicator"
 import { Download } from "lucide-react"
 
-export const dynamic = 'force-dynamic'
+
 
 interface UpdateCollection<T> {
   items: T[]

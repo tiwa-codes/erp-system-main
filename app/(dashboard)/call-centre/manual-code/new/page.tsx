@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation } from "@tanstack/react-query"
@@ -16,7 +18,7 @@ import { Plus, Trash2, Search, CheckCircle, AlertCircle, Copy, ArrowLeft, XCircl
 import Link from "next/link"
 import { PreviousEncounterModal } from "@/components/call-centre/PreviousEncounterModal"
 
-export const dynamic = 'force-dynamic'
+
 
 export default function ManualApprovalCodePage() {
     const router = useRouter()

@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
@@ -40,7 +42,7 @@ import { MetricCard } from "@/components/ui/metric-card"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { BandSelector } from "@/components/ui/band-selector"
 
-export const dynamic = 'force-dynamic'
+
 
 interface Provider {
   id: string

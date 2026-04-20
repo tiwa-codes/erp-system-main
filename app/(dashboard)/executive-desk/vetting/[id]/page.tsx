@@ -1,10 +1,12 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 
-export const dynamic = 'force-dynamic'
+
 
 /**
  * Legacy Executive Desk Vetting Page - Redirects to new vetter pages
