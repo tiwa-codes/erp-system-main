@@ -158,7 +158,7 @@ export default function RolesPage() {
           <div className="flex items-center gap-4">
             <Button
               onClick={() => router.push("/users/add-role")}
-              className="flex items-center gap-2 bg-[#BE1522] hover:bg-[#9B1219]"
+              className="flex items-center gap-2 bg-[#0891B2] hover:bg-[#9B1219]"
             >
               <Plus className="h-4 w-4" />
               Add Role

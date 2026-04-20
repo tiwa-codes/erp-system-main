@@ -1051,7 +1051,7 @@ export default function GenerateCodePage() {
                           ) : service.is_ad_hoc ? (
                             <Badge className="bg-orange-100 text-orange-800">Ad-Hoc</Badge>
                           ) : (
-                            <Badge className="bg-[#BE1522] text-white">Also Approved</Badge>
+                            <Badge className="bg-[#0891B2] text-white">Also Approved</Badge>
                           )}
                         </TableCell>
                       </TableRow>
@@ -1331,7 +1331,7 @@ export default function GenerateCodePage() {
             <Button
               onClick={handleConfirm}
               disabled={approveRequestMutation.isPending || rejectRequestMutation.isPending}
-              className="bg-[#BE1522] hover:bg-[#9B1219] px-8"
+              className="bg-[#0891B2] hover:bg-[#9B1219] px-8"
             >
               <CheckCircle className="h-4 w-4 mr-2" />
               {(approveRequestMutation.isPending || rejectRequestMutation.isPending) ? "Processing..." : "Confirm"}

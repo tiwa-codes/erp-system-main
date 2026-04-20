@@ -202,7 +202,7 @@ export default function PendingBookingsPage() {
                 </div>
               </div>
               <div className="flex items-end">
-                <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219] w-full md:w-auto">
+                <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219] w-full md:w-auto">
                   <Search className="h-4 w-4 mr-2" />
                   Search
                 </Button>

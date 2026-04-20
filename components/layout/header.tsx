@@ -54,10 +54,10 @@ export function Header() {
   })
 
   return (
-    <header className="h-14 bg-[#BE1522] lg:bg-white border-b border-[#BE1522] lg:border-gray-200 px-2 sm:px-3 lg:px-4 flex items-center justify-between gap-2">
+    <header className="h-14 bg-[#0891B2] lg:bg-white border-b border-[#0891B2] lg:border-gray-200 px-2 sm:px-3 lg:px-4 flex items-center justify-between gap-2">
       <div className="flex items-center gap-2 flex-1 relative">
         {/* Hamburger Menu - Visible only on mobile */}
-        <Button variant="ghost" size="icon" className="lg:hidden shrink-0 text-white hover:bg-[#a0111b] hover:text-white" onClick={() => setIsMobileOpen(true)}>
+        <Button variant="ghost" size="icon" className="lg:hidden shrink-0 text-white hover:bg-[#0369a1] hover:text-white" onClick={() => setIsMobileOpen(true)}>
           <Menu className="h-5 w-5" />
         </Button>
 
@@ -72,10 +72,10 @@ export function Header() {
         {/* Notifications */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="relative text-white lg:text-gray-700 hover:bg-[#a0111b] lg:hover:bg-gray-100 hover:text-white lg:hover:text-gray-900">
+            <Button variant="ghost" size="icon" className="relative text-white lg:text-gray-700 hover:bg-[#0369a1] lg:hover:bg-gray-100 hover:text-white lg:hover:text-gray-900">
               <Bell className="h-5 w-5" />
               {unreadCount?.count ? (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-xs bg-red-500 lg:bg-[#BE1522] hover:bg-red-500 text-white border-white border">
+                <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-xs bg-red-500 lg:bg-[#0891B2] hover:bg-red-500 text-white border-white border">
                   {Math.min(unreadCount.count, 9)}
                 </Badge>
               ) : null}
@@ -126,10 +126,10 @@ export function Header() {
         {/* User Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 px-2 sm:px-3 text-white lg:text-gray-700 hover:bg-[#a0111b] lg:hover:bg-gray-100 hover:text-white lg:hover:text-gray-900">
+            <Button variant="ghost" className="flex items-center gap-2 px-2 sm:px-3 text-white lg:text-gray-700 hover:bg-[#0369a1] lg:hover:bg-gray-100 hover:text-white lg:hover:text-gray-900">
               <Avatar className="h-8 w-8 border lg:border-0 border-white/20">
                 <AvatarImage src={userProfile?.profile_picture || ""} />
-                <AvatarFallback className="bg-white lg:bg-gray-100 text-[#BE1522] lg:text-gray-600 font-bold">
+                <AvatarFallback className="bg-white lg:bg-gray-100 text-[#0891B2] lg:text-gray-600 font-bold">
                   {session?.user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
                 </AvatarFallback>
               </Avatar>

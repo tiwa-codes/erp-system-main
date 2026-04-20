@@ -174,7 +174,7 @@ function ServiceUtilizationSummary({
                       />
                       <Button
                         size="sm"
-                        className="h-8 bg-[#BE1522] hover:bg-[#9B1219]"
+                        className="h-8 bg-[#0891B2] hover:bg-[#9B1219]"
                         disabled={updateOldUtilizationMutation.isPending}
                         onClick={() => {
                           const parsedValue = Number(oldUtilizationInput)
@@ -253,7 +253,7 @@ function ServiceUtilizationSummary({
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div 
-                className="bg-[#BE1522] h-2 rounded-full transition-all duration-300"
+                className="bg-[#0891B2] h-2 rounded-full transition-all duration-300"
                 style={{ width: `${Math.min(summary.utilization_percentage, 100)}%` }}
               ></div>
             </div>
@@ -672,7 +672,7 @@ export default function DependentViewPage({ params }: DependentViewPageProps) {
                             <div className="absolute left-3 top-8 w-0.5 h-full bg-gray-200"></div>
                           )}
                           {/* Timeline dot */}
-                          <div className="relative z-10 w-6 h-6 bg-[#BE1522] rounded-full flex items-center justify-center">
+                          <div className="relative z-10 w-6 h-6 bg-[#0891B2] rounded-full flex items-center justify-center">
                             <div className="w-2 h-2 bg-white rounded-full"></div>
                           </div>
                           {/* Timeline content */}
@@ -715,7 +715,7 @@ export default function DependentViewPage({ params }: DependentViewPageProps) {
                     
                     {/* Basic timeline events */}
                     <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-                      <div className="w-3 h-3 bg-[#BE1522] rounded-full"></div>
+                      <div className="w-3 h-3 bg-[#0891B2] rounded-full"></div>
                       <div>
                         <div className="font-medium">Dependent Created</div>
                         <div className="text-sm text-gray-500">
@@ -839,7 +839,7 @@ export default function DependentViewPage({ params }: DependentViewPageProps) {
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-                      <div className="w-3 h-3 bg-[#BE1522] rounded-full"></div>
+                      <div className="w-3 h-3 bg-[#0891B2] rounded-full"></div>
                       <div>
                         <div className="font-medium">Dependent Created</div>
                         <div className="text-sm text-gray-500">

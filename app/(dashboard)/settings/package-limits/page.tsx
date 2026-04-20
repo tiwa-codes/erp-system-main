@@ -136,7 +136,7 @@ export default function BenefitPackagePage() {
           <p className="text-gray-500 mt-1">Manage benefit limits, categories, and service coverage.</p>
         </div>
         <div className="flex gap-2">
-          <Button onClick={() => setShowCreateModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219]">
+          <Button onClick={() => setShowCreateModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219]">
             <Plus className="h-4 w-4 mr-2" />
             Create Package
           </Button>
@@ -736,7 +736,7 @@ function CreateBenefitPackageModal({ categories, onClose, onSuccess }: { categor
             <Button variant="outline" onClick={onClose} disabled={isLoading} className="flex-1">
               Cancel
             </Button>
-            <Button onClick={handleCreate} disabled={isLoading} className="flex-1 bg-[#BE1522] hover:bg-[#9B1219]">
+            <Button onClick={handleCreate} disabled={isLoading} className="flex-1 bg-[#0891B2] hover:bg-[#9B1219]">
               {isLoading ? "Creating..." : "Create Package"}
             </Button>
           </div>
@@ -795,7 +795,7 @@ function ShareModal({ onClose }: { onClose: () => void }) {
             <Button variant="outline" onClick={handleCopy}>
               <Copy className="h-4 w-4 mr-2" /> Copy Link
             </Button>
-            <Button onClick={handleDownload} className="bg-[#BE1522] hover:bg-[#9B1219]">
+            <Button onClick={handleDownload} className="bg-[#0891B2] hover:bg-[#9B1219]">
               <Download className="h-4 w-4 mr-2" /> Download
             </Button>
           </div>

@@ -320,7 +320,7 @@ export function EditRiskProfileModal({ isOpen, onClose, riskProfileId }: EditRis
               </Button>
               <Button 
                 type="submit" 
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
                 disabled={updateRiskProfileMutation.isPending}
               >
                 {updateRiskProfileMutation.isPending ? "Updating..." : "Update Assessment"}

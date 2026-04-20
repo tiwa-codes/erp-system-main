@@ -1219,7 +1219,7 @@ export default function PlanCustomizationPage() {
           <Button
             onClick={handleSaveCustomization}
             disabled={saveCustomizationMutation.isPending || manualSaving}
-            className="bg-[#BE1522] hover:bg-[#9B1219]"
+            className="bg-[#0891B2] hover:bg-[#9B1219]"
           >
             <Save className="h-4 w-4 mr-2" />
             {(saveCustomizationMutation.isPending || manualSaving) ? "Saving..." : "Save Customization"}
@@ -1253,7 +1253,7 @@ export default function PlanCustomizationPage() {
           <Card>
             <CardContent className="py-10">
               <div className="flex items-center justify-center gap-3 text-gray-500">
-                <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#BE1522]"></div>
+                <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#0891B2]"></div>
                 <span>Loading saved plan configuration...</span>
               </div>
             </CardContent>
@@ -1275,8 +1275,8 @@ export default function PlanCustomizationPage() {
             <Card>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between gap-3">
-                  <CardTitle className="text-[#BE1522] text-xl">Plans</CardTitle>
-                  <Button onClick={addSpecialPlan} className="bg-[#BE1522] hover:bg-[#9B1219]">
+                  <CardTitle className="text-[#0891B2] text-xl">Plans</CardTitle>
+                  <Button onClick={addSpecialPlan} className="bg-[#0891B2] hover:bg-[#9B1219]">
                     + Add Plan
                   </Button>
                 </div>
@@ -1468,8 +1468,8 @@ export default function PlanCustomizationPage() {
             <Card>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between gap-3">
-                  <CardTitle className="text-[#BE1522] text-xl">Benefits</CardTitle>
-                  <Button onClick={addSpecialCategory} className="bg-[#BE1522] hover:bg-[#9B1219]">
+                  <CardTitle className="text-[#0891B2] text-xl">Benefits</CardTitle>
+                  <Button onClick={addSpecialCategory} className="bg-[#0891B2] hover:bg-[#9B1219]">
                     + Add Category
                   </Button>
                 </div>
@@ -1566,7 +1566,7 @@ export default function PlanCustomizationPage() {
               Generate Output
             </Button>
             <Button
-              className="w-full bg-[#BE1522] hover:bg-[#9B1219]"
+              className="w-full bg-[#0891B2] hover:bg-[#9B1219]"
               onClick={() => {
                 window.location.href = exportRoute
               }}

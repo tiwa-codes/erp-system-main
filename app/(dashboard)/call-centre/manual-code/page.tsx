@@ -96,7 +96,7 @@ export default function ManualApprovalHistoryPage() {
                         <p className="text-muted-foreground">History of codes generated manually by the call centre.</p>
                     </div>
                     <Link href="/call-centre/manual-code/new">
-                        <Button className="bg-[#BE1522] hover:bg-[#9B1219]">
+                        <Button className="bg-[#0891B2] hover:bg-[#9B1219]">
                             <Plus className="h-4 w-4 mr-2" /> Generate New
                         </Button>
                     </Link>

@@ -347,7 +347,7 @@ export default function VetterPage() {
               <Button
                 onClick={handleVetAll}
                 disabled={vetAllMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219] px-6 py-2"
+                className="bg-[#0891B2] hover:bg-[#9B1219] px-6 py-2"
               >
                 {vetAllMutation.isPending ? "Processing..." : "Vet All Claims"}
               </Button>
@@ -655,7 +655,7 @@ export default function VetterPage() {
               <Button
                 onClick={handleLoadApprovalCode}
                 disabled={loadApprovalCodeMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {loadApprovalCodeMutation.isPending ? "Loading..." : "Load Approval Code"}
               </Button>
@@ -771,7 +771,7 @@ export default function VetterPage() {
               {/* Action Button */}
               <div className="flex justify-center">
                 <Button
-                  className="bg-[#BE1522] hover:bg-[#9B1219] text-white px-8 py-2"
+                  className="bg-[#0891B2] hover:bg-[#9B1219] text-white px-8 py-2"
                   onClick={() => {
                     setShowViewModal(false)
                     setSelectedClaim(null)

@@ -38,7 +38,7 @@ export function ProgressBar({ progress, stage, message, status = "in_progress", 
   const getProgressColor = () => {
     if (status === "failed") return "bg-red-500"
     if (status === "completed") return "bg-green-500"
-    return "bg-[#BE1522]"
+    return "bg-[#0891B2]"
   }
 
   return (
@@ -60,7 +60,7 @@ export function ProgressBar({ progress, stage, message, status = "in_progress", 
                   ? "bg-red-500" 
                   : status === "completed" 
                   ? "bg-green-500" 
-                  : "bg-[#BE1522]"
+                  : "bg-[#0891B2]"
               }`}
               style={{ width: `${progress}%` }}
             />

@@ -244,7 +244,7 @@ export default function LeaveManagementPage() {
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
-          <Button onClick={handleAddLeave} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+          <Button onClick={handleAddLeave} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
             <Plus className="h-4 w-4 mr-2" />
             Add Leave
           </Button>
@@ -280,7 +280,7 @@ export default function LeaveManagementPage() {
               onChange={(e) => setEndDate(e.target.value)}
               className="w-48"
             />
-            <Button onClick={handleApplyFilters} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+            <Button onClick={handleApplyFilters} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
               <Filter className="h-4 w-4 mr-2" />
               Apply Filters
             </Button>
@@ -396,7 +396,7 @@ export default function LeaveManagementPage() {
                 >
                   Previous
                 </Button>
-                <Button variant="outline" size="sm" className="bg-[#BE1522] text-white">
+                <Button variant="outline" size="sm" className="bg-[#0891B2] text-white">
                   {pagination.page}
                 </Button>
                 <Button 

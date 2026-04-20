@@ -175,7 +175,7 @@ export default function ChartOfAccountsPage() {
         <PermissionGate permission="finance:add">
           <Button
             onClick={() => router.push("/finance/chart-of-accounts/add")}
-            className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+            className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add New Account
@@ -258,7 +258,7 @@ export default function ChartOfAccountsPage() {
               </div>
               <Button
                 onClick={() => refetch()}
-                className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
               >
                 Search
               </Button>
@@ -514,7 +514,7 @@ export default function ChartOfAccountsPage() {
                   variant={pagination.page === pageNum ? "default" : "outline"}
                   size="sm"
                   onClick={() => setPage(pageNum)}
-                  className={pagination.page === pageNum ? "bg-[#BE1522] hover:bg-[#9B1219] text-white" : ""}
+                  className={pagination.page === pageNum ? "bg-[#0891B2] hover:bg-[#9B1219] text-white" : ""}
                 >
                   {pageNum}
                 </Button>

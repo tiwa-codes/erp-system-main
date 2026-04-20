@@ -162,7 +162,7 @@ export function MemoPage({ module, title }: MemoPageProps) {
           </h1>
           <p className="text-gray-500 text-sm mt-0.5">Internal memos and communications</p>
         </div>
-        <Button onClick={() => setShowAddModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+        <Button onClick={() => setShowAddModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
           <Plus className="h-4 w-4 mr-2" />
           Compose
         </Button>
@@ -186,7 +186,7 @@ export function MemoPage({ module, title }: MemoPageProps) {
             <Inbox className="h-4 w-4" />
             Inbox
             {inboxMemos.length > 0 && (
-              <span className="ml-1 text-xs bg-[#BE1522] text-white rounded-full px-1.5 py-0.5 leading-none">
+              <span className="ml-1 text-xs bg-[#0891B2] text-white rounded-full px-1.5 py-0.5 leading-none">
                 {inboxMemos.length}
               </span>
             )}
@@ -254,7 +254,7 @@ export function MemoPage({ module, title }: MemoPageProps) {
                             <TableCell>
                               <div className="flex items-center gap-1.5">
                                 {isUnread && (
-                                  <span className="w-2 h-2 rounded-full bg-[#BE1522] shrink-0" />
+                                  <span className="w-2 h-2 rounded-full bg-[#0891B2] shrink-0" />
                                 )}
                                 <span className={`max-w-xs truncate ${isUnread ? "font-semibold" : ""}`}>
                                   {memo.title}

@@ -275,7 +275,7 @@ export function AddOrganizationForm({ onClose, onCreated }: AddOrganizationFormP
                   >
                     <div className={`w-4 h-4 shrink-0 rounded border-2 flex items-center justify-center ${
                       form.planIds.includes(plan.id)
-                        ? 'bg-[#BE1522] border-blue-600'
+                        ? 'bg-[#0891B2] border-blue-600'
                         : 'border-gray-300'
                     }`}>
                       {form.planIds.includes(plan.id) && (
@@ -400,7 +400,7 @@ export function AddOrganizationForm({ onClose, onCreated }: AddOrganizationFormP
         <Button 
           type="submit" 
           disabled={createMutation.isPending || form.planIds.length === 0}
-          className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+          className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
         >
           {createMutation.isPending ? "Creating..." : "Create Organization"}
         </Button>

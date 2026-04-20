@@ -343,7 +343,7 @@ export default function ERPDashboard() {
                   <YAxis domain={[50, 250]} />
                   <Tooltip />
                   <Line type="monotone" dataKey="thisWeek" stroke="#10b981" strokeWidth={2} name="This Week" />
-                  <Line type="monotone" dataKey="lastWeek" stroke="#BE1522" strokeWidth={2} name="Last Week" />
+                  <Line type="monotone" dataKey="lastWeek" stroke="#0891B2" strokeWidth={2} name="Last Week" />
                 </LineChart>
               </ResponsiveContainer>
             </CardContent>
@@ -361,7 +361,7 @@ export default function ERPDashboard() {
                   <XAxis dataKey="date" />
                   <YAxis domain={[100000, 300000]} />
                   <Tooltip formatter={(value) => [`₦${Number(value ?? 0).toLocaleString()}`, 'Revenue']} />
-                  <Line type="monotone" dataKey="revenue" stroke="#BE1522" strokeWidth={2} />
+                  <Line type="monotone" dataKey="revenue" stroke="#0891B2" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
             </CardContent>
@@ -390,7 +390,7 @@ export default function ERPDashboard() {
                 <tbody>
                   {enrolleeData.map((enrollee: any, index: number) => (
                     <tr key={index} className="border-b hover:bg-gray-50">
-                      <td className="py-3 px-4 text-xs font-medium text-[#BE1522]">{enrollee.id}</td>
+                      <td className="py-3 px-4 text-xs font-medium text-[#0891B2]">{enrollee.id}</td>
                       <td className="py-3 px-4 text-xs text-gray-900">{enrollee.name?.replace(/\b\w/g, (l: string) => l.toUpperCase())}</td>
                       <td className="py-3 px-4 text-xs text-gray-900">{enrollee.organization?.replace(/\b\w/g, (l: string) => l.toUpperCase())}</td>
                       <td className="py-3 px-4 text-xs text-gray-900">{enrollee.plan?.replace(/\b\w/g, (l: string) => l.toUpperCase())}</td>

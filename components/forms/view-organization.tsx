@@ -349,7 +349,7 @@ export function ViewOrganization({ organization, onClose, onEdit, onDelete }: Vi
               <div className="space-y-4">
                 {org.audit_logs?.map((log: any, index: number) => (
                   <div key={index} className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-[#BE1522] rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-[#0891B2] rounded-full mt-2"></div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <p className="text-sm font-medium text-gray-900">

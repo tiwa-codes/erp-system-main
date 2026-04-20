@@ -488,7 +488,7 @@ export default function ProviderViewPage({ params }: { params: { id: string } })
           </div>
           <div className="flex gap-4">
             <PermissionGate module="provider" action="edit">
-              <Button onClick={() => router.push(`/provider/edit/${provider.id}`)} className="bg-[#BE1522] hover:bg-[#9B1219]">
+              <Button onClick={() => router.push(`/provider/edit/${provider.id}`)} className="bg-[#0891B2] hover:bg-[#9B1219]">
                 <Edit className="h-4 w-4 mr-2" />
                 Edit Provider
               </Button>

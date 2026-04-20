@@ -238,7 +238,7 @@ export default function InvestigationWorkspacePage({ params }: { params: { id: s
               <div className="flex gap-2">
                 <Button 
                   onClick={() => handleClaimAction('approve')}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   Approve
                 </Button>
@@ -355,7 +355,7 @@ export default function InvestigationWorkspacePage({ params }: { params: { id: s
                   <Button 
                     onClick={handleAddComment}
                     disabled={addCommentMutation.isPending}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     {addCommentMutation.isPending ? "Saving..." : "Save"}
                   </Button>

@@ -191,7 +191,7 @@ function ServiceUtilizationSummary({
                       />
                       <Button
                         size="sm"
-                        className="h-8 bg-[#BE1522] hover:bg-[#9B1219]"
+                        className="h-8 bg-[#0891B2] hover:bg-[#9B1219]"
                         disabled={updateOldUtilizationMutation.isPending}
                         onClick={() => {
                           const parsedValue = Number(oldUtilizationInput)
@@ -270,7 +270,7 @@ function ServiceUtilizationSummary({
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div 
-                className="bg-[#BE1522] h-2 rounded-full transition-all duration-300"
+                className="bg-[#0891B2] h-2 rounded-full transition-all duration-300"
                 style={{ width: `${Math.min(summary.utilization_percentage, 100)}%` }}
               ></div>
             </div>
@@ -610,7 +610,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
           </Button>
           <div>
             <h1 className="text-3xl font-bold">
-              <span className="text-[#BE1522]">Principal Timeline</span>
+              <span className="text-[#0891B2]">Principal Timeline</span>
               <span className="text-gray-400 mx-2">&gt;</span>
               <span className="text-gray-600">{principal.first_name} {principal.last_name}</span>
             </h1>
@@ -632,7 +632,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <Users className="h-8 w-8 text-[#BE1522]" />
+                      <Users className="h-8 w-8 text-[#0891B2]" />
                     )}
                   </div>
                   <div>
@@ -700,7 +700,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-xs">Account Type:</span>
-                      <span className="text-xs text-[#BE1522]">{principal.account_type}</span>
+                      <span className="text-xs text-[#0891B2]">{principal.account_type}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-xs">Balance:</span>
@@ -765,7 +765,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
                 <TabsContent value="timeline" className="space-y-4">
                   <div className="p-6">
                     <div className="mb-6 flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-[#BE1522]">Enrollee Timeline</h3>
+                      <h3 className="text-lg font-semibold text-[#0891B2]">Enrollee Timeline</h3>
                       <Button variant="outline" size="sm" onClick={handleExportTimeline}>
                         <Download className="h-4 w-4 mr-2" />
                         Export Timeline
@@ -780,7 +780,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
                             <div className="absolute left-3 top-8 w-0.5 h-full bg-gray-200"></div>
                           )}
                           {/* Timeline dot */}
-                          <div className="relative z-10 w-6 h-6 bg-[#BE1522] rounded-full flex items-center justify-center">
+                          <div className="relative z-10 w-6 h-6 bg-[#0891B2] rounded-full flex items-center justify-center">
                             <div className="w-2 h-2 bg-white rounded-full"></div>
                           </div>
                           {/* Timeline content */}
@@ -826,7 +826,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
 
                 <TabsContent value="plan" className="space-y-4">
                   <div className="p-6">
-                    <h3 className="text-lg font-semibold mb-6 text-[#BE1522]">Plan Details & Service Utilization</h3>
+                    <h3 className="text-lg font-semibold mb-6 text-[#0891B2]">Plan Details & Service Utilization</h3>
                     {principal.plan ? (
                       <div className="space-y-6">
                         {/* Plan Information */}
@@ -834,7 +834,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
                           <div className="space-y-3">
                             <div>
                               <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Plan Name</span>
-                              <p className="text-sm font-semibold text-[#BE1522] mt-1">{principal.plan.name}</p>
+                              <p className="text-sm font-semibold text-[#0891B2] mt-1">{principal.plan.name}</p>
                             </div>
                             <div>
                               <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Primary Hospital</span>
@@ -895,7 +895,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
                         module="underwriting"
                         action="add"
                         size="sm"
-                        className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                        className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                         onClick={() => router.push("/underwriting/dependents")}
                       >
                         <Plus className="h-4 w-4 mr-2" />
@@ -1175,7 +1175,7 @@ export default function PrincipalTimelinePage({ params }: { params: { id: string
 
                 <TabsContent value="audit" className="space-y-4">
                   <div className="p-6">
-                    <h3 className="text-lg font-semibold mb-6 text-[#BE1522]">Audit Logs</h3>
+                    <h3 className="text-lg font-semibold mb-6 text-[#0891B2]">Audit Logs</h3>
                     <div className="text-center py-12">
                       <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <FileText className="h-8 w-8 text-gray-400" />

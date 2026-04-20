@@ -328,7 +328,7 @@ export default function ProviderPlansPage() {
             <Upload className="h-4 w-4 mr-2" />
             Bulk Upload
           </Button>
-          <Button onClick={() => setShowAddModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219]">
+          <Button onClick={() => setShowAddModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219]">
             <Plus className="h-4 w-4 mr-2" />
             Assign Provider to Plan
           </Button>

@@ -499,7 +499,7 @@ export default function ApprovalPage() {
                 <PermissionGate module="claims" action="add">
                   <Button 
                     onClick={handleBulkUpload}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     <Upload className="h-4 w-4 mr-2" />
                     Bulk Upload
@@ -719,7 +719,7 @@ export default function ApprovalPage() {
                 </Button>
                 <Button
                   onClick={handleSubmitClaimsRequest}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   Request Claims
                 </Button>

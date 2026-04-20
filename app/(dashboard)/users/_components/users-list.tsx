@@ -338,7 +338,7 @@ export default function UsersList({
           <p className="text-gray-600 mt-1">{pageDescription}</p>
         </div>
         <div className="flex items-center gap-4">
-          <Button onClick={handleAddUser} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+          <Button onClick={handleAddUser} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
             <Plus className="h-4 w-4 mr-2" />
             Add New User
           </Button>
@@ -813,7 +813,7 @@ export default function UsersList({
                   }
                 }}
                 disabled={isUpdatingStatus}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {isUpdatingStatus ? (
                   <>
@@ -921,7 +921,7 @@ export default function UsersList({
           <Card className="w-full max-w-md mx-4">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Key className="h-5 w-5 text-[#BE1522]" />
+                <Key className="h-5 w-5 text-[#0891B2]" />
                 Generate Temporary Password
               </CardTitle>
               <CardDescription>
@@ -947,7 +947,7 @@ export default function UsersList({
               <Button
                 onClick={confirmGenerateTemporaryPassword}
                 disabled={isGeneratingTempPassword}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {isGeneratingTempPassword ? (
                   <>
@@ -1003,7 +1003,7 @@ export default function UsersList({
               >
                 Close
               </Button>
-              <Button onClick={handleCopyTempPasswordMessage} className="bg-[#BE1522] hover:bg-[#9B1219]">
+              <Button onClick={handleCopyTempPasswordMessage} className="bg-[#0891B2] hover:bg-[#9B1219]">
                 <Copy className="h-4 w-4 mr-2" />
                 Copy
               </Button>

@@ -476,7 +476,7 @@ export default function PublicPrincipalRegistrationPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <div className="bg-[#BE1522] p-4 rounded-full">
+            <div className="bg-[#0891B2] p-4 rounded-full">
               <User className="h-12 w-12 text-white" />
             </div>
           </div>
@@ -496,7 +496,7 @@ export default function PublicPrincipalRegistrationPage() {
                 <div className="flex flex-col items-center">
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${step === currentSection
-                      ? "bg-[#BE1522] text-white"
+                      ? "bg-[#0891B2] text-white"
                       : step < currentSection
                         ? "bg-green-600 text-white"
                         : "bg-gray-200 text-gray-500"
@@ -1234,7 +1234,7 @@ export default function PublicPrincipalRegistrationPage() {
                   <Button
                     type="button"
                     onClick={handleNext}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     Next
                   </Button>

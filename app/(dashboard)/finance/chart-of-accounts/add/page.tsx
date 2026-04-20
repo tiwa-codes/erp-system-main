@@ -396,7 +396,7 @@ export default function AddChartOfAccountPage() {
               <Button
                 type="submit"
                 disabled={createMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
               >
                 {createMutation.isPending ? "Creating..." : "Create Account"}
               </Button>

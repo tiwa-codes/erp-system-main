@@ -593,7 +593,7 @@ export function EditEmployeeForm({ employee, onSuccess, onCancel }: EditEmployee
               <Button 
                 type="submit" 
                 disabled={updateEmployeeMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
               >
                 {updateEmployeeMutation.isPending ? "Updating..." : "Save"}
               </Button>

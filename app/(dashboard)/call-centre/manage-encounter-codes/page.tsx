@@ -255,7 +255,7 @@ export default function ManageEncounterCodesPage() {
             </Button>
             <Button
               onClick={() => setShowGenerateModal(true)}
-              className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+              className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
             >
               <Plus className="h-4 w-4 mr-2" />
               Generate New Code
@@ -534,7 +534,7 @@ export default function ManageEncounterCodesPage() {
                 <Button
                   onClick={handleGenerateCode}
                   disabled={generateCodeMutation.isPending}
-                  className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                  className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                 >
                   {generateCodeMutation.isPending ? "Generating..." : "Generate Code"}
                 </Button>

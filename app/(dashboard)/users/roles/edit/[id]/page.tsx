@@ -450,7 +450,7 @@ export default function EditRolePage({ params }: { params: { id: string } }) {
               <Button
                 type="submit"
                 disabled={updateRoleMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {updateRoleMutation.isPending ? (
                   <>

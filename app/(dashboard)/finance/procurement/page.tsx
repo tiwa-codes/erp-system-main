@@ -395,7 +395,7 @@ export default function ProcurementPage() {
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>
-            <Button onClick={() => setShowCreateModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+            <Button onClick={() => setShowCreateModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
               <Plus className="h-4 w-4 mr-2" />
               Add Invoice
             </Button>
@@ -446,7 +446,7 @@ export default function ProcurementPage() {
                 <span className="text-xs text-gray-700">25/07/2025</span>
               </div>
 
-              <Button className="bg-[#BE1522] hover:bg-[#9B1219] text-white h-8 px-3 text-xs">
+              <Button className="bg-[#0891B2] hover:bg-[#9B1219] text-white h-8 px-3 text-xs">
                 Apply Filters
               </Button>
               </div>
@@ -547,7 +547,7 @@ export default function ProcurementPage() {
                       <Button
                         variant="default"
                         size="sm"
-                        className="bg-[#BE1522] text-white text-xs w-8 h-8 p-0"
+                        className="bg-[#0891B2] text-white text-xs w-8 h-8 p-0"
                       >
                         1
                       </Button>
@@ -899,7 +899,7 @@ export default function ProcurementPage() {
                   <Button
                     onClick={handleCreateInvoice}
                     disabled={createInvoiceMutation.isPending || resubmitInvoiceMutation.isPending}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     {editingInvoiceId
                       ? (resubmitInvoiceMutation.isPending ? 'Resending...' : 'Resend Invoice')

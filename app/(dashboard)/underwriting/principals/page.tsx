@@ -651,7 +651,7 @@ export default function PrincipalsPage() {
                     <TableCell className="font-medium text-xs">
                       <Link
                         href={`/underwriting/principals/${principal.id}`}
-                        className="text-[#BE1522] hover:text-[#9B1219] hover:underline"
+                        className="text-[#0891B2] hover:text-[#9B1219] hover:underline"
                       >
                         {principal.enrollee_id}
                       </Link>
@@ -872,7 +872,7 @@ export default function PrincipalsPage() {
                 <Button
                   onClick={handleStatusChange}
                   disabled={!newStatus || isChangingStatus}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   {isChangingStatus ? (
                     <>

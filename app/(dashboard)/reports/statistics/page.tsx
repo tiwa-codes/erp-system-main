@@ -129,7 +129,7 @@ export default function StatisticsPage() {
               </div>
 
               <div className="flex gap-2">
-                <Button onClick={handleFilter} className="flex-1 bg-[#BE1522] hover:bg-[#9B1219] text-white">
+                <Button onClick={handleFilter} className="flex-1 bg-[#0891B2] hover:bg-[#9B1219] text-white">
                   <Filter className="h-4 w-4 mr-2" />
                   Apply Filter
                 </Button>
@@ -155,7 +155,7 @@ export default function StatisticsPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-[#BE1522]" />
+                  <Users className="h-5 w-5 text-[#0891B2]" />
                   Total Enrollees
                 </CardTitle>
                 <CardDescription>
@@ -164,7 +164,7 @@ export default function StatisticsPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-center py-8">
-                  <div className="text-5xl font-bold text-[#BE1522] mb-2">
+                  <div className="text-5xl font-bold text-[#0891B2] mb-2">
                     {totalPatients.toLocaleString()}
                   </div>
                   <p className="text-gray-600">Enrollees</p>

@@ -262,7 +262,7 @@ export default function PublicBenefitPlansPage() {
                                             <TableHead key={plan.id} className="text-center min-w-[200px] py-6 align-top">
                                                 {customMode && basePlanId === plan.id ? (
                                                     <div className="space-y-2">
-                                                        <Badge className="bg-[#BE1522]">Base Plan</Badge>
+                                                        <Badge className="bg-[#0891B2]">Base Plan</Badge>
                                                         <div className="text-xl font-bold text-gray-900">{plan.name}</div>
                                                     </div>
                                                 ) : customMode ? (
@@ -696,7 +696,7 @@ function SubmitButton({ form, basePlanId, basePlanConfigs, onSuccess }: any) {
     return (
         <Button
             size="lg"
-            className="bg-[#BE1522] hover:bg-[#9B1219] shadow-xl"
+            className="bg-[#0891B2] hover:bg-[#9B1219] shadow-xl"
             disabled={mutation.isPending || !form.organization_name || !form.submitter_name}
             onClick={() => mutation.mutate()}
         >

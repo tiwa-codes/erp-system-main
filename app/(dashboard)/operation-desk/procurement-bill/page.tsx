@@ -329,7 +329,7 @@ export default function OperationDeskPage() {
                     setCurrentPage(1)
                     queryClient.invalidateQueries({ queryKey: ["operation-desk-requests"] })
                   }}
-                  className="w-full bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                  className="w-full bg-[#0891B2] hover:bg-[#9B1219] text-white"
                 >
                   Apply Filter
                 </Button>
@@ -610,7 +610,7 @@ export default function OperationDeskPage() {
                   <Button
                     onClick={handleApprove}
                     disabled={approveRequestMutation.isPending}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     {approveRequestMutation.isPending ? "Approving..." : "Approve"}
                   </Button>

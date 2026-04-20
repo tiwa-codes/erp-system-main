@@ -371,7 +371,7 @@ export default function ProviderManagementPage() {
           </div>
           <div className="flex gap-4">
             <PermissionGate module="provider" action="add">
-              <Button onClick={() => router.push("/providers/add")} className="bg-[#BE1522] hover:bg-[#9B1219]">
+              <Button onClick={() => router.push("/providers/add")} className="bg-[#0891B2] hover:bg-[#9B1219]">
                 <Plus className="h-4 w-4 mr-2" />
                 Add Provider
               </Button>
@@ -397,7 +397,7 @@ export default function ProviderManagementPage() {
               <Button 
                 onClick={handleCopyLink} 
                 size="sm" 
-                className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
               >
                 <Copy className="h-4 w-4 mr-1" />
                 Copy Link
@@ -493,7 +493,7 @@ export default function ProviderManagementPage() {
                 </Select>
               </div>
               <div className="flex items-end gap-2">
-                <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219]">
+                <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219]">
                   <Filter className="h-4 w-4 mr-2" />
                   Apply Filters
                 </Button>

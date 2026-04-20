@@ -1329,7 +1329,7 @@ export default function PatientTimelinePage() {
                   onClick={() => setSelectedTab(tab.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     selectedTab === tab.id
-                      ? 'bg-[#BE1522] text-white'
+                      ? 'bg-[#0891B2] text-white'
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                   }`}
                 >
@@ -1366,7 +1366,7 @@ export default function PatientTimelinePage() {
                       <Input id="end_date" type="date" placeholder="dd-mm-yy" />
                     </div>
                     <div className="flex items-end">
-                      <Button className="bg-[#BE1522] hover:bg-[#9B1219]">
+                      <Button className="bg-[#0891B2] hover:bg-[#9B1219]">
                         Search
                       </Button>
                     </div>
@@ -1376,14 +1376,14 @@ export default function PatientTimelinePage() {
 
               {/* Action Buttons */}
               <div className="flex justify-between items-center">
-                <Button className="bg-[#BE1522] hover:bg-[#9B1219]">
+                <Button className="bg-[#0891B2] hover:bg-[#9B1219]">
                   <Phone className="h-4 w-4 mr-2" />
                   Make a call
                 </Button>
                 <PermissionGate module="telemedicine" action="add">
                   <Button 
                     onClick={() => setShowAddEncounterModal(true)}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     <FileText className="h-4 w-4 mr-2" />
                     Add Clinical Encounter
@@ -1533,7 +1533,7 @@ export default function PatientTimelinePage() {
                           })
                       }
                     }}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Add {tabs.find(t => t.id === selectedTab)?.name}
@@ -1975,7 +1975,7 @@ export default function PatientTimelinePage() {
                         type="button"
                         onClick={(e) => handleAddEncounterSubmit(e as any, 'COMPLETED')}
                         disabled={clinicalEncounterMutation.isPending}
-                        className="bg-[#BE1522] hover:bg-[#9B1219]"
+                        className="bg-[#0891B2] hover:bg-[#9B1219]"
                       >
                         {clinicalEncounterMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                         ✓ Save as Complete
@@ -2139,7 +2139,7 @@ export default function PatientTimelinePage() {
                     <Button
                       type="submit"
                       disabled={labOrderMutation.isPending}
-                      className="bg-[#BE1522] hover:bg-[#9B1219]"
+                      className="bg-[#0891B2] hover:bg-[#9B1219]"
                     >
                       {labOrderMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                       Create Lab Order
@@ -2302,7 +2302,7 @@ export default function PatientTimelinePage() {
                     <Button
                       type="submit"
                       disabled={radiologyOrderMutation.isPending}
-                      className="bg-[#BE1522] hover:bg-[#9B1219]"
+                      className="bg-[#0891B2] hover:bg-[#9B1219]"
                     >
                       {radiologyOrderMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                       Create Radiology Order
@@ -2676,7 +2676,7 @@ export default function PatientTimelinePage() {
                     <Button
                       type="submit"
                       disabled={prescriptionMutation.isPending || medicationsList.length === 0}
-                      className="bg-[#BE1522] hover:bg-[#9B1219]"
+                      className="bg-[#0891B2] hover:bg-[#9B1219]"
                     >
                       {prescriptionMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                       Create Prescription{medicationsList.length > 0 && ` (${medicationsList.length} medication${medicationsList.length > 1 ? 's' : ''})`}
@@ -2759,7 +2759,7 @@ export default function PatientTimelinePage() {
                     <Button
                       type="submit"
                       disabled={referralMutation.isPending}
-                      className="bg-[#BE1522] hover:bg-[#9B1219]"
+                      className="bg-[#0891B2] hover:bg-[#9B1219]"
                     >
                       {referralMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                       Create Referral

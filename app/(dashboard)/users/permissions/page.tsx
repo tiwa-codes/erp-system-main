@@ -468,7 +468,7 @@ export default function PermissionMatrixPage() {
         <div className="flex items-center gap-4">
           <Button
             onClick={() => router.push("/users/roles")}
-            className="flex items-center gap-2 bg-[#BE1522] hover:bg-[#9B1219] text-white"
+            className="flex items-center gap-2 bg-[#0891B2] hover:bg-[#9B1219] text-white"
           >
             <Plus className="h-4 w-4" />
             Add Role
@@ -515,7 +515,7 @@ export default function PermissionMatrixPage() {
                   action="manage_permissions"
                   onClick={() => setShowConfirmDialog(true)}
                   disabled={updatePermissionsMutation.isPending}
-                  className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                  className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                 >
                   <Save className="h-4 w-4 mr-2" />
                   {updatePermissionsMutation.isPending ? "Saving..." : "Save Changes"}
@@ -636,7 +636,7 @@ export default function PermissionMatrixPage() {
                       action="manage_permissions"
                       onClick={() => setShowConfirmDialog(true)}
                       disabled={updatePermissionsMutation.isPending}
-                      className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                      className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                     >
                       <Save className="h-4 w-4 mr-2" />
                       {updatePermissionsMutation.isPending ? "Saving..." : "Save Changes"}
@@ -683,7 +683,7 @@ export default function PermissionMatrixPage() {
                 <Button
                   onClick={handleSavePermissions}
                   disabled={updatePermissionsMutation.isPending}
-                  className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                  className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                 >
                   {updatePermissionsMutation.isPending ? "Saving..." : "Save Changes"}
                 </Button>

@@ -70,7 +70,7 @@ export default function SpecialProvidersPage() {
         </div>
         <PermissionGate permission="special-risk.add">
           <Link href="/special-risk/special-providers/add">
-            <Button className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+            <Button className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
               <Plus className="h-4 w-4 mr-1" />
               Add Provider
             </Button>

@@ -1325,7 +1325,7 @@ export function TariffPlanTab({ providerId }: TariffPlanTabProps) {
           {canCreateNewVersion && (
             <Button
               onClick={handleCreateNewVersion}
-              className="bg-[#BE1522] hover:bg-[#9B1219]"
+              className="bg-[#0891B2] hover:bg-[#9B1219]"
               disabled={isCreatingVersion}
               title="Create a new version to modify your approved tariff plan"
             >
@@ -1790,7 +1790,7 @@ export function TariffPlanTab({ providerId }: TariffPlanTabProps) {
                       </div>
                       <div className="flex items-center gap-2">
                         {isSelected && (
-                          <Badge className="bg-[#BE1522] text-white">
+                          <Badge className="bg-[#0891B2] text-white">
                             Selected
                           </Badge>
                         )}
@@ -1849,7 +1849,7 @@ export function TariffPlanTab({ providerId }: TariffPlanTabProps) {
                                 handleAddService()
                               }}
                               size="sm"
-                              className="bg-[#BE1522] hover:bg-[#9B1219]"
+                              className="bg-[#0891B2] hover:bg-[#9B1219]"
                               disabled={!canEdit}
                             >
                               <Plus className="h-4 w-4 mr-2" />
@@ -2071,7 +2071,7 @@ export function TariffPlanTab({ providerId }: TariffPlanTabProps) {
                 <Button
                   onClick={handleSubmitForm}
                   disabled={addServiceMutation.isPending}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   {addServiceMutation.isPending ? "Adding..." : "Add Service"}
                 </Button>
@@ -2196,7 +2196,7 @@ export function TariffPlanTab({ providerId }: TariffPlanTabProps) {
                 <Button
                   onClick={handleSubmitForm}
                   disabled={editServiceMutation.isPending}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   {editServiceMutation.isPending ? "Updating..." : "Update Service"}
                 </Button>
@@ -2297,7 +2297,7 @@ export function TariffPlanTab({ providerId }: TariffPlanTabProps) {
                     setShowViewModal(false)
                     handleEditService(viewingService)
                   }}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   <Settings className="h-4 w-4 mr-2" />
                   Edit Service

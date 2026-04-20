@@ -342,7 +342,7 @@ export default function DependentsPage() {
             Bulk Upload
           </PermissionButton>
           <PermissionGate module="underwriting" action="create">
-            <Button onClick={() => setShowAddModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+            <Button onClick={() => setShowAddModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
               <Plus className="h-4 w-4 mr-2" />
               Add Dependent
             </Button>
@@ -698,7 +698,7 @@ export default function DependentsPage() {
                 <Button
                   onClick={handleStatusChange}
                   disabled={!newStatus || isChangingStatus}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   {isChangingStatus ? (
                     <>

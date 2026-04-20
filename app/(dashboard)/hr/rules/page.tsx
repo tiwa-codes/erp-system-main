@@ -239,7 +239,7 @@ export default function HRRulesManagementPage() {
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
-          <Button onClick={() => setShowAddModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+          <Button onClick={() => setShowAddModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
             <Plus className="h-4 w-4 mr-2" />
             Add HR Rule
           </Button>

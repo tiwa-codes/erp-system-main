@@ -229,7 +229,7 @@ export default function BandLabelsPage() {
           <p className="text-gray-600">Manage band labels for provider plans and plans</p>
         </div>
         <PermissionGate module="underwriting" action="add">
-          <Button onClick={() => setIsAddModalOpen(true)} className="bg-[#BE1522] hover:bg-[#9B1219]">
+          <Button onClick={() => setIsAddModalOpen(true)} className="bg-[#0891B2] hover:bg-[#9B1219]">
             <Plus className="h-4 w-4 mr-2" />
             Add Band Label
           </Button>
@@ -284,7 +284,7 @@ export default function BandLabelsPage() {
               </Select>
             </div>
             <div className="flex items-end">
-              <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219] w-full">
+              <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219] w-full">
                 <Search className="h-4 w-4 mr-2" />
                 Apply Filters
               </Button>
@@ -463,7 +463,7 @@ export default function BandLabelsPage() {
             <Button
               onClick={handleAddBandLabel}
               disabled={createBandLabelMutation.isPending}
-              className="bg-[#BE1522] hover:bg-[#9B1219]"
+              className="bg-[#0891B2] hover:bg-[#9B1219]"
             >
               {createBandLabelMutation.isPending ? (
                 <>
@@ -531,7 +531,7 @@ export default function BandLabelsPage() {
             <Button
               onClick={handleEditBandLabel}
               disabled={updateBandLabelMutation.isPending}
-              className="bg-[#BE1522] hover:bg-[#9B1219]"
+              className="bg-[#0891B2] hover:bg-[#9B1219]"
             >
               {updateBandLabelMutation.isPending ? (
                 <>

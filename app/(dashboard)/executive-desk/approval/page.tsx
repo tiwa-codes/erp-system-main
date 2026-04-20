@@ -154,7 +154,7 @@ export default function ApprovalPage() {
             <p className="text-gray-600">Review and approve processed claims</p>
           </div>
           <div className="flex gap-2">
-            <Button className="bg-[#BE1522] hover:bg-[#9B1219]">
+            <Button className="bg-[#0891B2] hover:bg-[#9B1219]">
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>

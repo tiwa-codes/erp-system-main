@@ -151,7 +151,7 @@ export function ViewPlanModal({ isOpen, onClose, onEdit, onDelete, planId }: Vie
                 module="underwriting" 
                 action="edit"
                 onClick={onEdit}
-                className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
               >
                 <Edit className="h-4 w-4 mr-2" />
                 Edit Plan

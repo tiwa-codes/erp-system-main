@@ -302,7 +302,7 @@ export default function PlanServicesPage() {
         </div>
         <div className="flex items-center gap-2">
           <Link href={`/settings/covered-services/assign?facility=${facilityId}&plan=${planId}`}>
-            <Button className="bg-[#BE1522] hover:bg-[#9B1219]">
+            <Button className="bg-[#0891B2] hover:bg-[#9B1219]">
               <Plus className="h-4 w-4 mr-2" />
               Add Services
             </Button>
@@ -516,7 +516,7 @@ export default function PlanServicesPage() {
                 >
                   Previous
                 </Button>
-                <Button variant="outline" size="sm" className="bg-[#BE1522] text-white">
+                <Button variant="outline" size="sm" className="bg-[#0891B2] text-white">
                   {pagination.page}
                 </Button>
                 <Button 

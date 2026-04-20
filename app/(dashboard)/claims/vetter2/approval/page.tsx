@@ -682,7 +682,7 @@ export default function ApprovalPage() {
                 
                 <div className="flex justify-start mt-4">
                   <Button 
-                    className="bg-[#BE1522] hover:bg-[#9B1219] text-white px-6 py-2"
+                    className="bg-[#0891B2] hover:bg-[#9B1219] text-white px-6 py-2"
                     onClick={() => {
                       setShowViewModal(false)
                       setSelectedClaim(null)

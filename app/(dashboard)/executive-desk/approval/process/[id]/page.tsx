@@ -554,7 +554,7 @@ export default function ApprovalProcessPage() {
               <div className="flex items-center gap-2 mb-1">
                 <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 uppercase font-black tracking-tighter text-[10px] px-2 py-0">SMART APPROVAL SYSTEM</Badge>
                 <div className="flex items-center text-[11px] font-bold text-gray-400 uppercase tracking-widest leading-none">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#BE1522] mr-1.5 ring-2 ring-blue-100"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#0891B2] mr-1.5 ring-2 ring-blue-100"></div>
                   FINAL MEDICAL DIRECTOR REVIEW
                 </div>
                 {lastAction ? (

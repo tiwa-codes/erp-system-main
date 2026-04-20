@@ -273,7 +273,7 @@ export default function DepartmentsPage() {
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
-          <Button onClick={handleAddDepartment} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+          <Button onClick={handleAddDepartment} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
             <Plus className="h-4 w-4 mr-2" />
             Add Department
           </Button>
@@ -423,7 +423,7 @@ export default function DepartmentsPage() {
                   <Button 
                     type="submit" 
                     disabled={createMutation.isPending}
-                    className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                    className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                   >
                     {createMutation.isPending ? "Creating..." : "Create Department"}
                   </Button>
@@ -483,7 +483,7 @@ export default function DepartmentsPage() {
                   <Button 
                     type="submit" 
                     disabled={updateMutation.isPending}
-                    className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                    className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                   >
                     {updateMutation.isPending ? "Updating..." : "Update Department"}
                   </Button>

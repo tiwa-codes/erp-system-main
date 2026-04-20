@@ -367,7 +367,7 @@ export default function ProviderApprovalPage() {
                 </Select>
               </div>
               <div className="flex items-end">
-                <Button onClick={handleFilterChange} className="w-full bg-[#BE1522] hover:bg-[#9B1219] text-white">
+                <Button onClick={handleFilterChange} className="w-full bg-[#0891B2] hover:bg-[#9B1219] text-white">
                   Apply Filters
                 </Button>
               </div>

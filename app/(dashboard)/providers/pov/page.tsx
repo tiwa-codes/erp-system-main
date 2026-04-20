@@ -403,7 +403,7 @@ export default function ProvidersPOVPage() {
                 </Select>
               </div>
               <div className="flex items-end gap-2">
-                <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219]">
+                <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219]">
                   <Filter className="h-4 w-4 mr-2" />
                   Apply Filters
                 </Button>

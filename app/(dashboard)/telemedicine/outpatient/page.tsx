@@ -160,7 +160,7 @@ export default function OutpatientPage() {
           <PermissionGate module="telemedicine" action="add">
             <Button 
               onClick={() => router.push("/telemedicine/scheduled-appointment")}
-              className="bg-[#BE1522] hover:bg-[#9B1219]"
+              className="bg-[#0891B2] hover:bg-[#9B1219]"
             >
               <Plus className="h-4 w-4 mr-2" />
               Schedule Appointment
@@ -224,7 +224,7 @@ export default function OutpatientPage() {
               </div>
             </div>
             <div className="flex justify-end mt-4">
-              <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219]">
+              <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219]">
                 <Search className="h-4 w-4 mr-2" />
                 Search
               </Button>

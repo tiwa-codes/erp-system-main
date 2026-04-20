@@ -457,7 +457,7 @@ export default function FinancialTransactionsPage() {
             <PermissionGate module="finance" action="add">
               <Button 
                 onClick={() => setShowCreateModal(true)}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 New Transaction
@@ -1215,7 +1215,7 @@ export default function FinancialTransactionsPage() {
                   <Button
                     onClick={handlePostToGLSubmit}
                     disabled={postToGLMutation.isPending || !postToGLForm.debit_account_id || !postToGLForm.credit_account_id}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     {postToGLMutation.isPending ? "Posting..." : "Post to GL"}
                   </Button>

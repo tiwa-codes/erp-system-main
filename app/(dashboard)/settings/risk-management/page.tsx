@@ -319,7 +319,7 @@ export default function RiskManagementPage() {
           <p className="text-gray-600 mt-1">Manage provider risk profiles and assessments</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button onClick={() => setShowAddModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219]">
+          <Button onClick={() => setShowAddModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219]">
             <Plus className="h-4 w-4 mr-2" />
             Add Tariff Plan
           </Button>
@@ -451,7 +451,7 @@ export default function RiskManagementPage() {
                 >
                   Previous
                 </Button>
-                <Button variant="outline" size="sm" className="bg-[#BE1522] text-white">
+                <Button variant="outline" size="sm" className="bg-[#0891B2] text-white">
                   {pagination.page}
                 </Button>
                 <Button 

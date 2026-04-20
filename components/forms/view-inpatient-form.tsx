@@ -268,7 +268,7 @@ export function ViewInPatientModal({ isOpen, onClose, inpatientId, onEdit, onDel
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-[#BE1522] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#0891B2] rounded-full"></div>
                     <div>
                       <p className="text-sm font-medium">Admitted</p>
                       <p className="text-xs text-gray-600">{formatDate(inpatient.admission_date)}</p>

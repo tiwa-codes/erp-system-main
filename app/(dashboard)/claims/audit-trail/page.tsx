@@ -49,7 +49,7 @@ export default function ClaimsAuditTrailPage() {
                             </div>
                             <Button
                                 type="submit"
-                                className="h-12 px-8 bg-[#BE1522] hover:bg-[#9B1219] text-white font-black rounded-lg shadow-lg shadow-red-200 transition-all hover:scale-105"
+                                className="h-12 px-8 bg-[#0891B2] hover:bg-[#9B1219] text-white font-black rounded-lg shadow-lg shadow-red-200 transition-all hover:scale-105"
                             >
                                 <Search className="h-4 w-4 mr-2" />
                                 TRACK AUDIT TRAIL

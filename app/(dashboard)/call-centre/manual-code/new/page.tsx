@@ -1051,7 +1051,7 @@ export default function ManualApprovalCodePage() {
                                                 <Button
                                                     onClick={handleAddService}
                                                     disabled={!selectedTariffService}
-                                                    className="h-9 bg-[#BE1522] hover:bg-[#9B1219]"
+                                                    className="h-9 bg-[#0891B2] hover:bg-[#9B1219]"
                                                 >
                                                     <Plus className="h-4 w-4 mr-2" /> Add Selection
                                                 </Button>
@@ -1160,7 +1160,7 @@ export default function ManualApprovalCodePage() {
                                 </div>
                                 <div className="pt-3 border-t">
                                     <Button
-                                        className="w-full bg-[#BE1522] hover:bg-[#9B1219] text-lg py-6"
+                                        className="w-full bg-[#0891B2] hover:bg-[#9B1219] text-lg py-6"
                                         disabled={!providerId || !enrollee || services.length === 0 || submitMutation.isPending}
                                         onClick={() => {
                                             submitMutation.mutate({

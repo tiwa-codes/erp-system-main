@@ -143,7 +143,7 @@ export default function ClaimsPaymentAdvicePage() {
                             <div className="text-4xl font-black text-gray-900 mb-1">{metrics?.paid_enrollees ?? 0}</div>
                             <p className="text-gray-400 text-sm font-medium">Members covered in settlements</p>
                         </CardContent>
-                        <div className="h-1 bg-[#BE1522] absolute bottom-0 left-0 right-0" />
+                        <div className="h-1 bg-[#0891B2] absolute bottom-0 left-0 right-0" />
                     </Card>
                 </div>
 

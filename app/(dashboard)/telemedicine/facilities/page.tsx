@@ -125,7 +125,7 @@ function ServicePriceUpdate({ service, facilityId, onPriceUpdate }: ServicePrice
       <TableCell>
         <Button 
           size="sm" 
-          className="bg-[#BE1522] hover:bg-[#9B1219]"
+          className="bg-[#0891B2] hover:bg-[#9B1219]"
           onClick={handleUpdatePrice}
           disabled={isUpdating}
         >
@@ -694,7 +694,7 @@ export default function ManageFacilitiesPage() {
           <PermissionGate module="telemedicine" action="add">
             <Button 
               onClick={handleAddClick}
-              className="bg-[#BE1522] hover:bg-[#9B1219]"
+              className="bg-[#0891B2] hover:bg-[#9B1219]"
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Facility
@@ -926,7 +926,7 @@ export default function ManageFacilitiesPage() {
                     <Button
                       type="submit"
                       disabled={addFacilityMutation.isPending}
-                      className="bg-[#BE1522] hover:bg-[#9B1219]"
+                      className="bg-[#0891B2] hover:bg-[#9B1219]"
                     >
                       {addFacilityMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                       Save
@@ -1045,7 +1045,7 @@ export default function ManageFacilitiesPage() {
                     <Button
                       type="submit"
                       disabled={editFacilityMutation.isPending}
-                      className="bg-[#BE1522] hover:bg-[#9B1219]"
+                      className="bg-[#0891B2] hover:bg-[#9B1219]"
                     >
                       {editFacilityMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                       Save
@@ -1268,7 +1268,7 @@ export default function ManageFacilitiesPage() {
                                 className="text-xs border rounded px-2 py-1 h-7 focus:outline-none focus:ring-1 focus:ring-red-700"
                               />
                             </div>
-                            <Button size="sm" className="h-7 text-xs bg-[#BE1522] hover:bg-[#9B1219]" onClick={handleServicesDateFilter}>
+                            <Button size="sm" className="h-7 text-xs bg-[#0891B2] hover:bg-[#9B1219]" onClick={handleServicesDateFilter}>
                               Apply
                             </Button>
                             {(servicesDateFrom || servicesDateTo) && (
@@ -1421,7 +1421,7 @@ export default function ManageFacilitiesPage() {
                                 input.click()
                               }}
                               disabled={isLoadingTariffs}
-                              className="bg-[#BE1522] hover:bg-[#9B1219]"
+                              className="bg-[#0891B2] hover:bg-[#9B1219]"
                             >
                               {isLoadingTariffs ? (
                                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />

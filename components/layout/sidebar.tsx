@@ -1528,7 +1528,7 @@ export function Sidebar() {
               )}
               {isCollapsed && (
                 <div className="flex items-center justify-center w-full">
-                  <div className="h-8 w-8 rounded-lg bg-[#BE1522] flex items-center justify-center">
+                  <div className="h-8 w-8 rounded-lg bg-[#0891B2] flex items-center justify-center">
                     <span className="text-white font-bold text-sm">ERP</span>
                   </div>
                 </div>
@@ -1616,7 +1616,7 @@ export function Sidebar() {
   const SidebarContent = ({ collapsed = false }: { collapsed?: boolean }) => (
     <div className="flex h-full flex-col bg-[#4A4A4A]">
       {/* Logo */}
-      <div className="flex h-16 items-center justify-between px-4 bg-[#BE1522] lg:bg-white border-b border-[#a0111b] lg:border-gray-200">
+      <div className="flex h-16 items-center justify-between px-4 bg-[#0891B2] lg:bg-white border-b border-[#0369a1] lg:border-gray-200">
         {!collapsed && (
           <div className="flex items-center gap-2">
             <div className="bg-white rounded-xl p-1 shadow-sm lg:p-0 lg:shadow-none lg:bg-transparent">
@@ -1627,7 +1627,7 @@ export function Sidebar() {
         )}
         {collapsed && (
           <div className="flex items-center justify-center w-full">
-            <div className="h-8 w-8 rounded-lg bg-[#BE1522] flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-[#0891B2] flex items-center justify-center">
               <span className="text-white font-bold text-sm">ERP</span>
             </div>
           </div>
@@ -1637,7 +1637,7 @@ export function Sidebar() {
             variant="ghost"
             size="icon"
             onClick={() => setIsCollapsed(true)}
-            className="h-8 w-8 text-white lg:text-gray-900 hover:bg-[#a0111b] lg:hover:bg-gray-100 hover:text-white lg:hover:text-gray-900 hidden lg:flex"
+            className="h-8 w-8 text-white lg:text-gray-900 hover:bg-[#0369a1] lg:hover:bg-gray-100 hover:text-white lg:hover:text-gray-900 hidden lg:flex"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -1669,7 +1669,7 @@ export function Sidebar() {
                       href={item.href}
                       className={cn(
                         "flex items-center gap-3 rounded-lg px-3 py-2 text-xs transition-colors flex-1",
-                        isActive ? "bg-[#BE1522] text-white" : "text-white hover:bg-[#3A3A3A] hover:text-white",
+                        isActive ? "bg-[#0891B2] text-white" : "text-white hover:bg-[#3A3A3A] hover:text-white",
                         collapsed && "justify-center"
                       )}
                       onClick={(e) => {
@@ -1685,7 +1685,7 @@ export function Sidebar() {
                       <item.icon className="h-4 w-4" />
                       {!collapsed && item.name}
                       {!collapsed && moduleNotificationCount > 0 && (
-                        <span className="sidebar-notification-badge ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-white px-1.5 text-[10px] font-bold text-[#BE1522] shadow-sm ring-1 ring-[#BE1522]/30 animate-pulse">
+                        <span className="sidebar-notification-badge ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-white px-1.5 text-[10px] font-bold text-[#0891B2] shadow-sm ring-1 ring-[#0891B2]/30 animate-pulse">
                           {moduleNotificationCount}
                         </span>
                       )}
@@ -1719,14 +1719,14 @@ export function Sidebar() {
                               href={child.href}
                               className={cn(
                                 "flex items-center gap-3 rounded-lg px-3 py-2 text-xs transition-colors",
-                                isChildActive ? "bg-[#BE1522]/30 text-white" : "text-gray-200 hover:bg-[#3A3A3A] hover:text-white"
+                                isChildActive ? "bg-[#0891B2]/30 text-white" : "text-gray-200 hover:bg-[#3A3A3A] hover:text-white"
                               )}
                               onClick={() => setIsMobileOpen(false)}
                             >
                               <div className="w-2 h-2 rounded-full bg-gray-300" />
                               {child.name}
                               {childNotificationCount > 0 && (
-                                <span className="sidebar-notification-badge ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-white px-1.5 text-[10px] font-bold text-[#BE1522] shadow-sm ring-1 ring-[#BE1522]/30 animate-pulse">
+                                <span className="sidebar-notification-badge ml-2 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-white px-1.5 text-[10px] font-bold text-[#0891B2] shadow-sm ring-1 ring-[#0891B2]/30 animate-pulse">
                                   {childNotificationCount}
                                 </span>
                               )}

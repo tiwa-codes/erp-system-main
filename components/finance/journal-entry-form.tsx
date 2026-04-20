@@ -271,7 +271,7 @@ export function JournalEntryForm({
             <Button
               type="submit"
               disabled={isSubmitting || !!validationError}
-              className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+              className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
             >
               {isSubmitting ? "Saving..." : "Save Journal Entry"}
             </Button>

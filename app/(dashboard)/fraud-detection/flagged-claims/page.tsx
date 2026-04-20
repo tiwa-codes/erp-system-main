@@ -403,14 +403,14 @@ export default function FraudDetectionPage() {
                 </div>
               </div>
               <div className="flex items-end">
-                <Button onClick={handleApplyFilter} className="bg-[#BE1522] hover:bg-[#9B1219]">
+                <Button onClick={handleApplyFilter} className="bg-[#0891B2] hover:bg-[#9B1219]">
                   <Filter className="h-4 w-4 mr-2" />
                   Apply Filter
                 </Button>
               </div>
             </div>
             <div className="mt-4 flex gap-2">
-              <Button onClick={handleBulkUpload} className="bg-[#BE1522] hover:bg-[#9B1219]">
+              <Button onClick={handleBulkUpload} className="bg-[#0891B2] hover:bg-[#9B1219]">
                 <Upload className="h-4 w-4 mr-2" />
                 Bulk Upload
               </Button>
@@ -674,7 +674,7 @@ export default function FraudDetectionPage() {
                     <Button
                       onClick={handleSaveComment}
                       disabled={saveCommentMutation.isPending || !comment.trim()}
-                      className="mt-2 bg-[#BE1522] hover:bg-[#9B1219]"
+                      className="mt-2 bg-[#0891B2] hover:bg-[#9B1219]"
                       size="sm"
                     >
                       {saveCommentMutation.isPending ? "Saving..." : "Save"}

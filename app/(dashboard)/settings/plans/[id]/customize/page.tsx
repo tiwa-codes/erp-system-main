@@ -458,7 +458,7 @@ export default function PlanCustomizationPage() {
         <Button 
           onClick={handleSaveCustomization}
           disabled={saveCustomizationMutation.isPending}
-          className="bg-[#BE1522] hover:bg-[#9B1219]"
+          className="bg-[#0891B2] hover:bg-[#9B1219]"
         >
           {saveCustomizationMutation.isPending ? "Saving..." : "Save Customization"}
         </Button>

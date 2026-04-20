@@ -339,7 +339,7 @@ export default function InvestigationWorkspacePage({ params }: { params: { id: s
               <Button
                 onClick={handleSubmitAction}
                 disabled={submitActionMutation.isPending || !actionType}
-                className="bg-[#BE1522] hover:bg-[#9B1219] px-8 py-3"
+                className="bg-[#0891B2] hover:bg-[#9B1219] px-8 py-3"
               >
                 {submitActionMutation.isPending ? "Submitting..." : "Submit Investigation Action"}
               </Button>

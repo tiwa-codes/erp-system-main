@@ -444,7 +444,7 @@ export default function ProviderPage() {
               <Button 
                 type="submit" 
                 disabled={createProviderMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {createProviderMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                 Create {accountType} Account

@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
       name: 'Call Centre',
       description: `${approvalCodesGenerated} Approval Code Generated`,
       percentage: callCentrePercentage,
-      color: 'bg-[#BE1522]'
+      color: 'bg-[#0891B2]'
     })
 
     // HR Department Performance

@@ -1027,7 +1027,7 @@ export function TariffPlanTabV2({ providerId, mode = 'provider-management' }: Ta
                             </Button>
                             <Button
                                 onClick={handleSaveAndSubmit}
-                                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                                className="bg-[#0891B2] hover:bg-[#9B1219]"
                                 disabled={submitTariffPlanMutation.isPending || !canSubmitPlan}
                                 title="Submit customized tariff for negotiation"
                             >
@@ -1037,7 +1037,7 @@ export function TariffPlanTabV2({ providerId, mode = 'provider-management' }: Ta
                         </>
                     )}
                     {showAddService && showHeaderActions && (
-                        <Button onClick={handleAddService} variant={showProviderSubmitActions ? "outline" : "default"} className={showProviderSubmitActions ? "" : "bg-[#BE1522] hover:bg-[#9B1219]"}>
+                        <Button onClick={handleAddService} variant={showProviderSubmitActions ? "outline" : "default"} className={showProviderSubmitActions ? "" : "bg-[#0891B2] hover:bg-[#9B1219]"}>
                             <Plus className="h-4 w-4 mr-2" />
                             {showProviderSubmitActions ? "Add New Service" : "Add Service"}
                         </Button>
@@ -1049,7 +1049,7 @@ export function TariffPlanTabV2({ providerId, mode = 'provider-management' }: Ta
                         </Button>
                     )}
                     {showUploadTariffBtn && (
-                        <Button onClick={() => setShowUploadTariff(true)} variant="default" className="bg-[#BE1522] hover:bg-[#9B1219]">
+                        <Button onClick={() => setShowUploadTariff(true)} variant="default" className="bg-[#0891B2] hover:bg-[#9B1219]">
                             <Upload className="h-4 w-4 mr-2" />
                             Upload Tariff
                         </Button>
@@ -1187,7 +1187,7 @@ export function TariffPlanTabV2({ providerId, mode = 'provider-management' }: Ta
                     <div className="flex items-center gap-2">
                         <Button
                             onClick={handleSaveAndSubmit}
-                            className="bg-[#BE1522] hover:bg-[#9B1219]"
+                            className="bg-[#0891B2] hover:bg-[#9B1219]"
                             disabled={submitTariffPlanMutation.isPending || !canSubmitPlan}
                             title="Submit customized tariff for negotiation"
                         >
@@ -1382,7 +1382,7 @@ export function TariffPlanTabV2({ providerId, mode = 'provider-management' }: Ta
                                 <Button
                                     onClick={handleSubmitForm}
                                     disabled={addServiceMutation.isPending}
-                                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                                 >
                                     {addServiceMutation.isPending ? "Adding..." : "Add Service"}
                                 </Button>
@@ -1451,7 +1451,7 @@ export function TariffPlanTabV2({ providerId, mode = 'provider-management' }: Ta
                                     <Button
                                         onClick={handleUploadTariff}
                                         disabled={!selectedTariffFile || uploadTariffMutation.isPending}
-                                        className="bg-[#BE1522] hover:bg-[#9B1219]"
+                                        className="bg-[#0891B2] hover:bg-[#9B1219]"
                                     >
                                         {uploadTariffMutation.isPending ? "Uploading..." : "Upload & Parse"}
                                     </Button>

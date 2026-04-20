@@ -66,7 +66,7 @@ export function NotificationSettings({ className = "" }: NotificationSettingsPro
       <Switch
         checked={soundEnabled}
         onCheckedChange={handleToggleSound}
-        className="data-[state=checked]:bg-[#BE1522]"
+        className="data-[state=checked]:bg-[#0891B2]"
       />
       
       <Button

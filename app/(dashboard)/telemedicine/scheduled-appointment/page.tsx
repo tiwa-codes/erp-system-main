@@ -414,7 +414,7 @@ export default function ScheduledAppointmentPage() {
                 <Button
                   type="submit"
                   disabled={scheduleAppointmentMutation.isPending}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   {scheduleAppointmentMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                   Schedule Appointment

@@ -166,7 +166,7 @@ export default function UnderwritingCustomPlansPage() {
         </div>
         <Button
           onClick={() => createDraftMutation.mutate()}
-          className="bg-[#BE1522] hover:bg-[#9B1219]"
+          className="bg-[#0891B2] hover:bg-[#9B1219]"
           disabled={createDraftMutation.isPending}
         >
           <Plus className="h-4 w-4 mr-2" />

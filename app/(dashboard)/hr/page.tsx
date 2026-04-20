@@ -211,7 +211,7 @@ export default function HRDashboard() {
               module="hr" 
               action="view"
               onClick={handleApplyFilters} 
-              className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+              className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
             >
               <Filter className="h-4 w-4 mr-2" />
               Apply Filters

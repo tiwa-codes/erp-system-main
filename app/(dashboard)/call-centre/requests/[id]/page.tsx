@@ -476,7 +476,7 @@ export default function ViewRequestPage() {
                               </Badge>
                             )}
                             {isAddedAfterApproval && (
-                              <Badge className="bg-[#BE1522] text-white text-xs">
+                              <Badge className="bg-[#0891B2] text-white text-xs">
                                 Added Service
                               </Badge>
                             )}
@@ -666,7 +666,7 @@ export default function ViewRequestPage() {
                 <PermissionGate module="call-centre" action="edit">
                   <Button
                     size="lg"
-                    className="bg-[#BE1522] hover:bg-[#9B1219] min-w-[200px]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219] min-w-[200px]"
                     onClick={handleConfirmRequest}
                   >
                     <CheckCircle2 className="h-5 w-5 mr-2" />

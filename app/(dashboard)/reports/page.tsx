@@ -497,7 +497,7 @@ export default function ReportsPage() {
                   <Button 
                     onClick={handleGenerateReport}
                     disabled={!selectedReportType || !selectedFilter}
-                    className="flex-1 bg-[#BE1522] hover:bg-[#9B1219] text-white disabled:bg-[#BE1522]/40 disabled:text-white"
+                    className="flex-1 bg-[#0891B2] hover:bg-[#9B1219] text-white disabled:bg-[#0891B2]/40 disabled:text-white"
                   >
                     Generate Report
                   </Button>

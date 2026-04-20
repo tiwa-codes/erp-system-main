@@ -435,7 +435,7 @@ export default function ClaimDetailsPage({ params }: { params: { id: string } })
 
               <div className="border-t pt-6 flex justify-center">
                 <Button 
-                  className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                  className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
                   onClick={() => {
                     setShowClaimDetailsModal(false)
                     setSelectedClaimForModal(null)

@@ -258,7 +258,7 @@ export default function PayrollManagementPage() {
             module="hr" 
             action="add"
             onClick={handleAddPayroll} 
-            className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+            className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Payroll
@@ -308,7 +308,7 @@ export default function PayrollManagementPage() {
                 />
               </div>
               <div className="flex items-end">
-                <Button onClick={handleApplyFilters} className="bg-[#BE1522] hover:bg-[#9B1219] text-white w-full">
+                <Button onClick={handleApplyFilters} className="bg-[#0891B2] hover:bg-[#9B1219] text-white w-full">
                   <Filter className="h-4 w-4 mr-2" />
                   Apply Filters
                 </Button>
@@ -418,7 +418,7 @@ export default function PayrollManagementPage() {
                 >
                   Previous
                 </Button>
-                <Button variant="outline" size="sm" className="bg-[#BE1522] text-white">
+                <Button variant="outline" size="sm" className="bg-[#0891B2] text-white">
                   {pagination.page}
                 </Button>
                 <Button 
@@ -632,7 +632,7 @@ export default function PayrollManagementPage() {
                     Cancel
                   </Button>
                   <Button 
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                     onClick={() => {
                       toast({
                         title: "Edit Payroll",

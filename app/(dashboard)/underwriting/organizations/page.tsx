@@ -327,7 +327,7 @@ export default function OrganizationsPage() {
             module="underwriting" 
             action="add"
             onClick={handleAddOrganization} 
-            className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+            className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Organization
@@ -522,7 +522,7 @@ export default function OrganizationsPage() {
                 >
                   Previous
                 </Button>
-                <Button variant="outline" size="sm" className="bg-[#BE1522] text-white">
+                <Button variant="outline" size="sm" className="bg-[#0891B2] text-white">
                   {pagination.page}
                 </Button>
                 <Button 
@@ -673,7 +673,7 @@ export default function OrganizationsPage() {
                   <Button 
                     onClick={handleStatusChange}
                     disabled={!newStatus || isChangingStatus}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     {isChangingStatus ? (
                       <>

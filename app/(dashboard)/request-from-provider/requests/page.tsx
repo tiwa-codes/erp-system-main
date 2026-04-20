@@ -415,7 +415,7 @@ export default function RequestsFromProviderPage() {
                           setShowViewModal(false)
                           handleProcessRequest(selectedRequest)
                         }}
-                        className="bg-[#BE1522] hover:bg-[#9B1219]"
+                        className="bg-[#0891B2] hover:bg-[#9B1219]"
                         disabled={processRequestMutation.isPending}
                       >
                         <CheckCircle className="h-4 w-4 mr-2" />

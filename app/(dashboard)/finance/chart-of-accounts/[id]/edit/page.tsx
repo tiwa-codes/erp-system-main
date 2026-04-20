@@ -273,7 +273,7 @@ export default function EditChartOfAccountPage({
               <Button
                 type="submit"
                 disabled={updateMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+                className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
               >
                 {updateMutation.isPending ? "Updating..." : "Update Account"}
               </Button>

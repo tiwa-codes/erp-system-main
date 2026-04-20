@@ -238,7 +238,7 @@ export default function ProcurementPage() {
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>
-            <Button onClick={() => setShowCreateModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+            <Button onClick={() => setShowCreateModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
               <Plus className="h-4 w-4 mr-2" />
               Add Invoice
             </Button>
@@ -284,7 +284,7 @@ export default function ProcurementPage() {
                   />
                 </div>
 
-                <Button className="bg-[#BE1522] hover:bg-[#9B1219] text-white h-8 px-3 text-xs" onClick={() => { setStartDate(""); setEndDate(""); setSelectedStatus("all"); setSearchTerm("") }}>
+                <Button className="bg-[#0891B2] hover:bg-[#9B1219] text-white h-8 px-3 text-xs" onClick={() => { setStartDate(""); setEndDate(""); setSelectedStatus("all"); setSearchTerm("") }}>
                   Clear
                 </Button>
               </div>
@@ -612,7 +612,7 @@ export default function ProcurementPage() {
                   <Button
                     onClick={handleCreateInvoice}
                     disabled={createInvoiceMutation.isPending}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     {createInvoiceMutation.isPending ? "Generating..." : "Generate"}
                   </Button>

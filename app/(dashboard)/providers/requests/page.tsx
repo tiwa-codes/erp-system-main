@@ -741,7 +741,7 @@ export default function ClaimsRequestPage() {
                   <Button
                     onClick={() => requestAllClaimsMutation.mutate(undefined)}
                     disabled={selectedClaims.length === 0 || requestAllClaimsMutation.isPending || !canRequestClaimsNow}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     Request Claim
                   </Button>
@@ -1461,7 +1461,7 @@ export default function ClaimsRequestPage() {
                   Cancel
                 </Button>
                 <Button
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                   onClick={() => submitAddedServicesMutation.mutate()}
                   disabled={selectedServices.length === 0 || submitAddedServicesMutation.isPending}
                 >

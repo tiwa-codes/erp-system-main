@@ -171,7 +171,7 @@ export default function AddRolePage() {
                 <Button
                   type="submit"
                   disabled={createRoleMutation.isPending}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   {createRoleMutation.isPending ? (
                     <>

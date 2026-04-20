@@ -567,7 +567,7 @@ export default function ApprovalCodePage() {
             <PermissionGate module="provider" action="add">
               <Button
                 onClick={() => router.push("/providers/request-approval-code")}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Request Code
@@ -634,7 +634,7 @@ export default function ApprovalCodePage() {
                 />
               </div>
               <div className="flex items-end">
-                <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219]">
+                <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219]">
                   <Filter className="h-4 w-4 mr-2" />
                   Apply Filters
                 </Button>
@@ -663,7 +663,7 @@ export default function ApprovalCodePage() {
                 </p>
                 <Button
                   onClick={() => queryClient.invalidateQueries({ queryKey: ['approval-codes'] })}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   Try Again
                 </Button>
@@ -757,7 +757,7 @@ export default function ApprovalCodePage() {
                                     type="button"
                                     variant="ghost"
                                     size="sm"
-                                    className="h-auto p-0 mt-1 text-xs text-[#BE1522] hover:text-[#9B1219] hover:bg-transparent"
+                                    className="h-auto p-0 mt-1 text-xs text-[#0891B2] hover:text-[#9B1219] hover:bg-transparent"
                                     onClick={() => toggleServicesRow(approvalCode.id)}
                                   >
                                     {isExpanded ? "Show less" : "Show more"}
@@ -1079,7 +1079,7 @@ export default function ApprovalCodePage() {
                         {detailedApprovalCode.approval_code.added_services && detailedApprovalCode.approval_code.added_services.length > 0 && (
                           <div>
                             <h4 className="text-sm font-medium text-blue-700 mb-2 flex items-center gap-2">
-                              <span className="bg-[#BE1522] text-white text-xs px-2 py-1 rounded">APPROVED</span>
+                              <span className="bg-[#0891B2] text-white text-xs px-2 py-1 rounded">APPROVED</span>
                               Also Approved Services
                             </h4>
                             <div className="space-y-2">
@@ -1091,7 +1091,7 @@ export default function ApprovalCodePage() {
                                       {service.quantity || 1} x ₦{parseFloat(service.service_amount).toLocaleString()} = ₦{((service.quantity || 1) * parseFloat(service.service_amount)).toLocaleString()}
                                     </p>
                                     <div className="flex items-center gap-2 mt-1">
-                                      <Badge className="bg-[#BE1522] text-white text-xs">Also Approved</Badge>
+                                      <Badge className="bg-[#0891B2] text-white text-xs">Also Approved</Badge>
                                       <p className="text-xs text-gray-500">
                                         {new Date(service.added_at).toLocaleDateString()} {new Date(service.added_at).toLocaleTimeString()}
                                       </p>
@@ -1724,7 +1724,7 @@ export default function ApprovalCodePage() {
                   })
                 }}
                 disabled={addingServices.length === 0 || !addServiceComment.trim() || addServiceMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {addServiceMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                 Submit for Approval

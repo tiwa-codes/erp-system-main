@@ -238,7 +238,7 @@ export function AddPlanModal({ isOpen, onClose, onCreated }: AddPlanModalProps) 
             <Button
               type="submit"
               disabled={createPlanMutation.isPending}
-              className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+              className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
             >
               <Save className="h-4 w-4 mr-2" />
               {createPlanMutation.isPending ? "Creating..." : "Create Plan"}

@@ -152,7 +152,7 @@ export default function VerifyApprovalCodePage() {
               <Button
                 onClick={handleVerifyCode}
                 disabled={verifyApprovalMutation.isPending || !approvalCode.trim()}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {verifyApprovalMutation.isPending ? "Verifying..." : "Verify"}
               </Button>

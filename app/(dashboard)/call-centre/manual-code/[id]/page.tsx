@@ -870,7 +870,7 @@ export default function EditManualApprovalCodePage() {
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <Button
-                                className="w-full bg-[#BE1522] hover:bg-[#9B1219] text-lg py-6"
+                                className="w-full bg-[#0891B2] hover:bg-[#9B1219] text-lg py-6"
                                 disabled={services.length === 0 || updateMutation.isPending}
                                 onClick={() => updateMutation.mutate({
                                     diagnosis,

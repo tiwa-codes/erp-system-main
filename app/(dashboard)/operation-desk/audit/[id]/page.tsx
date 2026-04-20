@@ -147,7 +147,7 @@ export default function ProviderAuditPage() {
             <Button
               onClick={handleBulkApprove}
               disabled={pendingClaims.length === 0 || bulkApproveMutation.isPending}
-              className="bg-[#BE1522] hover:bg-[#9B1219]"
+              className="bg-[#0891B2] hover:bg-[#9B1219]"
             >
               {bulkApproveMutation.isPending ? (
                 <>

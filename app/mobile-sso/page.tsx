@@ -23,7 +23,7 @@ function SsoHandler() {
 
 export default function MobileSsoPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#BE1522" }}>
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#0891B2" }}>
       {/* Aspirage Logo / Spinner */}
       <div className="flex flex-col items-center gap-6">
         {/* Animated logo ring */}

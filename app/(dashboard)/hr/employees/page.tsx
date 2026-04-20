@@ -295,7 +295,7 @@ export default function EmployeesPage() {
             module="hr" 
             action="add"
             onClick={handleAddEmployee}
-            className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+            className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add New Employee
@@ -466,7 +466,7 @@ export default function EmployeesPage() {
                 >
                   Previous
                 </Button>
-                <Button variant="outline" size="sm" className="bg-[#BE1522] text-white">
+                <Button variant="outline" size="sm" className="bg-[#0891B2] text-white">
                   {pagination.page}
                 </Button>
                 <Button 

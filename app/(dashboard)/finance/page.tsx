@@ -586,7 +586,7 @@ export default function FinanceDashboardPage() {
                 <PermissionGate module="finance" action="add">
                   <Button 
                     onClick={() => setShowCreateModal(true)}
-                    className="bg-[#BE1522] hover:bg-[#9B1219]"
+                    className="bg-[#0891B2] hover:bg-[#9B1219]"
                   >
                     Generate Bill
                   </Button>

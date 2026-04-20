@@ -251,7 +251,7 @@ export default function ProviderRiskProfilePage() {
             <p className="text-gray-600">Monitor and assess provider tariff plans</p>
           </div>
           <PermissionGate module="provider" action="add">
-            <Button onClick={() => setShowAddModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219]">
+            <Button onClick={() => setShowAddModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219]">
               <Plus className="h-4 w-4 mr-2" />
               Add Tariff Plan
             </Button>
@@ -375,7 +375,7 @@ export default function ProviderRiskProfilePage() {
                 </Select>
               </div>
               <div className="flex items-end gap-2">
-                <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219]">
+                <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219]">
                   <Filter className="h-4 w-4 mr-2" />
                   Apply Filters
                 </Button>

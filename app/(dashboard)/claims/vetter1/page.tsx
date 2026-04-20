@@ -647,7 +647,7 @@ export default function Vetter1Page() {
           <PermissionGate module="claims" action="view" actions={["view", "vet"]}>
             <Button
               onClick={() => setShowLoadApprovalDialog(true)}
-              className="bg-[#BE1522] hover:bg-[#9B1219]"
+              className="bg-[#0891B2] hover:bg-[#9B1219]"
             >
               Load Approval Code
             </Button>
@@ -725,7 +725,7 @@ export default function Vetter1Page() {
               <Button
                 onClick={handleLoadApprovalCode}
                 disabled={loadApprovalCodeMutation.isPending}
-                className="bg-[#BE1522] hover:bg-[#9B1219]"
+                className="bg-[#0891B2] hover:bg-[#9B1219]"
               >
                 {loadApprovalCodeMutation.isPending ? "Loading..." : "Load Approval Code"}
               </Button>

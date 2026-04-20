@@ -111,7 +111,7 @@ export function ServiceVettingTable({
                             <Info className="h-4 w-4" />
                         </div>
                     ) : (
-                        <div className="p-1.5 bg-[#BE1522] rounded-lg text-white">
+                        <div className="p-1.5 bg-[#0891B2] rounded-lg text-white">
                             <Info className="h-4 w-4" />
                         </div>
                     )}

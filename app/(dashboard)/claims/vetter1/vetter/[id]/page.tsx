@@ -549,7 +549,7 @@ export default function Vetter1Page() {
             </Button>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <Badge className="bg-[#BE1522] hover:bg-[#9B1219]">STAGER 1</Badge>
+                <Badge className="bg-[#0891B2] hover:bg-[#9B1219]">STAGER 1</Badge>
                 <div className="h-1.5 w-1.5 rounded-full bg-gray-300" />
                 <p className="text-xs text-gray-400 font-bold tracking-widest uppercase">Claims Vetting Desk</p>
                 {lastAction ? (
@@ -764,7 +764,7 @@ export default function Vetter1Page() {
         </Card>
 
         {/* Action Section */}
-        <Card className="border-2 border-blue-600 bg-[#BE1522] text-white shadow-xl">
+        <Card className="border-2 border-blue-600 bg-[#0891B2] text-white shadow-xl">
           <CardContent className="py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="space-y-1">

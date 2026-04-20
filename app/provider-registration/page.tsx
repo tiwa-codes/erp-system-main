@@ -368,7 +368,7 @@ export default function PublicProviderRegistrationPage() {
             {[1, 2, 3].map((section) => (
               <div key={section} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  currentSection >= section ? 'bg-[#BE1522] text-white' : 'bg-gray-300 text-gray-600'
+                  currentSection >= section ? 'bg-[#0891B2] text-white' : 'bg-gray-300 text-gray-600'
                 }`}>
                   {currentSection > section ? <CheckCircle className="h-4 w-4" /> : section}
                 </div>
@@ -1123,7 +1123,7 @@ export default function PublicProviderRegistrationPage() {
                 <Button
                   onClick={handleSubmit}
                   disabled={isSubmitting || !declarationAccepted}
-                  className="bg-[#BE1522] hover:bg-[#9B1219]"
+                  className="bg-[#0891B2] hover:bg-[#9B1219]"
                 >
                   {isSubmitting ? (
                     <>

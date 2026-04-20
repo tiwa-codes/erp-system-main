@@ -393,7 +393,7 @@ export default function GenerateCodePage() {
           <Button
             onClick={handleApprove}
             disabled={approveRequestMutation.isPending}
-            className="bg-[#BE1522] hover:bg-[#9B1219] px-8"
+            className="bg-[#0891B2] hover:bg-[#9B1219] px-8"
           >
             <CheckCircle className="h-4 w-4 mr-2" />
             {approveRequestMutation.isPending ? "Generating..." : "Generate Code"}

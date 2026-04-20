@@ -286,7 +286,7 @@ export default function InPatientManagementPage() {
             <p className="text-gray-600">Manage in-patient admissions and records</p>
           </div>
           <PermissionGate module="provider" action="add">
-            <Button onClick={() => setShowAddModal(true)} className="bg-[#BE1522] hover:bg-[#9B1219]">
+            <Button onClick={() => setShowAddModal(true)} className="bg-[#0891B2] hover:bg-[#9B1219]">
               <Plus className="h-4 w-4 mr-2" />
               Add In-patient
             </Button>
@@ -371,7 +371,7 @@ export default function InPatientManagementPage() {
                   </SelectContent>
                 </Select>
               </div>
-              <Button onClick={handleFilterChange} className="bg-[#BE1522] hover:bg-[#9B1219] text-white">
+              <Button onClick={handleFilterChange} className="bg-[#0891B2] hover:bg-[#9B1219] text-white">
                 <Filter className="h-4 w-4 mr-2" />
                 Apply Filters
               </Button>

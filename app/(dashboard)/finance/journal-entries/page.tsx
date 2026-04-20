@@ -118,7 +118,7 @@ export default function JournalEntriesPage() {
         <PermissionGate permission="finance:add">
           <Button
             onClick={() => router.push("/finance/journal-entries/add")}
-            className="bg-[#BE1522] hover:bg-[#9B1219] text-white"
+            className="bg-[#0891B2] hover:bg-[#9B1219] text-white"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add New Journal Entry

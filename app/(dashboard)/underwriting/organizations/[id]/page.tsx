@@ -427,7 +427,7 @@ export default function OrganizationViewPage({ params }: OrganizationViewPagePro
                         </div>
                         <div className="mt-2 h-2 rounded-full bg-slate-100">
                           <div
-                            className="h-2 rounded-full bg-[#BE1522]"
+                            className="h-2 rounded-full bg-[#0891B2]"
                             style={{ width: `${Math.min(plan.utilization ?? 0, 100)}%` }}
                             aria-label={`Utilization ${plan.utilization ?? 0}%`}
                           />
@@ -502,7 +502,7 @@ export default function OrganizationViewPage({ params }: OrganizationViewPagePro
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-[#BE1522] rounded-full"></div>
+                      <div className="w-2 h-2 bg-[#0891B2] rounded-full"></div>
                       <div className="flex-1">
                         <p className="text-sm">Total Enrollees</p>
                         <p className="text-xs text-gray-500 font-semibold">{principals.length + dependents.length} (Principals: {principals.length}, Dependents: {dependents.length})</p>
