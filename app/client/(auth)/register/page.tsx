@@ -18,6 +18,8 @@ import {
 import { Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 const ACCOUNT_TYPES = [
   "Individual or Family",
   "Facilitator",

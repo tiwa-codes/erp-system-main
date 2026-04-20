@@ -16,6 +16,8 @@ import Link from "next/link"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useFileUpload } from "@/hooks/use-file-upload"
 
+export const dynamic = 'force-dynamic'
+
 export default function AddSpecialProviderPage() {
   const router = useRouter()
   const { toast } = useToast()

@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 
+export const dynamic = 'force-dynamic'
+
 /**
  * Legacy Vetter Page - Redirects to new vetter pages
  * This page exists for backward compatibility

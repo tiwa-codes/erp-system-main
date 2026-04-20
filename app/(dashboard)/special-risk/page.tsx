@@ -7,6 +7,8 @@ import { FileText, Building2, DollarSign } from "lucide-react"
 import Link from "next/link"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function SpecialRiskPage() {
   const { data: stats, isLoading } = useQuery({
     queryKey: ["special-risk-stats"],

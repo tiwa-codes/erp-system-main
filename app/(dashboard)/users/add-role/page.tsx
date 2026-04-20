@@ -13,6 +13,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowLeft, Shield, Loader2 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 const AVAILABLE_ROLES = [
   'SUPER_ADMIN',
   'ADMIN', 

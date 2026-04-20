@@ -13,6 +13,8 @@ import { Badge } from "@/components/ui/badge"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { Loader2, Trash2 } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 const initialForm = {
   family_type: "FAMILY",
   principal_age_min: "",

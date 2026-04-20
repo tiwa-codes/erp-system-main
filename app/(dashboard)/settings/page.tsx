@@ -11,6 +11,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useToast } from "@/hooks/use-toast"
 import { User, Camera, Lock, Save, Eye, EyeOff } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export default function SettingsPage() {
   const { data: session } = useSession()
   const { toast } = useToast()

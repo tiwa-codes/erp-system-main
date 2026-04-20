@@ -10,6 +10,8 @@ import { Separator } from "@/components/ui/separator"
 import { useToast } from "@/hooks/use-toast"
 import { Eye, EyeOff } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export default function ProfilePage() {
   const { toast } = useToast()
 

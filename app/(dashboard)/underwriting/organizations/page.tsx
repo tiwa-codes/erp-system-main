@@ -63,6 +63,8 @@ import { PermissionButton } from "@/components/ui/permission-button"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
 
+export const dynamic = 'force-dynamic'
+
 export default function OrganizationsPage() {
   const router = useRouter()
   const { toast } = useToast()

@@ -39,6 +39,8 @@ import { AddInPatientForm } from "@/components/forms/add-inpatient-form"
 import { ViewInPatientModal } from "@/components/forms/view-inpatient-form"
 import { EditInPatientModal } from "@/components/forms/edit-inpatient-form"
 
+export const dynamic = 'force-dynamic'
+
 interface InPatient {
   id: string
   patient_id: string

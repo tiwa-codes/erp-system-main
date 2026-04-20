@@ -38,6 +38,8 @@ import {
 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 interface TransactionMetrics {
   total_transactions: number
   pending_transactions: number

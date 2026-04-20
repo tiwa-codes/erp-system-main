@@ -49,6 +49,8 @@ import { useToast } from "@/hooks/use-toast"
 import { PermissionButton } from "@/components/ui/permission-button"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 // Define all modules with their submodules
 const MODULES_WITH_SUBMODULES = [
   {

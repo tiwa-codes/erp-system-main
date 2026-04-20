@@ -36,6 +36,8 @@ import {
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 export default function DailyAttendancePage() {
   const { toast } = useToast()
   const [selectedEmployee, setSelectedEmployee] = useState("all")

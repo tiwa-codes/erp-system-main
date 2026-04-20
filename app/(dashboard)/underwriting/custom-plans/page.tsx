@@ -11,6 +11,8 @@ import { Search, Plus, Edit, Send, MoreHorizontal, Download, Trash2 } from "luci
 import { useToast } from "@/hooks/use-toast"
 import { StatusIndicator } from "@/components/ui/status-indicator"
 import {
+
+export const dynamic = 'force-dynamic'
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

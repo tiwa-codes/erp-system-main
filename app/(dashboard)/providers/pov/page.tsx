@@ -36,6 +36,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { MetricCard } from "@/components/ui/metric-card"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts"
 
+export const dynamic = 'force-dynamic'
+
 interface Provider {
   id: string
   // Section 1: Basic Information

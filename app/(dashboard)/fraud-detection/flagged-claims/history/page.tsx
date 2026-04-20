@@ -18,6 +18,8 @@ import {
 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 interface HistoryRecord {
   id: string
   date: string

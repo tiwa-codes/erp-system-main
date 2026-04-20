@@ -34,6 +34,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { PriceEditor } from "@/components/claims/PriceEditor"
 
+export const dynamic = 'force-dynamic'
+
 interface Claim {
   id: string
   claim_number: string

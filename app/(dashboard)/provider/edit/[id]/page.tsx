@@ -28,6 +28,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { FileUpload } from "@/components/ui/file-upload"
 import { BandSelector } from "@/components/ui/band-selector"
 
+export const dynamic = 'force-dynamic'
+
 interface Provider {
   id: string
   // Section 1: Basic Information

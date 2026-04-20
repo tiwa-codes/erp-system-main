@@ -29,6 +29,8 @@ import {
 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 interface DetailedRequest {
   id: string
   request_id: string

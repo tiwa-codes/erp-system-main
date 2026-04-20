@@ -20,6 +20,8 @@ import {
 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 const editRoleSchema = z.object({
   name: z.string().min(1, "Role name is required"),
   description: z.string().optional()

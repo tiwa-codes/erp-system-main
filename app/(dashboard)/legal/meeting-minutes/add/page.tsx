@@ -16,6 +16,8 @@ import Link from "next/link"
 import { useFileUpload } from "@/hooks/use-file-upload"
 import { MeetingType } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 interface Attendee {
   name: string
   email?: string

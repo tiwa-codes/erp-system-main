@@ -20,6 +20,8 @@ import {
 import { useToast } from "@/hooks/use-toast"
 import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
 import {
+
+export const dynamic = 'force-dynamic'
   Plus,
   Eye,
   Edit,

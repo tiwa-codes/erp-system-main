@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Eye, EyeOff, Loader2 } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export default function ResetPasswordPage() {
   const [token, setToken] = useState("")
   const hasToken = Boolean(token)

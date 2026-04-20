@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 
+export const dynamic = 'force-dynamic'
+
 /**
  * Legacy Executive Desk Vetting Page - Redirects to new vetter pages
  * Redirects to /claims/vetter1/vetter/[id] or /claims/vetter2/vetter/[id]

@@ -22,6 +22,8 @@ import { useToast } from "@/hooks/use-toast"
 import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
 import { BandSelector } from "@/components/ui/band-selector"
 import { 
+
+export const dynamic = 'force-dynamic'
   Plus, 
   Eye, 
   Edit, 

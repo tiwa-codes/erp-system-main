@@ -3,6 +3,8 @@
 import { useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 /**
  * Legacy Vetter2 Page - Redirects to new vetter2 vetter page
  * This page exists for backward compatibility

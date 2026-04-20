@@ -14,6 +14,8 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Building2, User, Loader2 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function ProviderPage() {
   const router = useRouter()
   const { toast } = useToast()

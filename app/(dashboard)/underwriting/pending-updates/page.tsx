@@ -20,6 +20,8 @@ import { Search, Filter, Eye, CheckCircle, XCircle, Clock } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { StatusText } from "@/components/ui/status-text"
 
+export const dynamic = 'force-dynamic'
+
 export default function PendingUpdatesPage() {
     const router = useRouter()
     const [activeTab, setActiveTab] = useState("principals")

@@ -7,6 +7,8 @@ import { FileText, Users, CheckCircle, Clock } from "lucide-react"
 import Link from "next/link"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function LegalServicesPage() {
   const { data: documentsData } = useQuery({
     queryKey: ["legal-documents-stats"],

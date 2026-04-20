@@ -13,6 +13,8 @@ import { useToast } from "@/hooks/use-toast"
 import { Search, Plus, Trash2, ChevronRight, Briefcase, Store, Users, Edit, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+export const dynamic = 'force-dynamic'
+
 interface BenefitService {
   id: string
   name: string

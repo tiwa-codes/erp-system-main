@@ -39,6 +39,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { FileViewerModal } from "@/components/ui/file-viewer-modal"
 
+export const dynamic = 'force-dynamic'
+
 interface ProcurementRequest {
   id: string
   date: string

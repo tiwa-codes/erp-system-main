@@ -2,6 +2,8 @@
 
 import { SimpleDomainReport } from "@/components/reports/simple-domain-report"
 
+export const dynamic = 'force-dynamic'
+
 export default function ProviderManagementReportPage() {
   return (
     <SimpleDomainReport

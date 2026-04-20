@@ -15,6 +15,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea"
 
+export const dynamic = 'force-dynamic'
+
 function formatCurrency(value?: number | string | null) {
   if (value === null || value === undefined || value === "") return "N/A"
   return `₦${Number(value).toLocaleString()}`

@@ -39,6 +39,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 export default function JournalEntriesPage() {
   const router = useRouter()
   const { toast } = useToast()

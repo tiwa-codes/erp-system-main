@@ -21,6 +21,8 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 
+export const dynamic = 'force-dynamic'
+
 export default function JournalEntryDetailPage({
   params,
 }: {

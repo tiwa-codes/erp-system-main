@@ -37,6 +37,8 @@ import { useRouter } from "next/navigation"
 import { PreviousEncounterModal } from "@/components/call-centre/PreviousEncounterModal"
 import { formatCountdown } from "@/lib/add-service-window"
 
+export const dynamic = 'force-dynamic'
+
 interface ServiceRequest {
   id: string
   service_name: string

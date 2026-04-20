@@ -30,6 +30,8 @@ import { useToast } from "@/hooks/use-toast"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { exportToExcel, exportToPDF, exportToCSV, getReportDataStructure } from "@/lib/export-utils"
 
+export const dynamic = 'force-dynamic'
+
 interface ReportData {
   id: string
   category: string

@@ -8,6 +8,8 @@ import { ClientPlansDataTable } from "@/components/clients-plans/data-table"
 import { columns } from "@/components/clients-plans/columns"
 import { headers } from "next/headers"
 
+export const dynamic = 'force-dynamic'
+
 interface ClientPlan {
   id: string
   client_plan_id: string

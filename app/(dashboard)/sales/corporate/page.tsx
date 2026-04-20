@@ -7,6 +7,8 @@ import { FileText, TrendingUp, CheckCircle, Clock } from "lucide-react"
 import Link from "next/link"
 import { SalesSubmodule, SalesReportStatus } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 export default function CorporateSalesDashboard() {
   const { data: stats, isLoading } = useQuery({
     queryKey: ["corporate-sales-stats"],

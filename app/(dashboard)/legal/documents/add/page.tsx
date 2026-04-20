@@ -16,6 +16,8 @@ import Link from "next/link"
 import { useFileUpload } from "@/hooks/use-file-upload"
 import { LegalDocumentType, ComplianceCertificateType } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 export default function AddLegalDocumentPage() {
   const router = useRouter()
   const { toast } = useToast()

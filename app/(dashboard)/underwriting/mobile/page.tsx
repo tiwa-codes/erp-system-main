@@ -13,6 +13,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { StatusIndicator } from "@/components/ui/status-indicator"
 import { Download } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 interface UpdateCollection<T> {
   items: T[]
   pagination?: {

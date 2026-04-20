@@ -27,6 +27,8 @@ import {
 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import {
+
+export const dynamic = 'force-dynamic'
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

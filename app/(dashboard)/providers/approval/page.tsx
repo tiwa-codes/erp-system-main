@@ -40,6 +40,8 @@ import { MetricCard } from "@/components/ui/metric-card"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { BandSelector } from "@/components/ui/band-selector"
 
+export const dynamic = 'force-dynamic'
+
 interface Provider {
   id: string
   facility_name: string

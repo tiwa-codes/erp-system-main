@@ -21,6 +21,8 @@ import { useToast } from "@/hooks/use-toast"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { BackupProgressTracker, RestoreProgressTracker } from "@/components/ui/progress-bar"
 import {
+
+export const dynamic = 'force-dynamic'
   Database,
   Download,
   Trash2,

@@ -30,6 +30,8 @@ import {
   Upload,
 } from "lucide-react"
 import {
+
+export const dynamic = 'force-dynamic'
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

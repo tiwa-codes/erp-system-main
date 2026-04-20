@@ -28,6 +28,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts"
 
+export const dynamic = 'force-dynamic'
+
 interface ProviderRiskProfile {
   id: string
   name: string

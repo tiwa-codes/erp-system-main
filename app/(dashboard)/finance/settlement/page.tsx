@@ -23,6 +23,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { exportToPDF } from "@/lib/export-utils"
 
+export const dynamic = 'force-dynamic'
+
 interface ProviderSettlement {
   provider_id: string
   provider_name: string

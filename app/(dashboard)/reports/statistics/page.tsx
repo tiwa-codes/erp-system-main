@@ -12,6 +12,8 @@ import { format } from "date-fns"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { Badge } from "@/components/ui/badge"
 
+export const dynamic = 'force-dynamic'
+
 export default function StatisticsPage() {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined)
   const [endDate, setEndDate] = useState<Date | undefined>(undefined)

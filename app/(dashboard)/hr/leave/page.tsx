@@ -52,6 +52,8 @@ import {
 import { useToast } from "@/hooks/use-toast"
 import { AddLeaveForm } from "@/components/forms/add-leave-form"
 
+export const dynamic = 'force-dynamic'
+
 export default function LeaveManagementPage() {
   const { toast } = useToast()
   const [selectedEmployee, setSelectedEmployee] = useState("all")

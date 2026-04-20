@@ -36,6 +36,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Loader2 } from "lucide-react"
 import {
+
+export const dynamic = 'force-dynamic'
   Dialog,
   DialogContent,
   DialogDescription,

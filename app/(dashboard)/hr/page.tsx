@@ -37,6 +37,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { PermissionButton } from "@/components/ui/permission-button"
 
+export const dynamic = 'force-dynamic'
+
 export default function HRDashboard() {
   const [selectedDepartment, setSelectedDepartment] = useState("all")
   const [selectedType, setSelectedType] = useState("all")

@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { SalesSubmodule, ReportType, SalesReportStatus } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 export default function CorporateSalesReportsPage() {
   const router = useRouter()
   const [search, setSearch] = useState("")

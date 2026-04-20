@@ -24,6 +24,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { useRouter } from "next/navigation"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
+export const dynamic = 'force-dynamic'
+
 export default function ManageEncounterCodesPage() {
   const { toast } = useToast()
   const queryClient = useQueryClient()

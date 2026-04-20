@@ -42,6 +42,8 @@ import { Label } from "@/components/ui/label"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { MetricCard } from "@/components/ui/metric-card"
 
+export const dynamic = 'force-dynamic'
+
 interface Provider {
   id: string
   // Section 1: Basic Information

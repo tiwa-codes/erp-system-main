@@ -38,6 +38,8 @@ import {
 } from "@/components/ui/dialog"
 import { AuditTrailView } from "@/components/claims/AuditTrailView"
 
+export const dynamic = 'force-dynamic'
+
 interface Claim {
   id: string
   claim_number: string

@@ -3,6 +3,8 @@
 import { useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 /**
  * Legacy route kept for backward compatibility.
  * Canonical provider-scoped view now lives at /claims/vetter2/provider/[providerId].

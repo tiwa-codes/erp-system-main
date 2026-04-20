@@ -44,6 +44,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import * as XLSX from 'xlsx'
 
+export const dynamic = 'force-dynamic'
+
 // Service Price Update Component
 interface ServicePriceUpdateProps {
   service: any

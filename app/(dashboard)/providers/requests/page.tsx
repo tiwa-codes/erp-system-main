@@ -51,6 +51,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { formatLongCountdown } from "@/lib/claims-request-window"
 
+export const dynamic = 'force-dynamic'
+
 interface ClaimRequest {
   id: string
   approval_code?: string

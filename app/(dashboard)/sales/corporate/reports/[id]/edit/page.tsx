@@ -10,6 +10,8 @@ import Link from "next/link"
 import { ReportForm } from "@/components/sales/report-form"
 import { SalesSubmodule, ReportType } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 export default function EditCorporateSalesReportPage({ params }: { params: { id: string } }) {
   const router = useRouter()
   const { toast } = useToast()

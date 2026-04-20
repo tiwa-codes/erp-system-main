@@ -32,6 +32,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { exportToExcel, exportToPDF } from "@/lib/export-utils"
 
+export const dynamic = 'force-dynamic'
+
 interface FinanceMetrics {
   pending_invoices: number
   pending_payout: number

@@ -27,6 +27,8 @@ import {
 } from "lucide-react"
 import { toast } from "sonner"
 import {
+
+export const dynamic = 'force-dynamic'
     AlertDialog,
     AlertDialogAction,
     AlertDialogCancel,

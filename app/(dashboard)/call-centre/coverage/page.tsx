@@ -32,6 +32,8 @@ import {
 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 interface Enrollee {
   id: string
   enrollee_id: string

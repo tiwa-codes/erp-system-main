@@ -13,6 +13,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Calendar, Clock, Search, X, Loader2 } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 interface Enrollee {
   id: string
   enrollee_id: string

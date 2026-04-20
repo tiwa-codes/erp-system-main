@@ -8,6 +8,8 @@ import Link from "next/link"
 import { SalesSubmodule, SalesReportStatus } from "@prisma/client"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function SalesModulePage() {
   const { data: stats, isLoading } = useQuery({
     queryKey: ["sales-module-stats"],

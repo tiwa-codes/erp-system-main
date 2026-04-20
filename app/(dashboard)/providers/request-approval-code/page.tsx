@@ -16,6 +16,8 @@ import { useRouter } from "next/navigation"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useSession } from "next-auth/react"
 
+export const dynamic = 'force-dynamic'
+
 export default function RequestApprovalCodePage() {
   const router = useRouter()
   const { toast } = useToast()

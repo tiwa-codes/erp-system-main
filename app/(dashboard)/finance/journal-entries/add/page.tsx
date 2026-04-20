@@ -7,6 +7,8 @@ import { JournalEntryForm } from "@/components/finance/journal-entry-form"
 import { useToast } from "@/hooks/use-toast"
 import { ArrowLeft } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 export default function AddJournalEntryPage() {
   const router = useRouter()
   const { toast } = useToast()

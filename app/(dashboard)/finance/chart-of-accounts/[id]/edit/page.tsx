@@ -25,6 +25,8 @@ import { useToast } from "@/hooks/use-toast"
 import { ArrowLeft } from "lucide-react"
 import { formatAccountCode } from "@/lib/finance/account-code"
 
+export const dynamic = 'force-dynamic'
+
 function getDefaultBalanceType(category: AccountCategory): PostingType {
   return category === AccountCategory.ASSET || category === AccountCategory.EXPENSE
     ? PostingType.DEBIT

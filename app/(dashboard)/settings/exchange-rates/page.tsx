@@ -23,6 +23,8 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
+export const dynamic = 'force-dynamic'
+
 export default function ExchangeRatesPage() {
   const [search, setSearch] = useState("")
   const [fromCurrency, setFromCurrency] = useState("")

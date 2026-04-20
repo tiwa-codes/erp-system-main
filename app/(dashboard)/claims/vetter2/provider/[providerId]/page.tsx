@@ -43,6 +43,8 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { AuditTrailView } from "@/components/claims/AuditTrailView"
 
+export const dynamic = 'force-dynamic'
+
 interface Claim {
   id: string
   claim_number: string

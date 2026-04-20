@@ -33,6 +33,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
+
+export const dynamic = 'force-dynamic'
   Dialog,
   DialogContent,
   DialogDescription,

@@ -49,6 +49,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { useRouter } from "next/navigation"
 import { formatCountdown } from "@/lib/add-service-window"
 
+export const dynamic = 'force-dynamic'
+
 interface ProviderRequest {
   id: string
   date: string

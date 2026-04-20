@@ -14,6 +14,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { 
+
+export const dynamic = 'force-dynamic'
   ArrowLeft, 
   CheckCircle2, 
   XCircle, 

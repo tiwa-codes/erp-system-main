@@ -13,6 +13,8 @@ import { Badge } from "@/components/ui/badge"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { Eye } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 type SummaryRow = {
   vetter_id: string
   name: string

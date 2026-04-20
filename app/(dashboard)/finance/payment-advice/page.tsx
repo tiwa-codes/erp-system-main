@@ -37,6 +37,8 @@ import {
 import jspdf from "jspdf"
 import html2canvas from "html2canvas"
 
+export const dynamic = 'force-dynamic'
+
 interface ProviderPayment {
     provider_id: string
     provider_name: string

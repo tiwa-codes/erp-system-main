@@ -26,6 +26,8 @@ import { useToast } from "@/hooks/use-toast"
 import { ArrowLeft } from "lucide-react"
 import { formatAccountCode } from "@/lib/finance/account-code"
 
+export const dynamic = 'force-dynamic'
+
 const ACCOUNT_CODE_RANGES: Record<AccountCategory, { min: number; max: number }> = {
   ASSET: { min: 100000, max: 199999 },
   LIABILITY: { min: 200000, max: 299999 },

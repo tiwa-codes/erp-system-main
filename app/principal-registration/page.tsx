@@ -43,6 +43,8 @@ import {
 import { ChevronsUpDown, Search as SearchIcon, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+export const dynamic = 'force-dynamic'
+
 interface Dependent {
   first_name: string
   last_name: string

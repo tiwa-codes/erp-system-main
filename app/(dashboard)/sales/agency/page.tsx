@@ -8,6 +8,8 @@ import Link from "next/link"
 import { SalesSubmodule, SalesReportStatus } from "@prisma/client"
 import { useState } from "react"
 
+export const dynamic = 'force-dynamic'
+
 type DigitalReportForm = {
   date: string
   platform: string

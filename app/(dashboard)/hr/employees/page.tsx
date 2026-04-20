@@ -60,6 +60,8 @@ import { StatusIndicator } from "@/components/ui/status-indicator"
 import { PermissionButton } from "@/components/ui/permission-button"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function EmployeesPage() {
   const { toast } = useToast()
   const [searchTerm, setSearchTerm] = useState("")

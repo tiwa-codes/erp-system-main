@@ -40,6 +40,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { toast } from "sonner"
 
+export const dynamic = 'force-dynamic'
+
 interface Patient {
   id: string
   enrollee_id: string

@@ -20,6 +20,8 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { AuditTrailView } from "@/components/claims/AuditTrailView"
 
+export const dynamic = 'force-dynamic'
+
 export default function ProviderApprovalPage() {
   const router = useRouter()
   const params = useParams()

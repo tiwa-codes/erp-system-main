@@ -12,6 +12,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { useToast } from "@/hooks/use-toast"
 import { 
+
+export const dynamic = 'force-dynamic'
   ArrowLeft,
   Search,
   Plus,

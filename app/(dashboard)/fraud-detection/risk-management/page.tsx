@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useToast } from "@/hooks/use-toast"
 import { 
+
+export const dynamic = 'force-dynamic'
   Plus, 
   Eye, 
   Edit, 

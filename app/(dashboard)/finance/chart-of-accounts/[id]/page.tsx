@@ -9,6 +9,8 @@ import { ArrowLeft, Edit, DollarSign } from "lucide-react"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { formatAccountCode } from "@/lib/finance/account-code"
 import {
+
+export const dynamic = 'force-dynamic'
   Table,
   TableBody,
   TableCell,

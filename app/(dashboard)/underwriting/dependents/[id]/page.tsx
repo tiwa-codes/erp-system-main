@@ -21,6 +21,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { EditDependentForm } from "@/components/forms/edit-dependent-form"
 import {
+
+export const dynamic = 'force-dynamic'
   ArrowLeft,
   Edit,
   Trash2,

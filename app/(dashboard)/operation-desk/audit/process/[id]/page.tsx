@@ -60,6 +60,8 @@ import { ServiceVettingTable, ServiceItem, isDrugItem } from "@/components/claim
 import { Badge } from "@/components/ui/badge"
 import { FileViewerModal } from "@/components/ui/file-viewer-modal"
 
+export const dynamic = 'force-dynamic'
+
 interface Claim {
   id: string
   claim_number: string

@@ -21,6 +21,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 interface Appointment {
   id: string
   enrollee_name: string

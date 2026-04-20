@@ -1,5 +1,7 @@
 import UsersList from "../_components/users-list"
 
+export const dynamic = 'force-dynamic'
+
 export default function ClientAccountsPage() {
   return (
     <UsersList

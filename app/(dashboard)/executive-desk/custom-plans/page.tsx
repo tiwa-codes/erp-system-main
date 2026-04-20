@@ -13,6 +13,8 @@ import { StatusIndicator } from "@/components/ui/status-indicator"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useRouter } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 export default function ExecutiveDeskCustomPlansPage() {
   const router = useRouter()
   const [search, setSearch] = useState("")

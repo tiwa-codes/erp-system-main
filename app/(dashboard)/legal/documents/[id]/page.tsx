@@ -15,6 +15,8 @@ import { SignatureCapture } from "@/components/ui/signature-capture"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { LegalDocumentStatus } from "@prisma/client"
 import {
+
+export const dynamic = 'force-dynamic'
   Dialog,
   DialogContent,
   DialogDescription,

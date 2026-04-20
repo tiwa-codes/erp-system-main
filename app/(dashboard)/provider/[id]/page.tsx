@@ -35,6 +35,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BandSelector } from "@/components/ui/band-selector"
 import { TariffPlanTabV2 as TariffPlanTab } from "@/components/provider/tariff-plan-tab-v2"
 
+export const dynamic = 'force-dynamic'
+
 interface Provider {
   id: string
   // Section 1: Basic Information

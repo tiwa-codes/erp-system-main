@@ -9,6 +9,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { Card, CardContent } from "@/components/ui/card"
 import { Combobox } from "@/components/ui/combobox"
 
+export const dynamic = 'force-dynamic'
+
 interface ProviderOption {
   id: string
   facility_name: string

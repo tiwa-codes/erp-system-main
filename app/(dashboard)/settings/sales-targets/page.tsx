@@ -12,6 +12,8 @@ import { useToast } from "@/hooks/use-toast"
 import { DEFAULT_SALES_TARGETS, SALES_SUBMODULE_LABELS, type SalesSubmoduleKey } from "@/lib/sales"
 import { getStateNames } from "@/lib/states"
 
+export const dynamic = 'force-dynamic'
+
 type SalesBranch = {
   id: string
   name: string

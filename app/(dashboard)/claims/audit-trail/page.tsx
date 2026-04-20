@@ -8,6 +8,8 @@ import { Search, History, AlertCircle } from "lucide-react"
 import { AuditTrailView } from "@/components/claims/AuditTrailView"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function ClaimsAuditTrailPage() {
     const [searchQuery, setSearchQuery] = useState("")
     const [searchedCode, setSearchedCode] = useState<string | null>(null)

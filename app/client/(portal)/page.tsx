@@ -35,6 +35,8 @@ import {
 import { useToast } from "@/hooks/use-toast"
 import { Loader2, CheckCircle2, Clock3, XCircle } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 type PlanService = {
   id: string
   service_name: string

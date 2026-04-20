@@ -42,6 +42,8 @@ import {
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 
+export const dynamic = 'force-dynamic'
+
 const SELECTABLE_PLAN_STATUSES = new Set(["ACTIVE", "COMPLETE"])
 
 export default function AddPrincipalPage() {

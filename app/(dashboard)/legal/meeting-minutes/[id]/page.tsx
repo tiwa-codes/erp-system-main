@@ -12,6 +12,8 @@ import { WorkflowStatusBadge } from "@/components/legal/workflow-status-badge"
 import { SignatureCapture } from "@/components/ui/signature-capture"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import {
+
+export const dynamic = 'force-dynamic'
   Dialog,
   DialogContent,
   DialogDescription,

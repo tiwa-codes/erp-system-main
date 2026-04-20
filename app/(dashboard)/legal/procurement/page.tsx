@@ -35,6 +35,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { FONT_CLASSES } from "@/lib/font-utils"
 import { FileViewerModal } from "@/components/ui/file-viewer-modal"
 
+export const dynamic = 'force-dynamic'
+
 interface Invoice {
   id: string
   invoice_number: string

@@ -24,6 +24,8 @@ import { ArrowLeft, CheckCircle, XCircle, Loader2, User, Users, AlertCircle } fr
 import { toast } from "sonner"
 import Image from "next/image"
 
+export const dynamic = 'force-dynamic'
+
 export default function DependentDetailPage() {
     const params = useParams()
     const router = useRouter()

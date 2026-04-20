@@ -14,6 +14,8 @@ import Link from "next/link"
 import { StatusIndicator } from "@/components/ui/status-indicator"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function SpecialProviderDetailPage({
   params,
 }: {

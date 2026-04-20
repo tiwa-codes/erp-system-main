@@ -12,6 +12,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 export default function TariffNegotiationPage() {
   const router = useRouter()
   const queryClient = useQueryClient()

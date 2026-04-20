@@ -8,6 +8,8 @@ import { useToast } from "@/hooks/use-toast"
 import { ArrowLeft } from "lucide-react"
 import { JournalEntryStatus } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 export default function EditJournalEntryPage({
   params,
 }: {

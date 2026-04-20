@@ -25,6 +25,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { useRouter } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 interface ServiceRequest {
   id: string
   service_name: string

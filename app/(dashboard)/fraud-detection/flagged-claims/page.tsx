@@ -34,6 +34,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { BulkUploadModal } from "@/components/ui/bulk-upload-modal"
 
+export const dynamic = 'force-dynamic'
+
 interface FlaggedClaim {
   id: string
   claim_number: string

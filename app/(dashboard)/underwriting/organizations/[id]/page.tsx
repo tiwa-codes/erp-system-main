@@ -28,6 +28,8 @@ import {
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 interface OrganizationViewPageProps {
   params: { id: string }
 }

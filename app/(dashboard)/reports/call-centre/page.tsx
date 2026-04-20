@@ -10,6 +10,8 @@ import { Combobox } from "@/components/ui/combobox"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Download } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 type ApprovalCodeRow = {
   id: string
   approval_code: string

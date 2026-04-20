@@ -17,6 +17,8 @@ import { PermissionButton } from "@/components/ui/permission-button"
 import { useToast } from "@/hooks/use-toast"
 import { Plus, Search, Edit, Trash2, Eye, Save, X } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 interface BandLabel {
   id: string
   label: string

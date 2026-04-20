@@ -20,6 +20,8 @@ import {
 } from "lucide-react"
 import { toast } from "sonner"
 
+export const dynamic = 'force-dynamic'
+
 interface RadiologyOrder {
   id: string
   test_name: string

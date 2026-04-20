@@ -11,6 +11,8 @@ import { PermissionGate } from "@/components/ui/permission-gate"
 import { Clock, Eye, CheckCircle, XCircle } from "lucide-react"
 import { format } from "date-fns"
 
+export const dynamic = 'force-dynamic'
+
 export default function PendingTariffPlansPage() {
   const router = useRouter()
 

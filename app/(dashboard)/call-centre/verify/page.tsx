@@ -21,6 +21,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { ApprovalCodeTimeline } from "@/components/approval-code-timeline"
 
+export const dynamic = 'force-dynamic'
+
 interface ApprovalCodeDetails {
   approval_code: string
   enrollee: string

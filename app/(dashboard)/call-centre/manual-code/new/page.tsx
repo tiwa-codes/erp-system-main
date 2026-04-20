@@ -16,6 +16,8 @@ import { Plus, Trash2, Search, CheckCircle, AlertCircle, Copy, ArrowLeft, XCircl
 import Link from "next/link"
 import { PreviousEncounterModal } from "@/components/call-centre/PreviousEncounterModal"
 
+export const dynamic = 'force-dynamic'
+
 export default function ManualApprovalCodePage() {
     const router = useRouter()
     const { toast } = useToast()

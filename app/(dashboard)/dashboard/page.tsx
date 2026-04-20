@@ -29,6 +29,8 @@ import {
 } from "recharts"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 // Real data is now fetched from API endpoints
 
 export default function ERPDashboard() {

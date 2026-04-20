@@ -17,6 +17,8 @@ import { FileSpreadsheet, FileText } from "lucide-react"
 import { exportToExcel, exportToPDF } from "@/lib/export-utils"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 export default function ProfitLossPage() {
   const { toast } = useToast()
   const [fromDate, setFromDate] = useState(

@@ -13,6 +13,8 @@ import { useToast } from "@/hooks/use-toast"
 import { ReportType, SalesSubmodule } from "@prisma/client"
 import { SALES_CHANNEL_OPTIONS } from "@/lib/sales"
 
+export const dynamic = 'force-dynamic'
+
 type ChannelOption = {
   id: string
   label: string

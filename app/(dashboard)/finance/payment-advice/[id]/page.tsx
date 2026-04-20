@@ -32,6 +32,8 @@ import html2canvas from "html2canvas"
 
 import { numberToWords } from "@/lib/utils/number-to-words"
 
+export const dynamic = 'force-dynamic'
+
 interface PaidClaim {
     id: string
     claim_number: string

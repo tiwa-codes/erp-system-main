@@ -14,6 +14,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea"
 
+export const dynamic = 'force-dynamic'
+
 export default function ManualApprovalHistoryPage() {
     const { toast } = useToast()
     const queryClient = useQueryClient()

@@ -62,6 +62,8 @@ import { AddHRRuleForm } from "@/components/forms/add-hr-rule-form"
 import { EditHRRuleForm } from "@/components/forms/edit-hr-rule-form"
 import { ViewHRRule } from "@/components/forms/view-hr-rule"
 
+export const dynamic = 'force-dynamic'
+
 export default function HRRulesManagementPage() {
   const { toast } = useToast()
   const queryClient = useQueryClient()

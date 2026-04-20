@@ -15,6 +15,8 @@ import { ArrowLeft, CheckCircle, XCircle } from "lucide-react"
 import { format } from "date-fns"
 import { useSession } from "next-auth/react"
 
+export const dynamic = 'force-dynamic'
+
 type TariffPlanServiceRow = {
   id: string
   service_id?: string | null

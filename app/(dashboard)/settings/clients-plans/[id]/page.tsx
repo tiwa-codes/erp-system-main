@@ -12,6 +12,8 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { useEffect } from "react"
 import {
+
+export const dynamic = 'force-dynamic'
   Table,
   TableBody,
   TableCell,

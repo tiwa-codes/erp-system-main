@@ -10,6 +10,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge"
 import { Search, Loader2 } from "lucide-react"
 
+export const dynamic = 'force-dynamic'
+
 const statusBadge = (status: string) => {
   switch (status) {
     case "APPROVED":

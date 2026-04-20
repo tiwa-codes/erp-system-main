@@ -12,6 +12,8 @@ import Link from "next/link"
 import { DocumentViewer } from "@/components/legal/document-viewer"
 import { LegalDocumentType } from "@prisma/client"
 import {
+
+export const dynamic = 'force-dynamic'
   Dialog,
   DialogContent,
   DialogDescription,

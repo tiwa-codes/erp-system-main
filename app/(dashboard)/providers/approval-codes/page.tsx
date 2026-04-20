@@ -34,6 +34,8 @@ import {
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { formatCountdown } from "@/lib/add-service-window"
 import {
+
+export const dynamic = 'force-dynamic'
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,

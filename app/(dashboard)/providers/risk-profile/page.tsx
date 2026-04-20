@@ -41,6 +41,8 @@ import { AddRiskProfileForm } from "@/components/forms/add-risk-profile-form"
 import { ViewRiskProfileModal } from "@/components/forms/view-risk-profile-form"
 import { EditRiskProfileModal } from "@/components/forms/edit-risk-profile-form"
 
+export const dynamic = 'force-dynamic'
+
 interface ProviderRiskProfile {
   id: string
   provider_id: string

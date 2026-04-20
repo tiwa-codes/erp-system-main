@@ -13,6 +13,8 @@ import { ArrowLeft, Save, FileText } from "lucide-react"
 import Link from "next/link"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 export default function EditCustomPlanPage({
   params,
 }: {

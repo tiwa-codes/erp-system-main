@@ -57,6 +57,8 @@ import { PermissionButton } from "@/components/ui/permission-button"
 import { PermissionGate } from "@/components/ui/permission-gate"
 import { StatusText } from "@/components/ui/status-text"
 
+export const dynamic = 'force-dynamic'
+
 export default function PayrollManagementPage() {
   const { toast } = useToast()
   const queryClient = useQueryClient()

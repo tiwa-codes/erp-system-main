@@ -33,6 +33,8 @@ import {
 import Link from "next/link"
 import { useParams } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 interface CoveredService {
   id: string
   plan_id: string

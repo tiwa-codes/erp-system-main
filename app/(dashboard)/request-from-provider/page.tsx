@@ -45,6 +45,8 @@ import {
 import { useRouter } from "next/navigation"
 import { PermissionGate } from "@/components/ui/permission-gate"
 
+export const dynamic = 'force-dynamic'
+
 interface CallCentreMetrics {
   approval_codes: number
   encounter_codes: number

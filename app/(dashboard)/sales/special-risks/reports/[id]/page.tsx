@@ -16,6 +16,8 @@ import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { useFileUpload } from "@/hooks/use-file-upload"
 
+export const dynamic = 'force-dynamic'
+
 export default function SpecialRisksSalesReportDetailPage({ params }: { params: { id: string } }) {
   const router = useRouter()
   const { toast } = useToast()

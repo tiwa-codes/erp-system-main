@@ -18,6 +18,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { exportToExcel, exportToPDF } from "@/lib/export-utils"
 import { useToast } from "@/hooks/use-toast"
 
+export const dynamic = 'force-dynamic'
+
 export default function BalanceSheetPage() {
   const { toast } = useToast()
   const [asOfDate, setAsOfDate] = useState(new Date().toISOString().split("T")[0])

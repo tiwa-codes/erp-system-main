@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { LegalDocumentType, LegalDocumentStatus } from "@prisma/client"
 
+export const dynamic = 'force-dynamic'
+
 export default function LegalDocumentsPage() {
   const router = useRouter()
   const [search, setSearch] = useState("")
