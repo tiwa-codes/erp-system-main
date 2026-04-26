@@ -29,8 +29,10 @@ export async function GET(request: NextRequest) {
     const organizationId = searchParams.get('organizationId')
     const planId = searchParams.get('planId')
     const status = searchParams.get('status')
-    const page = parseInt(searchParams.get('page') || '1')
-    const limit = parseInt(searchParams.get('limit') || '10')
+    const rawPage = parseInt(searchParams.get('page') || '1')
+    const rawLimit = parseInt(searchParams.get('limit') || '10')
+    const page = Number.isFinite(rawPage) && rawPage > 0 ? rawPage : 1
+    const limit = Number.isFinite(rawLimit) && rawLimit > 0 ? Math.min(rawLimit, 100) : 10
 
     const where: any = {}
 
@@ -116,13 +118,7 @@ export async function GET(request: NextRequest) {
       where.status = status as AccountStatus
     }
 
-    const extractTrailingSerial = (enrolleeId?: string | null) => {
-      if (!enrolleeId) return -1
-      const match = enrolleeId.match(/(\d+)\s*$/)
-      return match ? parseInt(match[1], 10) : -1
-    }
-
-    const [allPrincipals, dependents, totalPrincipals] = await Promise.all([
+    const [principals, dependents, totalPrincipals] = await Promise.all([
       prisma.principalAccount.findMany({
         where,
         include: {
@@ -154,6 +150,8 @@ export async function GET(request: NextRequest) {
             },
           },
         },
+        skip: (page - 1) * limit,
+        take: limit,
         orderBy: { created_at: 'desc' },
       }),
       // Search dependents using same smart logic as principals
@@ -200,24 +198,6 @@ export async function GET(request: NextRequest) {
       prisma.principalAccount.count({ where }),
     ])
 
-    // Sort by trailing numeric serial in enrollee_id (descending), ignoring alpha prefixes.
-    // Example: CJH/CJ/4291 > CJH/MD/843
-    const principals = [...allPrincipals]
-      .sort((a, b) => {
-        const serialA = extractTrailingSerial(a.enrollee_id)
-        const serialB = extractTrailingSerial(b.enrollee_id)
-
-        if (serialB !== serialA) return serialB - serialA
-
-        // Stable fallback when serials are equal/missing.
-        const timeA = new Date(a.created_at).getTime()
-        const timeB = new Date(b.created_at).getTime()
-        if (timeB !== timeA) return timeB - timeA
-
-        return String(b.enrollee_id || '').localeCompare(String(a.enrollee_id || ''))
-      })
-      .slice((page - 1) * limit, page * limit)
-
     return NextResponse.json({
       principals,
       dependents,
@@ -230,8 +210,12 @@ export async function GET(request: NextRequest) {
     })
   } catch (error) {
     console.error('Error fetching principals:', error)
+    const message = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json(
-      { error: 'Failed to fetch principals' },
+      {
+        error: 'Failed to fetch principals',
+        ...(process.env.NODE_ENV !== 'production' ? { detail: message } : {}),
+      },
       { status: 500 }
     )
   }
